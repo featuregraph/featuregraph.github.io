@@ -3,141 +3,104 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>FeatureGraph — Behavioral object construction for dynamic systems</title>
-  <meta name="description" content="FeatureGraph is an open research framework for constructing explicit behavioral objects from observation sequences.">
+  <title>FeatureGraph — Behavioral Object Construction for Dynamic Systems</title>
+  <meta name="description" content="FeatureGraph constructs explicit, inspectable behavioral objects from dynamic-system observations.">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <header class="site-header">
-    <a class="brand" href="index.html">FeatureGraph</a>
-    <nav aria-label="Primary navigation">
-      <a href="research.html">Research</a>
-      <a href="software.html">Software</a>
-      <a href="releases.html">Releases</a>
-      <a href="roadmap.html">Roadmap</a>
-      <a href="about.html">About</a>
-      <a href="https://github.com/featuregraph/featuregraph">GitHub ↗</a>
-    </nav>
-  </header>
+<header class="site-header">
+  <a class="brand" href="index.html" aria-label="FeatureGraph home"><span class="brand-mark" aria-hidden="true">◇</span><span>FeatureGraph</span></a>
+  <nav aria-label="Primary navigation">
+    <a href="research.html">Research</a><a href="software.html">Software</a><a href="documentation.html">Documentation</a><a href="releases.html">Releases</a><a href="roadmap.html">Roadmap</a><a href="updates.html">Updates</a><a href="about.html">About</a>
+  </nav>
+  <a class="github-mark" href="https://github.com/featuregraph/featuregraph" aria-label="FeatureGraph on GitHub">GitHub ↗</a>
+</header>
 
-  <main>
-    <section class="hero">
-      <p class="eyebrow">Open research framework · Alpha v0.1.0a1</p>
-      <h1>Behavioral objects for dynamic systems.</h1>
-      <p class="lede">FeatureGraph converts observation sequences into explicit, inspectable, and queryable objects. The current research release constructs oscillations and wave-derived accumulations, preserves construction metadata, and exposes deterministic object-level queries.</p>
-      <div class="actions">
-        <a class="button primary" href="https://github.com/featuregraph/featuregraph/releases/tag/v0.1.0a1">Explore the alpha release</a>
-        <a class="button secondary" href="research.html">Read the research</a>
-        <a class="text-link" href="https://zenodo.org/records/21535662">Zenodo archive ↗</a>
-      </div>
-    </section>
-
-    <section class="signal-bar" aria-label="Project summary">
-      <div><strong>2</strong><span>cross-domain datasets</span></div>
-      <div><strong>2</strong><span>implemented behavior families</span></div>
-      <div><strong>1</strong><span>public research release</span></div>
-      <div><strong>100%</strong><span>deterministic construction</span></div>
-    </section>
-
-    <section class="section intro-grid">
-      <div>
-        <p class="eyebrow">The research question</p>
-        <h2>Can the same construction procedure expose behavior across unrelated systems?</h2>
-      </div>
-      <div class="prose">
-        <p>Time-series observations record what was measured, but the behaviors of interest usually remain implicit. A downstream analysis must repeatedly recover boundaries, events, durations, amplitudes, completeness, and relationships before it can reason about individual behaviors.</p>
-        <p>FeatureGraph performs this construction explicitly. The framework is organized around reusable behavioral objects rather than industries, datasets, or model architectures.</p>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="section-heading">
-        <p class="eyebrow">Construction architecture</p>
-        <h2>From samples to objects that can be inspected and queried.</h2>
-      </div>
-      <ol class="pipeline">
-        <li><span>01</span><strong>Observations</strong><small>Measured sequences and grouping boundaries</small></li>
-        <li><span>02</span><strong>Primitive states</strong><small>Rising, falling, active, and inactive regions</small></li>
-        <li><span>03</span><strong>Transition events</strong><small>Entries, exits, peaks, troughs, and boundaries</small></li>
-        <li><span>04</span><strong>Object identities</strong><small>Deterministic assignment of behavioral objects</small></li>
-        <li><span>05</span><strong>Object tables</strong><small>Measurements, relations, and completeness</small></li>
-        <li><span>06</span><strong>Queries</strong><small>Reproducible reasoning over explicit objects</small></li>
-      </ol>
-    </section>
-
-    <section class="section">
-      <div class="section-heading">
-        <p class="eyebrow">Current behavioral objects</p>
-        <h2>A growing vocabulary for dynamic behavior.</h2>
-      </div>
-      <div class="card-grid three">
-        <article class="card feature-card">
-          <span class="status complete">Released</span>
-          <h3>Oscillation</h3>
-          <p>Constructs trough-to-trough objects with explicit start, peak, and end boundaries. Measurements include rise and fall duration, total duration, period, amplitude, and temporal symmetry.</p>
-          <a href="research.html#oscillation">Research details →</a>
-        </article>
-        <article class="card feature-card">
-          <span class="status active">Alpha prototype</span>
-          <h3>Accumulation</h3>
-          <p>Constructs wave-derived accumulation objects, propagates parent completeness, and measures total area, rates, centroid, and timing relative to the parent oscillation.</p>
-          <a href="research.html#accumulation">Research details →</a>
-        </article>
-        <article class="card feature-card">
-          <span class="status planned">In development</span>
-          <h3>Transition</h3>
-          <p>Will represent changes between states and behavioral regimes as first-class objects with their own boundaries, measurements, and relationships.</p>
-          <a href="roadmap.html">View roadmap →</a>
-        </article>
-      </div>
-    </section>
-
-    <section class="section release-panel">
-      <div>
-        <p class="eyebrow">Latest milestone</p>
-        <h2>FeatureGraph Alpha Research Release</h2>
-        <p class="wide-copy">Version 0.1.0a1 freezes the first public implementation of FeatureGraph’s behavioral construction architecture and packages the software, datasets, reproducibility scripts, manifest, environment capture, and benchmark metadata needed to inspect the work.</p>
+<main class="site-shell">
+  <section class="dashboard-grid hero-dashboard">
+    <div class="hero-main panel">
+      <div class="hero-copy">
+        <h1>Behavioral Object Construction<br>for Dynamic Systems</h1>
+        <p>Transform observation sequences into explicit behavioral objects such as oscillations, accumulations, and transitions.</p>
         <div class="actions">
-          <a class="button primary" href="releases.html">Release overview</a>
-          <a class="button secondary" href="https://github.com/featuregraph/featuregraph">Source repository</a>
+          <a class="button primary" href="https://github.com/featuregraph/featuregraph/releases/tag/v0.1.0a1">Alpha Release v0.1.0a1</a>
+          <a class="button" href="https://github.com/featuregraph/featuregraph">GitHub Repository</a>
+          <a class="button" href="documentation.html">Documentation</a>
+          <a class="button" href="https://zenodo.org/records/21535662">Zenodo Archive</a>
+          <a class="button" href="https://orcid.org/0009-0000-5474-277X">ORCID</a>
         </div>
       </div>
-      <ul class="release-list">
-        <li>Explicit oscillation objects</li>
-        <li>Wave-derived accumulation objects</li>
-        <li>Parent completeness propagation</li>
-        <li>Inspectable feature and object tables</li>
-        <li>Deterministic query interface</li>
-        <li>BIDMC and Tennessee Eastman loaders</li>
-        <li>Paper figure and table reproducibility</li>
-      </ul>
-    </section>
-
-    <section class="section">
-      <div class="section-heading">
-        <p class="eyebrow">Cross-domain evidence</p>
-        <h2>One behavioral representation, unrelated physical systems.</h2>
+      <div class="construction-figure">
+        <h2>From raw signals to AI-ready features</h2>
+        <svg viewBox="0 0 760 330" role="img" aria-label="Raw signals become states, events, temporal features, and a feature graph">
+          <defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8" fill="none" stroke="currentColor"/></marker></defs>
+          <g class="diagram-labels"><text x="68" y="38">Raw Signals</text><text x="230" y="38">States</text><text x="370" y="38">Events</text><text x="500" y="38">Temporal</text><text x="500" y="56">Features</text><text x="674" y="38">Feature</text><text x="674" y="56">Graph</text></g>
+          <g class="signals"><path d="M18 98 C35 82 50 113 67 97 S99 83 116 98"/><path d="M18 132 C35 116 50 147 67 131 S99 117 116 132"/><path d="M18 166 C35 150 50 181 67 165 S99 151 116 166"/><path d="M18 200 C35 184 50 215 67 199 S99 185 116 200"/></g>
+          <g class="arrows"><line x1="128" y1="150" x2="160" y2="150"/><line x1="300" y1="150" x2="332" y2="150"/><line x1="430" y1="150" x2="462" y2="150"/><line x1="590" y1="150" x2="622" y2="150"/></g>
+          <g class="states"><path d="M180 115 h22 v-28 h26 v28 h22 v28 h25"/><path d="M180 160 h18 v-20 h24 v42 h26 v-22 h27"/><path d="M180 210 h28 v-34 h26 v34 h40"/></g>
+          <g class="events"><circle cx="350" cy="98" r="5"/><circle cx="390" cy="98" r="5"/><circle cx="410" cy="98" r="5"/><circle cx="350" cy="156" r="5"/><circle cx="390" cy="156" r="5"/><circle cx="410" cy="156" r="5"/><line x1="350" y1="104" x2="350" y2="126"/><line x1="390" y1="104" x2="390" y2="126"/><line x1="410" y1="104" x2="410" y2="126"/><line x1="350" y1="162" x2="350" y2="186"/><line x1="390" y1="162" x2="390" y2="186"/><line x1="410" y1="162" x2="410" y2="186"/></g>
+          <g class="features"><path d="M480 110 C510 102 525 80 560 76"/><path d="M480 160 h18 v-25 h20 v25 h20 v-12 h22"/><path d="M480 214 h10 v-20 h12 v20 h10 v-42 h12 v42 h10 v-28 h12 v28"/></g>
+          <g class="graph"><line x1="660" y1="116" x2="700" y2="88"/><line x1="700" y1="88" x2="726" y2="128"/><line x1="660" y1="116" x2="678" y2="178"/><line x1="678" y1="178" x2="726" y2="128"/><line x1="678" y1="178" x2="720" y2="214"/><circle cx="660" cy="116" r="10"/><circle cx="700" cy="88" r="10"/><circle cx="726" cy="128" r="10"/><circle cx="678" cy="178" r="10"/><circle cx="720" cy="214" r="10"/></g>
+          <path class="brace" d="M190 275 v12 q0 12 12 12 h340 q12 0 12-12 v-12"/><text class="brace-label" x="370" y="323">Information Enrichment</text>
+        </svg>
       </div>
-      <div class="card-grid two">
-        <article class="card dataset-card"><p class="kicker">Physiological signal</p><h3>BIDMC respiration</h3><p>Respiration waveforms are converted into explicit oscillation objects and their associated accumulation measurements using the same general construction lifecycle.</p></article>
-        <article class="card dataset-card"><p class="kicker">Industrial process</p><h3>Tennessee Eastman</h3><p>Reactor process signals are represented through the same object schema, allowing behavioral measurements and queries to remain consistent across domains.</p></article>
-      </div>
-    </section>
+    </div>
 
-    <section class="cta">
-      <p class="eyebrow">Research in public</p>
-      <h2>Read the method, inspect the implementation, and reproduce the release.</h2>
-      <div class="actions">
-        <a class="button light" href="research.html">Research</a>
-        <a class="button ghost" href="software.html">Software</a>
-        <a class="button ghost" href="https://zenodo.org/records/21535662">Archive</a>
-      </div>
-    </section>
-  </main>
+    <aside class="panel sidebar-card highlights">
+      <p class="section-label">Research Highlights</p>
+      <article><strong>Behavioral Objects</strong><span>First-class representations of how systems actually behave.</span></article>
+      <article><strong>Deterministic Construction</strong><span>Rule-based, transparent, and reproducible.</span></article>
+      <article><strong>Cross-Domain Generality</strong><span>From biomedical to industrial systems.</span></article>
+      <article><strong>AI-Ready Features</strong><span>Enriched representations for modern machine learning.</span></article>
+      <a class="inline-link" href="research.html">Learn more about the research →</a>
+    </aside>
 
-  <footer>
-    <div><strong>FeatureGraph</strong><span>Explicit behavioral representations for dynamic systems.</span></div>
-    <div class="footer-links"><a href="https://github.com/featuregraph/featuregraph">GitHub</a><a href="https://zenodo.org/records/21535662">Zenodo</a><a href="https://orcid.org/0009-0000-5474-277X">ORCID</a></div>
-  </footer>
+    <aside class="panel sidebar-card latest-release">
+      <p class="section-label">Latest Release</p>
+      <h2>v0.1.0a1 <small>Alpha Release</small></h2>
+      <ul class="check-list"><li>Explicit oscillation objects</li><li>Wave-derived accumulation prototype</li><li>Transition object scaffolding</li><li>Behavioral query interface</li><li>BIDMC dataset loader</li><li>Tennessee Eastman dataset loader</li><li>Reproducibility package & examples</li></ul>
+      <div class="actions"><a class="button small" href="releases.html">Release Notes</a><a class="button small" href="https://github.com/featuregraph/featuregraph/releases">All Releases →</a></div>
+    </aside>
+  </section>
+
+  <section class="release-strip panel">
+    <div><span class="tag">FeatureGraph Alpha</span><p>The first release of a research framework for constructing explicit behavioral objects from dynamic systems data.</p></div>
+    <div class="release-meta"><span><strong>Released</strong>July 2026</span><span><strong>Zenodo DOI</strong><a href="https://zenodo.org/records/21535662">10.5281/zenodo.21535662</a></span><span><strong>Open Source</strong>MIT License</span></div>
+  </section>
+
+  <section class="dashboard-grid lower-dashboard">
+    <div class="panel status-panel">
+      <h2>Current Status</h2>
+      <div class="status-grid">
+        <article><span class="status-dot done">✓</span><strong>Oscillation Objects</strong><em>Complete</em><p>Peak-trough cycle construction with phase, amplitude, period, and more.</p></article>
+        <article><span class="status-dot done">✓</span><strong>Query Layer</strong><em>Complete</em><p>Expressive querying of objects with rich results and export options.</p></article>
+        <article><span class="status-dot done">✓</span><strong>Reproducibility Package</strong><em>Complete</em><p>Deterministic pipelines, datasets, and examples for reproducibility.</p></article>
+        <article><span class="status-dot active">○</span><strong>Accumulation Objects</strong><em>In Progress</em><p>Wave-derived accumulations with intervals and rates.</p></article>
+        <article><span class="status-dot active">○</span><strong>Transition Objects</strong><em>In Progress</em><p>State-to-state dynamics with duration and change characterization.</p></article>
+      </div>
+    </div>
+
+    <div class="panel domains-panel">
+      <h2>Validated Across Domains</h2>
+      <div class="domain-grid"><article><span class="domain-icon">▥</span><strong>BIDMC</strong><p>Real-world physiological waveform data.</p><a href="research.html#evaluation">Learn more →</a></article><article><span class="domain-icon">△</span><strong>Tennessee Eastman</strong><p>Process simulation benchmark for industrial systems.</p><a href="research.html#evaluation">Learn more →</a></article></div>
+    </div>
+
+    <aside class="panel sidebar-card roadmap-card"><p class="section-label">Roadmap</p><h3>Completed</h3><ul class="mini-list done-list"><li>Oscillation objects</li><li>Query layer</li><li>Alpha release</li></ul><h3>In Progress</h3><ul class="mini-list active-list"><li>Accumulation objects</li><li>Transition objects</li></ul><h3>Next</h3><ul class="mini-list"><li>Transport objects</li><li>Growth & decay</li><li>Interaction objects</li><li>Tensor backend</li><li>Real-time streaming</li><li>Additional datasets</li></ul><a class="inline-link" href="roadmap.html">View full roadmap →</a></aside>
+
+    <aside class="panel sidebar-card gallery-card"><p class="section-label">Gallery</p><div class="gallery-preview"><div class="mini-chart wave"></div><div class="mini-table"></div><div class="mini-chart accumulation"></div><div class="mini-network">A—B—C<br>╲ │ ╱<br>D—E</div><div class="mini-timeline"></div></div><a class="inline-link" href="gallery.html">Explore gallery →</a></aside>
+  </section>
+
+  <section class="why-section panel">
+    <h2>Why FeatureGraph?</h2>
+    <div class="why-grid"><article><span>◇</span><strong>Explicit Behavioral Objects</strong><p>Move beyond aggregate features to first-class representations of how systems actually behave.</p></article><article><span>⌾</span><strong>Deterministic & Interpretable</strong><p>Rule-based construction supports reproducibility, transparency, and explainability.</p></article><article><span>↗</span><strong>Cross-Domain Generality</strong><p>From biomedical to industrial systems, the same mathematics applies.</p></article><article><span>△</span><strong>Research-Driven Roadmap</strong><p>An open research program building foundations for dynamic-systems understanding.</p></article></div>
+  </section>
+
+  <section class="dashboard-grid footer-dashboard">
+    <aside class="panel sidebar-card updates-card"><p class="section-label">Research Updates</p><a href="updates.html">Why FeatureGraph Exists</a><a href="updates.html">From Feature Engineering to Dynamic Behaviors</a><a href="updates.html">Accumulation as a First-Class Object</a><a href="updates.html">One Month to Alpha</a><a class="inline-link" href="updates.html">All updates →</a></aside>
+    <aside class="panel sidebar-card about-card"><p class="section-label">About FeatureGraph</p><p>FeatureGraph is an open-source research project developing mathematical and computational foundations for explicit behavioral representations of dynamic systems.</p><a href="https://github.com/featuregraph/featuregraph">GitHub Repository</a><a href="https://zenodo.org/records/21535662">Zenodo Archive</a><a href="https://orcid.org/0009-0000-5474-277X">ORCID Profile</a><a class="inline-link" href="about.html">Learn more about the project →</a></aside>
+  </section>
+</main>
+
+<footer><span>© 2026 FeatureGraph Project</span><span>MIT License</span><span><a href="about.html">Contact</a></span><span><a href="releases.html">Cite FeatureGraph</a></span></footer>
 </body>
 </html>
