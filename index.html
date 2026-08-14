@@ -6,6 +6,7 @@
   <title>FeatureGraph — Explicit behavioral objects from time series</title>
   <meta name="description" content="FeatureGraph turns raw time-series observations into explicit, measurable, queryable behavioral objects.">
   <link rel="stylesheet" href="home.css">
+  <link rel="stylesheet" href="study.css">
   <script src="home.js" defer></script>
 </head>
 <body>
@@ -14,7 +15,7 @@
   <nav aria-label="Primary navigation">
     <a href="https://featuregraph.readthedocs.io/">Docs</a>
     <a href="updates.html">Updates</a>
-    <a href="#initiative">Research &amp; work</a>
+    <a href="research.html">Research</a>
     <a href="https://github.com/featuregraph/featuregraph">GitHub</a>
   </nav>
 </header>
@@ -23,7 +24,7 @@
   <section class="hero">
     <p class="eyebrow">Open research software · Alpha</p>
     <h1>Turn time series into<br>behavioral objects.</h1>
-    <p class="lead">FeatureGraph constructs explicit oscillations and accumulations from ordered observations—preserving their boundaries, measurements, and evidence for downstream computation.</p>
+    <p class="lead">FeatureGraph turns a researcher-validated time-series analysis into deterministic, inspectable objects—preserving its boundaries, measurements, and evidence so people and software can run and maintain it without repeating the original LLM interaction.</p>
     <div class="actions">
       <a class="button primary" href="https://featuregraph.readthedocs.io/">Read the documentation</a>
       <a class="button" href="#example">See the transformation</a>
@@ -31,7 +32,7 @@
   </section>
 
   <section class="principles" aria-label="Core properties">
-    <span>Deterministic</span><span>Inspectable</span><span>Queryable</span><span>Cross-domain</span>
+    <span>Deterministic</span><span>Inspectable</span><span>Queryable</span><span>Human-maintainable</span>
   </section>
 
   <section class="idea">
@@ -40,6 +41,22 @@
       <h2>Measurements describe samples.<br>FeatureGraph describes behavior.</h2>
     </div>
     <p>A signal can repeat, rise, fall, or accumulate without representing any of those behaviors explicitly. FeatureGraph turns those implicit structures into bounded records that software can filter, compare, relate, and reuse.</p>
+  </section>
+
+  <section class="study" aria-labelledby="study-title">
+    <div class="study-copy">
+      <p class="eyebrow">Current study · BIDMC respiration</p>
+      <h2 id="study-title">What survives after the LLM?</h2>
+      <p>An LLM proposed a raw-signal respiration analysis. The researcher then encoded an explicit oscillation representation in FeatureGraph and compared the resulting objects. On the development subject, FeatureGraph recovered all 169 LLM objects plus five additional candidates. Across subjects, however, a shared detector did not transfer cleanly.</p>
+      <p class="study-conclusion"><strong>Result:</strong> the representation is durable and auditable; general peak selection remains unsolved.</p>
+      <a class="button" href="research.html#bidmc-study">Read the experiment record</a>
+    </div>
+    <div class="study-results" aria-label="BIDMC study results">
+      <article><span>Subject 1</span><strong>169 / 169</strong><small>LLM objects matched</small></article>
+      <article><span>FeatureGraph</span><strong>174</strong><small>complete candidates</small></article>
+      <article><span>Median error</span><strong>10</strong><small>samples at matched peaks</small></article>
+      <article class="negative"><span>53-subject transfer</span><strong>2,760</strong><small>FeatureGraph-only candidates</small></article>
+    </div>
   </section>
 
   <section class="example" id="example">
@@ -73,7 +90,7 @@
     <div class="resource-list">
       <a href="https://featuregraph.readthedocs.io/"><strong>Documentation</strong><span>Install, learn, and use the released alpha.</span><b>→</b></a>
       <a href="https://github.com/featuregraph/featuregraph/releases/tag/v0.1.0a1"><strong>Alpha release</strong><span>Source, release notes, and reproducible artifacts.</span><b>→</b></a>
-      <a href="https://doi.org/10.5281/zenodo.21535662"><strong>Research record</strong><span>Citable archive for version 0.1.0a1.</span><b>→</b></a>
+      <a href="research.html#bidmc-study"><strong>BIDMC study</strong><span>Results, limitations, and the transition-only next phase.</span><b>→</b></a>
       <a href="updates.html"><strong>Research updates</strong><span>Short notes on how the framework is evolving.</span><b>→</b></a>
     </div>
   </section>
@@ -92,7 +109,7 @@
         <ul>
           <li>Reproducible papers and evaluations</li>
           <li>Open alpha software and demonstrations</li>
-          <li>Cross-domain research collaboration</li>
+          <li>LLM-analysis preservation and object-level evaluation</li>
           <li>Citable datasets, methods, and artifacts</li>
         </ul>
         <div class="track-actions">
