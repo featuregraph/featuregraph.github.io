@@ -50,13 +50,13 @@
       </section>
       <section id="contracts">
         <p class="eyebrow">Explicit limits</p>
-        <h2>FeatureGraph does not know what a breath is.</h2>
+        <h2>Deterministic, repeatable data analysis.</h2>
         <p>FeatureGraph is completely deterministic. It does not recognize that a signal is oscillatory, decide whether a local maximum is physiologically meaningful, or infer which candidate peak a user intends to include. Those decisions must be supplied through explicit construction rules and parameters.</p>
         <p>What the framework does provide is equally important: inspectable boundary rules, stable object identities, incomplete-object handling, parent–child relationships, measurement contracts, and object tables that expose exactly how every result was produced.</p>
       </section>
       <section id="bidmc-study">
         <p class="eyebrow">BIDMC respiration study</p>
-        <h2>A strong preservation result and a failed transfer result.</h2>
+        <h2>Preservation and transfer results.</h2>
         <p>BIDMC was chosen because it provides 53 public, eight-minute records at a fixed 125 Hz sampling rate, visible repeated waveform structure, and two independent manual annotation series. The researcher did not begin with respiration-domain expertise, so this is a representation study—not clinical validation and not a claim about calibrated airflow or volume.</p>
         <p>The experiment began with an independent LLM-designed analysis of BIDMC subject 1. The researcher encoded a deterministic candidate-breath construction in the public alpha using a 45-sample difference lag, a fixed threshold, a seven-sample state-gap rule, explicit peak boundaries, and incomplete-object exclusion.</p>
         <table class="object-table">
