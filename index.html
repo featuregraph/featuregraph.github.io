@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>FeatureGraph — Explicit behavioral objects from time series</title>
-  <meta name="description" content="FeatureGraph turns raw time-series observations into explicit, measurable, queryable behavioral objects.">
+  <title>FeatureGraph — What remains when the LLM is gone?</title>
+  <meta name="description" content="FeatureGraph asks what remains when LLM access disappears: a maintainable, inspectable computational record of an analysis.">
   <link rel="stylesheet" href="home.css?v=20260816-publications">
   <link rel="stylesheet" href="study.css">
   <script src="home.js" defer></script>
@@ -24,11 +24,11 @@
 <main>
   <section class="hero">
     <p class="eyebrow">Open research software · Alpha</p>
-    <h1>Turn time series into<br>behavioral objects.</h1>
-    <p class="lead">FeatureGraph turns a researcher-validated time-series analysis into deterministic, inspectable objects—preserving its boundaries, measurements, and evidence so people and software can run and maintain it without repeating the original LLM interaction.</p>
+    <h1>If LLM access disappeared tomorrow,<br>what would be left behind?</h1>
+    <p class="lead">FeatureGraph studies how an LLM-assisted analysis can become a durable, inspectable computational record—so the method, assumptions, measurements, and evidence remain available after the conversation is gone.</p>
     <div class="actions">
-      <a class="button primary" href="#publications">Explore the publications</a>
-      <a class="button" href="https://github.com/featuregraph/featuregraph/blob/alpha/v0.1.x/notebooks/bidmc_respiration_pipeline.ipynb">Run the BIDMC notebook</a>
+      <a class="button primary" href="#publications">See what remains</a>
+      <a class="button" href="research.html#bidmc-study">Read the preservation study</a>
     </div>
   </section>
 
@@ -58,23 +58,23 @@
   </section>
 
   <section class="principles" aria-label="Core properties">
-    <span>Deterministic</span><span>Inspectable</span><span>Queryable</span><span>Human-maintainable</span>
+    <span>Durable</span><span>Inspectable</span><span>Reproducible</span><span>Maintainable</span>
   </section>
 
   <section class="idea">
     <div>
-      <p class="eyebrow">The representation layer</p>
-      <h2>Measurements describe samples.<br>FeatureGraph describes behavior.</h2>
+      <p class="eyebrow">The question behind the project</p>
+      <h2>A useful analysis should outlast the conversation.</h2>
     </div>
-    <p>A signal can repeat, rise, fall, or accumulate without representing any of those behaviors explicitly. FeatureGraph turns those implicit structures into bounded records that software can filter, compare, relate, and reuse.</p>
+    <p>When an LLM proposes an analysis, the valuable result is more than an answer in a chat window. It is a method someone else can inspect, rerun, challenge, and extend without asking the original model to reconstruct it.</p>
   </section>
 
   <section class="study" aria-labelledby="study-title">
     <div class="study-copy">
       <p class="eyebrow">Current study · BIDMC respiration</p>
       <h2 id="study-title">What survives after the LLM?</h2>
-      <p>An LLM proposed a raw-signal respiration analysis. The researcher then encoded an explicit oscillation representation in FeatureGraph and compared the resulting objects. On the development subject, FeatureGraph recovered all 169 LLM objects plus five additional candidates. Across subjects, however, a shared detector did not transfer cleanly.</p>
-      <p class="study-conclusion"><strong>Result:</strong> the representation is durable and auditable; general peak selection remains unsolved.</p>
+      <p>An LLM proposed a raw-signal respiration analysis. The researcher then froze and evaluated a computational reconstruction in FeatureGraph. On the development subject, the reconstruction recovered all 169 LLM objects plus five additional candidates. Across subjects, however, the same detector did not transfer cleanly.</p>
+      <p class="study-conclusion"><strong>Result:</strong> the analysis can be preserved and audited; general peak selection remains an open boundary.</p>
       <a class="button" href="research.html#bidmc-study">Read the experiment record</a>
     </div>
     <div class="study-results" aria-label="BIDMC study results">
@@ -88,10 +88,10 @@
   <section class="example" id="example">
     <div class="section-copy">
       <p class="eyebrow">One concrete example</p>
-      <h2>A waveform becomes an object table.</h2>
-      <p>The sample below is segmented into complete trough-to-trough oscillations. Each object receives explicit boundaries, duration, and amplitude.</p>
-      <button class="button primary" id="construct" type="button">Construct objects</button>
-      <p class="status" id="status">Raw observations are shown. Construct the objects to expose their boundaries.</p>
+      <h2>Watch an analysis become maintainable.</h2>
+      <p>The demonstration below shows how a researcher can turn a time-series analysis into explicit, inspectable evidence that remains after the original LLM interaction.</p>
+      <button class="button primary" id="construct" type="button">Construct the evidence</button>
+      <p class="status" id="status">Raw observations are shown. Construct the preserved evidence.</p>
     </div>
     <div class="demo">
       <svg id="chart" viewBox="0 0 800 260" role="img" aria-label="Sample waveform">
