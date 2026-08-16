@@ -71,27 +71,27 @@
 
   <section class="study" aria-labelledby="study-title">
     <div class="study-copy">
-      <p class="eyebrow">Current study · BIDMC respiration</p>
+      <p class="eyebrow">Evidence · BIDMC respiration study</p>
       <h2 id="study-title">What survives after the LLM?</h2>
       <p>An LLM proposed a raw-signal respiration analysis. The researcher then froze and evaluated a computational reconstruction in FeatureGraph. On the development subject, the reconstruction recovered all 169 LLM objects plus five additional candidates. Across subjects, however, the same detector did not transfer cleanly.</p>
       <p class="study-conclusion"><strong>Result:</strong> the analysis can be preserved and audited; general peak selection remains an open boundary.</p>
       <a class="button" href="research.html#bidmc-study">Read the experiment record</a>
     </div>
     <div class="study-results" aria-label="BIDMC study results">
-      <article><span>Subject 1</span><strong>169 / 169</strong><small>LLM objects matched</small></article>
-      <article><span>FeatureGraph</span><strong>174</strong><small>complete candidates</small></article>
+      <article><span>Subject 1</span><strong>169 / 169</strong><small>baseline segments matched</small></article>
+      <article><span>Reconstruction</span><strong>174</strong><small>complete candidates</small></article>
       <article><span>Median error</span><strong>10</strong><small>samples at matched peaks</small></article>
-      <article class="negative"><span>53-subject transfer</span><strong>2,760</strong><small>FeatureGraph-only candidates</small></article>
+      <article class="negative"><span>53-subject transfer</span><strong>2,760</strong><small>additional candidates</small></article>
     </div>
   </section>
 
   <section class="example" id="example">
     <div class="section-copy">
       <p class="eyebrow">One concrete example</p>
-      <h2>Watch an analysis become maintainable.</h2>
-      <p>The demonstration below shows how a researcher can turn a time-series analysis into explicit, inspectable evidence that remains after the original LLM interaction.</p>
-      <button class="button primary" id="construct" type="button">Construct the evidence</button>
-      <p class="status" id="status">Raw observations are shown. Construct the preserved evidence.</p>
+      <h2>Watch an analysis become evidence.</h2>
+      <p>The demonstration below shows how a researcher can preserve the boundaries and measurements of a time-series analysis so someone else can inspect and rerun it later.</p>
+      <button class="button primary" id="construct" type="button">Reveal the evidence</button>
+      <p class="status" id="status">Raw observations are shown. Reveal the preserved boundaries and measurements.</p>
     </div>
     <div class="demo">
       <svg id="chart" viewBox="0 0 800 260" role="img" aria-label="Sample waveform">
@@ -101,7 +101,7 @@
       </svg>
       <div class="table-wrap">
         <table>
-          <thead><tr><th>Object</th><th>Start</th><th>Peak</th><th>End</th><th>Duration</th><th>Amplitude</th></tr></thead>
+          <thead><tr><th>Segment</th><th>Start</th><th>Peak</th><th>End</th><th>Duration</th><th>Amplitude</th></tr></thead>
           <tbody id="object-table"><tr><td colspan="6">Objects not yet constructed.</td></tr></tbody>
         </table>
       </div>
@@ -110,8 +110,8 @@
 
   <section class="resources">
     <div>
-      <p class="eyebrow">Start here</p>
-      <h2>One project, clear sources.</h2>
+      <p class="eyebrow">Start with the research record</p>
+      <h2>See what remains, then test it yourself.</h2>
     </div>
     <div class="resource-list">
       <a href="https://featuregraph.readthedocs.io/"><strong>Documentation</strong><span>Install, learn, and use the released alpha.</span><b>→</b></a>
@@ -123,20 +123,20 @@
 
   <section class="initiative" id="initiative">
     <div class="initiative-heading">
-      <p class="eyebrow">The initiative</p>
-      <h2>Produce research.<br>Build useful work.</h2>
-      <p>FeatureGraph is being developed as both an open research program and a foundation for paid applied work. Each track strengthens the other: research establishes evidence, while real problems test and sustain the framework.</p>
+      <p class="eyebrow">The research program</p>
+      <h2>Preserve analysis.<br>Test what transfers.</h2>
+      <p>FeatureGraph is an open research program studying how LLM-assisted analysis can become durable, inspectable computation. Each study makes the method explicit, tests where it transfers, and records where it fails.</p>
     </div>
     <div class="track-grid">
       <article class="track research-track">
         <p class="track-number">01</p>
-        <h3>Research</h3>
-        <p>Develop and evaluate how analyses can remain useful after the original model is gone.</p>
+        <h3>Preservation</h3>
+        <p>Turn an LLM-assisted analysis into a record that another person can inspect, rerun, and challenge.</p>
         <ul>
-          <li>Reproducible papers and evaluations</li>
-          <li>Open alpha software and reproducible demonstrations</li>
-          <li>LLM-analysis preservation and object-level evaluation</li>
-          <li>Citable datasets, methods, and artifacts</li>
+          <li>Reproducible studies and evaluations</li>
+          <li>Open software and runnable demonstrations</li>
+          <li>Preserved methods, assumptions, and evidence</li>
+          <li>Citable datasets and research artifacts</li>
         </ul>
         <div class="track-actions">
           <a class="button primary" href="https://doi.org/10.5281/zenodo.21535662">Explore the research</a>
@@ -145,17 +145,17 @@
       </article>
       <article class="track income-track">
         <p class="track-number">02</p>
-        <h3>Applied work</h3>
-        <p>Use FeatureGraph methods to solve valuable time-series and behavioral representation problems.</p>
+        <h3>Transfer</h3>
+        <p>Test the preserved method on new records, domains, and technical settings.</p>
         <ul>
-          <li>Time-series analysis and representation consulting</li>
-          <li>Domain pilots and proof-of-concept systems</li>
-          <li>Sponsored research and technical evaluation</li>
-          <li>Commercial integration and partnership exploration</li>
+          <li>Cross-record and cross-domain evaluations</li>
+          <li>Technical pilots and proof-of-concept studies</li>
+          <li>Independent validation and failure analysis</li>
+          <li>Research collaboration and integration</li>
         </ul>
         <div class="track-actions">
-          <a class="button primary" href="https://github.com/featuregraph/featuregraph/issues/new">Discuss a project</a>
-          <a class="text-link" href="https://featuregraph.readthedocs.io/">Review capabilities →</a>
+          <a class="button primary" href="research.html#next">See the next phase</a>
+          <a class="text-link" href="research.html">Read the research question →</a>
         </div>
       </article>
     </div>
