@@ -31,12 +31,12 @@
 
 <main>
   <section class="hero">
-    <p class="eyebrow">Open research software · Alpha</p>
+    <p class="eyebrow">Open research software · Beta</p>
     <h1>If you lose LLM access tomorrow, what happens to your data analysis workflow?</h1>
     <p class="lead">FeatureGraph studies how an LLM-assisted analysis can become a deterministic, inspectable, human-maintainable computational record, so the code, method, assumptions, and evidence remain available after the LLM is gone.</p>
     <div class="actions">
       <a class="button primary" href="#publications">See what remains</a>
-      <a class="button" href="https://github.com/featuregraph/featuregraph/blob/alpha/v0.1.x/artifacts/paper/bidmc_llm_preservation_study/manuscript.md">Read the preservation study</a>
+      <a class="button" href="https://github.com/featuregraph/featuregraph/blob/v0.1.0b1/artifacts/paper/bidmc_llm_preservation_study/manuscript.md">Read the beta paper draft</a>
     </div>
   </section>
 
@@ -44,21 +44,21 @@
     <div class="publications-heading">
       <p class="eyebrow">Publications · start here</p>
       <h2 id="publications-title">See the work, run the evidence.</h2>
-      <p>These are the three public artifacts that make FeatureGraph easiest to understand: the maintained alpha, the runnable BIDMC notebook, and the study record that explains what transferred—and what did not.</p>
+      <p>These are the three public artifacts that make FeatureGraph easiest to understand: the released beta, the runnable BIDMC notebook, and the study record that explains what transferred—and what did not.</p>
     </div>
     <div class="publication-links">
-      <a href="https://github.com/featuregraph/featuregraph/tree/alpha/v0.1.x">
-        <span class="publication-type">PUBLIC ALPHA</span>
-        <strong>Open the alpha landing page</strong>
-        <span>Use the maintained public-facing branch.</span><b>↗</b>
+      <a href="https://github.com/featuregraph/featuregraph/releases/tag/v0.1.0b1">
+        <span class="publication-type">PUBLIC BETA</span>
+        <strong>Open the beta release</strong>
+        <span>Use the immutable public-facing release.</span><b>↗</b>
       </a>
-      <a href="https://github.com/featuregraph/featuregraph/blob/v0.1.0a2/notebooks/bidmc_respiration_pipeline.ipynb">
+      <a href="https://github.com/featuregraph/featuregraph/blob/v0.1.0b1/notebooks/bidmc_respiration_pipeline.ipynb">
         <span class="publication-type">RUNNABLE NOTEBOOK</span>
         <strong>Run the BIDMC reconstruction notebook</strong>
         <span>Walk from raw respiration data to preserved, inspectable evidence.</span><b>↗</b>
       </a>
-      <a href="https://github.com/featuregraph/featuregraph/blob/alpha/v0.1.x/artifacts/paper/bidmc_llm_preservation_study/manuscript.md">
-        <span class="publication-type">CURRENT STUDY</span>
+      <a href="https://github.com/featuregraph/featuregraph/blob/v0.1.0b1/artifacts/paper/bidmc_llm_preservation_study/manuscript.md">
+        <span class="publication-type">BETA PAPER DRAFT</span>
         <strong>Read the BIDMC preservation study</strong>
         <span>See the result, limitations, and genuine failure boundary.</span><b>↗</b>
       </a>
@@ -81,15 +81,15 @@
     <div class="study-copy">
       <p class="eyebrow">Evidence · BIDMC respiration study</p>
       <h2 id="study-title">What survives after the LLM?</h2>
-      <p>An LLM proposed a raw-signal respiration analysis. The researcher then froze and evaluated a computational reconstruction in FeatureGraph. On the development subject, the reconstruction recovered all 169 LLM objects plus five additional candidates. Across subjects, however, the same detector did not transfer cleanly.</p>
-      <p class="study-conclusion"><strong>Result:</strong> the analysis can be preserved and audited; general peak selection remains an open boundary.</p>
+      <p>An LLM proposed a raw-signal respiration analysis. The researcher then froze and evaluated a computational reconstruction in FeatureGraph. A grouped envelope and interval-valued extremum representation recovered 7,086 of 7,168 comparator objects across all 53 subjects while retaining detector disagreements as explicit handoff records.</p>
+      <p class="study-conclusion"><strong>Result:</strong> the analysis can be preserved, transferred, and audited without treating detector agreement as clinical interpretation.</p>
       <a class="button" href="research.html#bidmc-study">Read the experiment record</a>
     </div>
     <div class="study-results" aria-label="BIDMC study results">
-      <article><span>Subject 1</span><strong>169 / 169</strong><small>baseline segments matched</small></article>
-      <article><span>Reconstruction</span><strong>174</strong><small>complete candidates</small></article>
-      <article><span>Median error</span><strong>10</strong><small>samples at matched peaks</small></article>
-      <article class="negative"><span>53-subject transfer</span><strong>2,760</strong><small>additional candidates</small></article>
+      <article><span>Full cohort</span><strong>53 / 53</strong><small>subjects processed</small></article>
+      <article><span>Comparator recovery</span><strong>7,086</strong><small>of 7,168 objects matched</small></article>
+      <article><span>Median peak error</span><strong>6.5</strong><small>samples at matched peaks</small></article>
+      <article class="negative"><span>Detector discordance</span><strong>1,047</strong><small>FeatureGraph-only objects handed off</small></article>
     </div>
   </section>
 
@@ -122,8 +122,8 @@
       <h2>See what remains, then test it yourself.</h2>
     </div>
     <div class="resource-list">
-      <a href="https://featuregraph.readthedocs.io/"><strong>Documentation</strong><span>Install, learn, and use the released alpha.</span><b>→</b></a>
-      <a href="https://github.com/featuregraph/featuregraph/releases/tag/v0.1.0a2"><strong>Alpha release</strong><span>Source, release notes, and reproducible artifacts.</span><b>→</b></a>
+      <a href="https://featuregraph.readthedocs.io/"><strong>Documentation</strong><span>Install, learn, and use the released beta.</span><b>→</b></a>
+      <a href="https://github.com/featuregraph/featuregraph/releases/tag/v0.1.0b1"><strong>Beta release</strong><span>Source, release notes, and reproducible artifacts.</span><b>→</b></a>
       <a href="research.html#bidmc-study"><strong>BIDMC study</strong><span>Results, limitations, and the transition-only next phase.</span><b>→</b></a>
       <a href="updates.html"><strong>Research updates</strong><span>Short notes on how the framework is evolving.</span><b>→</b></a>
     </div>
@@ -147,7 +147,7 @@
           <li>Citable datasets and research artifacts</li>
         </ul>
         <div class="track-actions">
-          <a class="button primary" href="https://doi.org/10.5281/zenodo.21939319">Explore the research</a>
+          <a class="button primary" href="https://doi.org/10.5281/zenodo.21984186">Explore the research</a>
           <a class="text-link" href="updates.html">Follow progress →</a>
         </div>
       </article>
@@ -173,7 +173,7 @@
 <footer>
   <span>© 2026 FeatureGraph</span>
   <span>Created by Nazia Habib</span>
-  <a href="https://github.com/featuregraph/featuregraph">MIT-licensed alpha</a>
+  <a href="https://github.com/featuregraph/featuregraph">MIT-licensed beta</a>
 </footer>
 </body>
 </html>

@@ -65,8 +65,8 @@
             <tr><td>Subject 1 complete objects</td><td>174</td><td>169</td><td>All 169 baseline objects matched; 5 FeatureGraph-only candidates.</td></tr>
             <tr><td>Subject 1 estimated rate</td><td>21.9/min</td><td>21.1/min</td><td>Different endpoint coverage; close descriptive rates.</td></tr>
             <tr><td>Subject 1 peak agreement</td><td colspan="2">Median absolute error: 10 samples</td><td>Strong object-level boundary agreement.</td></tr>
-            <tr><td>All 53 subjects, fixed rule</td><td>8,960 candidates</td><td>7,168 objects</td><td>6,200 matched; 2,760 FeatureGraph-only; 968 baseline-only.</td></tr>
-            <tr><td>51 valid subjects, MAD rule</td><td>12,403 candidates</td><td>6,993 objects</td><td>6,850 matched, but 5,553 FeatureGraph-only candidates show systematic over-segmentation.</td></tr>
+            <tr><td>All 53 subjects, beta envelope/plateau rule</td><td>8,133 complete objects</td><td>7,168 objects</td><td>7,086 matched; 1,047 FeatureGraph-only; 82 baseline-only.</td></tr>
+            <tr><td>Detector-discordant handoff</td><td>1,047 bounded episodes</td><td>Two annotation series</td><td>680 excluded by both annotators; 367 not excluded by both; clinical interpretation remains unassigned.</td></tr>
           </tbody>
         </table>
         <h3>What agreed</h3>
@@ -80,9 +80,9 @@
         </table>
         <p>On subject 1, cycle count, period, full excursion, and object boundaries agreed closely. Earlier amplitude disagreement was a measurement-contract issue: the raw-data run used full peak-to-trough height while FeatureGraph's radius amplitude was half that value. The harmonized comparison uses full excursion.</p>
         <h3>What did not agree</h3>
-        <p>Temporal symmetry remained sensitive to different trough-boundary semantics and cannot be treated as comparable agreement. More importantly, the detector tuned on subject 1 did not transfer reliably. Robust MAD scaling increased baseline recall but amplified small fluctuations into additional candidate objects. Subjects 35 and 39 had undefined zero-MAD scales. A hysteresis trial on subject 5 did not resolve the structural segmentation problem.</p>
+        <p>Temporal symmetry remains sensitive to different trough-boundary semantics and should not be treated as equivalent. Exact plateau intervals substantially improved transfer—especially for subjects 35, 38, and 39—without changing the detected-event count. The remaining 1,047 FeatureGraph-only objects are localized and retained as detector-discordant episodes rather than classified as false detections or clinical abnormalities.</p>
         <h3>Methodological limitation</h3>
-        <p>The corrected comparison first used SciPy peak finding to establish boundaries and then let FeatureGraph summarize the resulting objects. That showed agreement after segmentation, not independent native discovery. The later self-implemented detector removed that dependency, but its multi-subject failure demonstrates that explicitness and determinism do not guarantee a generally valid peak rule.</p>
+        <p>The frozen comparator uses SciPy peak finding, while the beta FeatureGraph construction uses its own grouped rolling envelope, directional states, transition events, and interval-valued extrema. SciPy is not a core FeatureGraph dependency; it remains optional only for reproducing the comparator. The comparison supports deterministic native construction and auditable disagreement, not universal detector equivalence.</p>
       </section>
       <section id="accumulation">
         <p class="eyebrow">Representation richness</p>
@@ -92,14 +92,14 @@
       </section>
       <section id="next">
         <p class="eyebrow">Next phase</p>
-        <h2>Preserve the alpha record; test a transition-only successor.</h2>
-        <p>The study establishes that a researcher can encode and preserve an LLM-proposed behavioral representation, and it records where that implementation fails to generalize. The oscillation detector will remain part of the active public alpha research record rather than being tuned indefinitely.</p>
+        <h2>Preserve the beta record; test a transition-only successor.</h2>
+        <p>The study establishes that a researcher can encode and preserve an LLM-proposed behavioral representation, and it records where that implementation fails to generalize. The oscillation detector will remain part of the active public beta research record rather than being tuned indefinitely.</p>
         <p>The next paper will evaluate a transition-only architecture that does not assume signals are oscillations. This separates the durable representation question from the harder domain decision of which transitions should compose into a higher-order cycle.</p>
-        <div class="actions"><a class="button primary" href="https://github.com/featuregraph/featuregraph/pull/30">Review the study artifacts ↗</a><a class="button" href="roadmap.html">View the next phase</a></div>
+        <div class="actions"><a class="button primary" href="https://github.com/featuregraph/featuregraph/blob/v0.1.0b1/artifacts/paper/bidmc_llm_preservation_study/manuscript.md">Read the beta paper draft ↗</a><a class="button" href="roadmap.html">View the next phase</a></div>
       </section>
     </div>
   </div>
 </main>
-<footer><div><strong>FeatureGraph</strong><span>Durable, inspectable computation for LLM-assisted analysis.</span></div><div class="footer-links"><a href="https://github.com/featuregraph/featuregraph">GitHub</a><a href="https://zenodo.org/records/21535662">Zenodo</a><a href="https://orcid.org/0009-0000-5474-277X">ORCID</a></div></footer>
+<footer><div><strong>FeatureGraph</strong><span>Durable, inspectable computation for LLM-assisted analysis.</span></div><div class="footer-links"><a href="https://github.com/featuregraph/featuregraph">GitHub</a><a href="https://zenodo.org/records/21984186">Zenodo</a><a href="https://orcid.org/0009-0000-5474-277X">ORCID</a></div></footer>
 </body>
 </html>
