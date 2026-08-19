@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Research — FeatureGraph</title>
-  <meta name="description" content="FeatureGraph research on turning LLM-assisted analyses into durable, inspectable computational records.">
+  <meta name="description" content="FeatureGraph research on materializing detected states and events as explicit behavioral objects and relations.">
   <link rel="stylesheet" href="styles.css">
 <script src="posthog.js" defer></script></head>
 <body>
@@ -16,14 +16,15 @@
 <main class="page-shell">
   <section class="hero compact">
     <p class="eyebrow">Research</p>
-    <h1>From transient LLM analysis to durable computation.</h1>
-    <p class="lede">FeatureGraph studies whether an analysis proposed with an LLM can become a deterministic computational record that researchers can run, inspect, validate, and maintain without continued LLM access.</p>
+    <h1>From detected states to explicit behavioral objects.</h1>
+    <p class="lede">FeatureGraph separates detection from representation: scientific methods determine states and events, then FeatureGraph materializes their outputs as bounded, inspectable objects, measurements, provenance, and relations.</p>
   </section>
   <div class="content-layout">
     <aside class="side-nav">
       <a href="#problem">Research question</a>
-      <a href="#workflow">Preservation workflow</a>
+      <a href="#workflow">Representation workflow</a>
       <a href="#contracts">What FeatureGraph does</a>
+      <a href="#clap-study">CLaP study</a>
       <a href="#bidmc-study">BIDMC study</a>
       <a href="#accumulation">Accumulation</a>
       <a href="#next">Next phase</a>
@@ -31,28 +32,49 @@
     <div class="content">
       <section id="problem">
         <p class="eyebrow">Research question</p>
-        <h2>If LLM access disappeared, what would remain?</h2>
-        <p>LLMs can propose and run useful analyses, but a conversation is not a durable computational representation. The method, assumptions, object boundaries, and measurements can remain difficult to inspect or reproduce after the interaction ends.</p>
-        <p>FeatureGraph tests a narrower role in the LLM ecosystem: an LLM proposes an analysis; a researcher validates and encodes its representation; FeatureGraph then executes that representation deterministically. Future people or software can compare new results with the preserved object tables without asking the original LLM to rediscover the method.</p>
+        <h2>What comes after a method labels every observation?</h2>
+        <p>A state detector answers an observation-level question: which state applies at each sample? Many downstream questions concern larger structures—one bounded occurrence, its duration and measurements, its completeness, and its relationship to neighboring occurrences.</p>
+        <p>FeatureGraph supplies that object layer while respecting scientific authority boundaries. The detector determines state membership. FeatureGraph deterministically materializes the returned sequence without smoothing, merging, splitting, relabeling, or reinterpreting it.</p>
       </section>
       <section id="workflow">
-        <p class="eyebrow">Preservation workflow</p>
-        <h2>Proposal, validation, encoding, reuse.</h2>
+        <p class="eyebrow">Representation workflow</p>
+        <h2>Detection, materialization, validation, reuse.</h2>
         <table class="object-table">
           <thead><tr><th>Stage</th><th>Responsibility</th></tr></thead>
           <tbody>
-            <tr><td>LLM analysis</td><td>Propose a method and produce an independent raw-data result.</td></tr>
-            <tr><td>Researcher validation</td><td>Decide which boundaries, objects, and measurements are meaningful.</td></tr>
-            <tr><td>FeatureGraph encoding</td><td>Store the rules as deterministic states, events, object identifiers, completeness, and summaries.</td></tr>
-            <tr><td>Independent reuse</td><td>Run, inspect, maintain, and compare the encoded analysis without relying on the original interaction.</td></tr>
+            <tr><td>Scientific detector</td><td>Assign a state or event label to each observation.</td></tr>
+            <tr><td>FeatureGraph materialization</td><td>Convert maximal constant runs into bounded objects with identity, completeness, measurements, and provenance.</td></tr>
+            <tr><td>Structural validation</td><td>Reconstruct the source labels and verify coverage, boundaries, and relations.</td></tr>
+            <tr><td>Independent reuse</td><td>Inspect, query, compare, and compose the object representation downstream.</td></tr>
           </tbody>
         </table>
       </section>
       <section id="contracts">
         <p class="eyebrow">Explicit limits</p>
         <h2>Deterministic, repeatable data analysis.</h2>
-        <p>FeatureGraph is completely deterministic. It does not recognize that a signal is oscillatory, decide whether a local maximum is physiologically meaningful, or infer which candidate peak a user intends to include. Those decisions must be supplied through explicit construction rules and parameters.</p>
+        <p>FeatureGraph is deterministic. It does not decide what the latent states mean, improve the source detector, or determine whether a scientific event is meaningful. Those decisions remain with the detector, researcher, or domain specialist.</p>
         <p>What the framework does provide is equally important: inspectable boundary rules, stable object identities, incomplete-object handling, parent–child relationships, measurement contracts, and object tables that expose exactly how every result was produced.</p>
+      </section>
+      <section id="clap-study">
+        <p class="eyebrow">CLaP interoperability study</p>
+        <h2>Lossless materialization of an external state sequence.</h2>
+        <p>The maintained ClaSPy implementation of CLaP detected three recurring states and eight change points in the 20,700-sample Crop benchmark. The public <code>featuregraph.from_state_sequence</code> API consumed those unchanged labels and produced nine <code>FeatureObject</code> occurrences, including seven complete internal objects and two boundary-truncated fragments.</p>
+        <p>Eight <code>precedes</code> relations connect adjacent occurrences. Repeating each object's state label over its sample count reconstructs all 20,700 CLaP labels exactly. All eleven declared study validations and twelve focused package tests passed.</p>
+        <table class="object-table">
+          <thead><tr><th>Layer</th><th>Result</th><th>Authority</th></tr></thead>
+          <tbody>
+            <tr><td>State detection</td><td>3 classes; 8 detected change points</td><td>CLaP</td></tr>
+            <tr><td>Occurrence representation</td><td>9 bounded objects; 2 boundary fragments</td><td>FeatureGraph</td></tr>
+            <tr><td>Temporal relations</td><td>8 adjacent-object relations; 3 recurring transition types</td><td>FeatureGraph</td></tr>
+            <tr><td>Label reconstruction</td><td>20,700 of 20,700 labels reproduced</td><td>FeatureGraph validation</td></tr>
+            <tr><td>Reference agreement</td><td>ARI 0.977; AMI 0.959</td><td>CLaP versus benchmark</td></tr>
+          </tbody>
+        </table>
+        <figure>
+          <img src="https://raw.githubusercontent.com/featuregraph/featuregraph/main/artifacts/studies/clap_crop_object_construction.png" alt="CLaP state detections converted into nine FeatureGraph occurrence objects and three recurring state classes" style="width:100%;height:auto;border-radius:12px">
+          <figcaption>CLaP performs detection. FeatureGraph materializes the returned labels as bounded occurrences and relations without altering the segmentation.</figcaption>
+        </figure>
+        <div class="actions"><a class="button primary" href="https://github.com/featuregraph/featuregraph/blob/main/artifacts/studies/clap_state_object_study.md">Read the completed study ↗</a><a class="button" href="https://github.com/featuregraph/featuregraph/blob/main/notebooks/generated_study/clap_generated_study.ipynb">Open the generated notebook ↗</a><a class="button" href="https://github.com/featuregraph/featuregraph/blob/main/src/featuregraph/behaviors/state_occurrence.py">Inspect the public adapter ↗</a></div>
       </section>
       <section id="bidmc-study">
         <p class="eyebrow">BIDMC respiration study</p>
@@ -92,14 +114,14 @@
       </section>
       <section id="next">
         <p class="eyebrow">Next phase</p>
-        <h2>Preserve the beta record; test a transition-only successor.</h2>
-        <p>The study establishes that a researcher can encode and preserve an LLM-proposed behavioral representation, and it records where that implementation fails to generalize. The oscillation detector will remain part of the active public beta research record rather than being tuned indefinitely.</p>
-        <p>The current framework paper evaluates a transition-centered architecture and the researcher-input/generated-study workflow across BIDMC respiration and Tennessee Eastman reactor pressure. This separates the durable representation question from the harder domain decision of which transitions should compose into a higher-order object.</p>
+        <h2>Test the same object contract across detectors and domains.</h2>
+        <p>The CLaP study establishes a working software boundary between external state detection and FeatureGraph object materialization. The earlier BIDMC study remains the frozen beta record of native behavioral construction, agreement, and detector discordance.</p>
+        <p>The next research phase tests whether the same observation–event–object separation and stable object schema can support additional maintained scientific methods without taking over their domain-specific decisions.</p>
         <div class="actions"><a class="button primary" href="https://github.com/featuregraph/featuregraph/blob/main/artifacts/paper/master/featuregraph_master_draft.md">Read the framework paper draft ↗</a><a class="button" href="https://github.com/featuregraph/featuregraph/blob/beta/v0.1.x/artifacts/paper/bidmc_llm_preservation_study/manuscript.md">Read the frozen beta study ↗</a><a class="button" href="roadmap.html">View the next phase</a></div>
       </section>
     </div>
   </div>
 </main>
-<footer><div><strong>FeatureGraph</strong><span>Durable, inspectable computation for LLM-assisted analysis.</span></div><div class="footer-links"><a href="https://github.com/featuregraph/featuregraph">GitHub</a><a href="https://zenodo.org/records/21984186">Zenodo</a><a href="https://orcid.org/0009-0000-5474-277X">ORCID</a></div></footer>
+<footer><div><strong>FeatureGraph</strong><span>Explicit behavioral objects from detected states and events.</span></div><div class="footer-links"><a href="https://github.com/featuregraph/featuregraph">GitHub</a><a href="https://zenodo.org/records/21984186">Zenodo</a><a href="https://orcid.org/0009-0000-5474-277X">ORCID</a></div></footer>
 </body>
 </html>

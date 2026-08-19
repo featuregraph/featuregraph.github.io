@@ -3,12 +3,12 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>FeatureGraph — What remains when the LLM is gone?</title>
-  <meta name="description" content="FeatureGraph asks what remains when LLM access disappears: a maintainable, inspectable computational record of an analysis.">
+  <title>FeatureGraph — From detected states to behavioral objects</title>
+  <meta name="description" content="FeatureGraph materializes detected state sequences as explicit, bounded behavioral objects, measurements, provenance, and relations.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://featuregraph.ai/">
-  <meta property="og:title" content="FeatureGraph — What remains when the LLM is gone?">
-  <meta property="og:description" content="Durable, inspectable computational records for LLM-assisted analysis.">
+  <meta property="og:title" content="FeatureGraph — From detected states to behavioral objects">
+  <meta property="og:description" content="Turn detector outputs into explicit, inspectable behavioral objects and relations.">
   <meta property="og:image" content="https://featuregraph.ai/social-preview.png">
   <meta property="og:image:alt" content="Connected FeatureGraph objects arranged across a time axis.">
   <meta name="twitter:card" content="summary_large_image">
@@ -32,11 +32,11 @@
 <main>
   <section class="hero">
     <p class="eyebrow">Open research software · Beta</p>
-    <h1>If you lose LLM access tomorrow, what happens to your data analysis workflow?</h1>
-    <p class="lead">FeatureGraph studies how an LLM-assisted analysis can become a deterministic, inspectable, human-maintainable computational record, so the code, method, assumptions, and evidence remain available after the LLM is gone.</p>
+    <h1>Turn detected states into explicit behavioral objects.</h1>
+    <p class="lead">FeatureGraph materializes the output of scientific methods as bounded occurrences, measurements, provenance, and temporal relations—without changing the detector's result.</p>
     <div class="actions">
-      <a class="button primary" href="#publications">See what remains</a>
-      <a class="button" href="https://github.com/featuregraph/featuregraph/blob/beta/v0.1.x/artifacts/paper/bidmc_llm_preservation_study/manuscript.md">Read the beta paper draft</a>
+      <a class="button primary" href="#clap-study">Explore the CLaP result</a>
+      <a class="button" href="https://github.com/featuregraph/featuregraph/blob/main/src/featuregraph/behaviors/state_occurrence.py">Read the integration code</a>
     </div>
   </section>
 
@@ -44,62 +44,62 @@
     <div class="publications-heading">
       <p class="eyebrow">Publications · start here</p>
       <h2 id="publications-title">See the work, run the evidence.</h2>
-      <p>These are the three public artifacts that make FeatureGraph easiest to understand: the released beta, the runnable BIDMC notebook, and the study record that explains what transferred—and what did not.</p>
+      <p>Start with the completed CLaP interoperability study, the public state-sequence adapter that produced its objects, and the earlier BIDMC beta record.</p>
     </div>
     <div class="publication-links">
-      <a href="https://github.com/featuregraph/featuregraph/releases/tag/v0.1.0b1">
-        <span class="publication-type">PUBLIC BETA</span>
-        <strong>Open the beta release</strong>
-        <span>Use the immutable public-facing release.</span><b>↗</b>
+      <a href="https://github.com/featuregraph/featuregraph/blob/main/artifacts/studies/clap_state_object_study.md">
+        <span class="publication-type">INTEROPERABILITY STUDY</span>
+        <strong>Read the CLaP object study</strong>
+        <span>See detector output become nine explicit temporal objects.</span><b>↗</b>
       </a>
-      <a href="https://github.com/featuregraph/featuregraph/blob/v0.1.0b1/notebooks/bidmc_respiration_pipeline.ipynb">
-        <span class="publication-type">RUNNABLE NOTEBOOK</span>
-        <strong>Run the BIDMC reconstruction notebook</strong>
-        <span>Walk from raw respiration data to preserved, inspectable evidence.</span><b>↗</b>
+      <a href="https://github.com/featuregraph/featuregraph/blob/main/src/featuregraph/behaviors/state_occurrence.py">
+        <span class="publication-type">PUBLIC API</span>
+        <strong>Inspect from_state_sequence</strong>
+        <span>Review the detector-agnostic materialization contract.</span><b>↗</b>
       </a>
       <a href="https://github.com/featuregraph/featuregraph/blob/beta/v0.1.x/artifacts/paper/bidmc_llm_preservation_study/manuscript.md">
-        <span class="publication-type">BETA PAPER DRAFT</span>
-        <strong>Read the BIDMC preservation study</strong>
-        <span>See the result, limitations, and genuine failure boundary.</span><b>↗</b>
+        <span class="publication-type">EARLIER BETA STUDY</span>
+        <strong>Read the BIDMC representation study</strong>
+        <span>See object-level agreement, disagreement, and transfer limits.</span><b>↗</b>
       </a>
     </div>
   </section>
 
   <section class="principles" aria-label="Core properties">
-    <span>Durable</span><span>Inspectable</span><span>Reproducible</span><span>Maintainable</span>
+    <span>Explicit</span><span>Inspectable</span><span>Lossless</span><span>Reusable</span>
   </section>
 
   <section class="idea">
     <div>
       <p class="eyebrow">The question behind the project</p>
-      <h2>A useful analysis should outlast the conversation.</h2>
+      <h2>Detection is not yet representation.</h2>
     </div>
-    <p>When an LLM proposes an analysis, the valuable result is more than an answer in a chat window. It is a method someone else can inspect, rerun, challenge, and extend without asking the original model to reconstruct it.</p>
+    <p>A detector can assign one state to every observation. FeatureGraph adds the missing object layer: which samples form one occurrence, where it begins and ends, what it measures, how complete it is, and what it precedes or follows.</p>
   </section>
 
-  <section class="study" aria-labelledby="study-title">
+  <section class="study" id="clap-study" aria-labelledby="study-title">
     <div class="study-copy">
-      <p class="eyebrow">Evidence · BIDMC respiration study</p>
-      <h2 id="study-title">What survives after the LLM?</h2>
-      <p>An LLM proposed a raw-signal respiration analysis. The researcher then froze and evaluated a computational reconstruction in FeatureGraph. A grouped envelope and interval-valued extremum representation recovered 7,086 of 7,168 comparator objects across all 53 subjects while retaining detector disagreements as explicit handoff records.</p>
-      <p class="study-conclusion"><strong>Result:</strong> the analysis can be preserved, transferred, and audited without treating detector agreement as clinical interpretation.</p>
-      <a class="button" href="research.html#bidmc-study">Read the experiment record</a>
+      <p class="eyebrow">Evidence · CLaP interoperability study</p>
+      <h2 id="study-title">A detector finds states. FeatureGraph makes them objects.</h2>
+      <p>CLaP detected three recurring states and eight change points in the 20,700-sample Crop benchmark. The public <code>featuregraph.from_state_sequence</code> API converted the unchanged labels into nine bounded <code>FeatureObject</code> instances and eight temporal relations.</p>
+      <p class="study-conclusion"><strong>Result:</strong> reconstructing the sample sequence from the objects reproduced every CLaP label exactly. FeatureGraph supplied the representation, not the detection.</p>
+      <a class="button" href="research.html#clap-study">Read the experiment record</a>
     </div>
-    <div class="study-results" aria-label="BIDMC study results">
-      <article><span>Full cohort</span><strong>53 / 53</strong><small>subjects processed</small></article>
-      <article><span>Comparator recovery</span><strong>7,086</strong><small>of 7,168 objects matched</small></article>
-      <article><span>Median peak error</span><strong>6.5</strong><small>samples at matched peaks</small></article>
-      <article class="negative"><span>Detector discordance</span><strong>1,047</strong><small>FeatureGraph-only objects handed off</small></article>
+    <div class="study-results" aria-label="CLaP integration results">
+      <article><span>Observations</span><strong>20,700</strong><small>CLaP labels preserved</small></article>
+      <article><span>Occurrence objects</span><strong>9</strong><small>including 2 boundary fragments</small></article>
+      <article><span>Temporal relations</span><strong>8</strong><small>adjacent objects connected</small></article>
+      <article><span>Validation</span><strong>11 / 11</strong><small>declared checks passed</small></article>
     </div>
   </section>
 
   <section class="example" id="example">
     <div class="section-copy">
       <p class="eyebrow">One concrete example</p>
-      <h2>Watch an analysis become evidence.</h2>
-      <p>The demonstration below shows how a researcher can preserve the boundaries and measurements of a time-series analysis so someone else can inspect and rerun it later.</p>
+      <h2>Watch observations become objects.</h2>
+      <p>The demonstration below makes boundaries, identity, duration, and measurements explicit above the original observations.</p>
       <button class="button primary" id="construct" type="button">Reveal the evidence</button>
-      <p class="status" id="status">Raw observations are shown. Reveal the preserved boundaries and measurements.</p>
+      <p class="status" id="status">Raw observations are shown. Reveal the object boundaries and measurements.</p>
     </div>
     <div class="demo">
       <svg id="chart" viewBox="0 0 800 260" role="img" aria-label="Sample waveform">
@@ -119,12 +119,12 @@
   <section class="resources">
     <div>
       <p class="eyebrow">Start with the research record</p>
-      <h2>See what remains, then test it yourself.</h2>
+      <h2>Inspect the objects, then test the contract.</h2>
     </div>
     <div class="resource-list">
       <a href="https://featuregraph.readthedocs.io/"><strong>Documentation</strong><span>Install, learn, and use the released beta.</span><b>→</b></a>
       <a href="https://github.com/featuregraph/featuregraph/releases/tag/v0.1.0b1"><strong>Beta release</strong><span>Source, release notes, and reproducible artifacts.</span><b>→</b></a>
-      <a href="research.html#bidmc-study"><strong>BIDMC study</strong><span>Results, limitations, and the transition-only next phase.</span><b>→</b></a>
+      <a href="research.html#clap-study"><strong>CLaP study</strong><span>Detector output, object materialization, and exact reconstruction.</span><b>→</b></a>
       <a href="updates.html"><strong>Research updates</strong><span>Short notes on how the framework is evolving.</span><b>→</b></a>
     </div>
   </section>
@@ -132,18 +132,18 @@
   <section class="initiative" id="initiative">
     <div class="initiative-heading">
       <p class="eyebrow">The research program</p>
-      <h2>Preserve analysis.<br>Test what transfers.</h2>
-      <p>FeatureGraph is an open research program studying how LLM-assisted analysis can become durable, inspectable computation. Each study makes the method explicit, tests where it transfers, and records where it fails.</p>
+      <h2>Detect behavior.<br>Materialize objects.</h2>
+      <p>FeatureGraph is an open research program for turning observation-level states and events into explicit behavioral objects. Each study separates detection from representation, tests exact preservation, and records the boundary of the claim.</p>
     </div>
     <div class="track-grid">
       <article class="track research-track">
         <p class="track-number">01</p>
-        <h3>Preservation</h3>
-        <p>Turn an LLM-assisted analysis into a record that another person can inspect, rerun, and challenge.</p>
+        <h3>Representation</h3>
+        <p>Turn state and event sequences into bounded objects that people and software can inspect, measure, relate, and query.</p>
         <ul>
           <li>Reproducible studies and evaluations</li>
           <li>Open software and runnable demonstrations</li>
-          <li>Preserved methods, assumptions, and evidence</li>
+          <li>Explicit boundaries, properties, and provenance</li>
           <li>Citable datasets and research artifacts</li>
         </ul>
         <div class="track-actions">
@@ -153,10 +153,10 @@
       </article>
       <article class="track income-track">
         <p class="track-number">02</p>
-        <h3>Transfer</h3>
-        <p>Test the preserved method on new records, domains, and technical settings.</p>
+        <h3>Interoperability</h3>
+        <p>Connect external detectors to a shared object representation without taking over their scientific role.</p>
         <ul>
-          <li>Cross-record and cross-domain evaluations</li>
+          <li>Cross-detector and cross-domain evaluations</li>
           <li>Technical pilots and proof-of-concept studies</li>
           <li>Independent validation and failure analysis</li>
           <li>Research collaboration and integration</li>
