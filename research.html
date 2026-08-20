@@ -17,15 +17,16 @@
   <section class="hero compact">
     <p class="eyebrow">Research</p>
     <h1>Turning LLM-assisted research into deterministic scientific representations.</h1>
-    <p class="lede">If you lose LLM access tomorrow, what happens to your data analysis workflow? FeatureGraph makes the workflow explicit: scientific methods determine states and events, then the framework materializes their outputs as bounded, inspectable objects, measurements, provenance, and relations.</p>
+    <p class="lede">If you lose LLM access tomorrow, what happens to your data analysis workflow? FeatureGraph makes the workflow explicit: scientific methods determine states and events, then the framework materializes their outputs as bounded, inspectable objects, measurements, provenance, and relations. The research sequence moves from the BIDMC workflow, through frozen transfer in TEP, to external-detector interoperability in CLaP.</p>
   </section>
   <div class="content-layout">
     <aside class="side-nav">
       <a href="#problem">Research question</a>
       <a href="#workflow">Representation workflow</a>
       <a href="#contracts">What FeatureGraph does</a>
-      <a href="#clap-study">CLaP study</a>
       <a href="#bidmc-study">BIDMC study</a>
+      <a href="#tep-study">TEP transfer study</a>
+      <a href="#clap-study">CLaP study</a>
       <a href="#accumulation">Accumulation</a>
       <a href="#next">Next phase</a>
     </aside>
@@ -106,6 +107,12 @@
         <h3>Methodological limitation</h3>
         <p>The frozen comparator uses SciPy peak finding, while the beta FeatureGraph construction uses its own grouped rolling envelope, directional states, transition events, and interval-valued extrema. SciPy is not a core FeatureGraph dependency; it remains optional only for reproducing the comparator. The comparison supports deterministic native construction and auditable disagreement, not universal detector equivalence.</p>
       </section>
+      <section id="tep-study">
+        <p class="eyebrow">Tennessee Eastman transfer study</p>
+        <h2>Frozen transfer beyond the development run.</h2>
+        <p>The TEP study freezes the reactor-pressure construction selected on Fault 2 run 10 and applies it unchanged to held-out Fault 2 runs, normal-operation windows, and contrasting fault classes. It supports a repeatable abnormal-pressure representation, not a Fault 2 classifier.</p>
+        <div class="actions"><a class="button primary" href="https://github.com/featuregraph/featuregraph/blob/main/artifacts/studies/tep_pressure_transfer_study.md">Read the TEP study ↗</a><a class="button" href="https://github.com/featuregraph/featuregraph/blob/main/notebooks/generated_study/tep_generated_study.ipynb">Open the generated notebook ↗</a></div>
+      </section>
       <section id="accumulation">
         <p class="eyebrow">Representation richness</p>
         <h2>The same breath can support a dependent accumulation object.</h2>
@@ -115,7 +122,7 @@
       <section id="next">
         <p class="eyebrow">Next phase</p>
         <h2>Test the same object contract across detectors and domains.</h2>
-        <p>The CLaP study establishes a working software boundary between external state detection and FeatureGraph object materialization. The earlier BIDMC study remains the frozen beta record of native behavioral construction, agreement, and detector discordance.</p>
+        <p>Across BIDMC, TEP, and CLaP, the current studies establish native construction, frozen transfer, and external-detector interoperability. The frozen BIDMC beta paper remains the released record, while the current workflow studies are documented on <code>main</code>.</p>
         <p>The next research phase tests whether the same observation–event–object separation and stable object schema can support additional maintained scientific methods without taking over their domain-specific decisions.</p>
         <div class="actions"><a class="button primary" href="https://github.com/featuregraph/featuregraph/blob/main/artifacts/paper/master/featuregraph_master_draft.md">Read the framework paper draft ↗</a><a class="button" href="https://github.com/featuregraph/featuregraph/blob/beta/v0.1.x/artifacts/paper/bidmc_llm_preservation_study/manuscript.md">Read the frozen beta study ↗</a><a class="button" href="roadmap.html">View the next phase</a></div>
       </section>
