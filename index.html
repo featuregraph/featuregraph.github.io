@@ -35,8 +35,8 @@
     <h1>If you lose LLM access tomorrow, what happens to your data analysis workflow?</h1>
     <p class="lead">FeatureGraph turns LLM-assisted research into deterministic scientific representations—explicit, inspectable objects that can be replayed, validated, and maintained.</p>
     <div class="actions">
-      <a class="button primary" href="#clap-study">Explore the CLaP result</a>
-      <a class="button" href="https://github.com/featuregraph/featuregraph/blob/main/src/featuregraph/behaviors/state_occurrence.py">Read the integration code</a>
+      <a class="button primary" href="https://github.com/featuregraph/featuregraph/blob/main/artifacts/studies/README.md">Follow the research sequence</a>
+      <a class="button" href="https://github.com/featuregraph/featuregraph/blob/main/src/featuregraph/behaviors/state_occurrence.py">Read the development adapter</a>
     </div>
   </section>
 
@@ -44,7 +44,7 @@
     <div class="publications-heading">
       <p class="eyebrow">Publications · start here</p>
       <h2 id="publications-title">See the work, run the evidence.</h2>
-      <p>Start with the completed CLaP interoperability study, the public state-sequence adapter that produced its objects, and the earlier BIDMC beta record.</p>
+      <p>Start with the BIDMC workflow, follow its frozen transfer to TEP, then examine interoperability with CLaP.</p>
     </div>
     <div class="publication-links">
       <a href="https://github.com/featuregraph/featuregraph/blob/main/artifacts/studies/clap_state_object_study.md">
@@ -53,14 +53,14 @@
         <span>See detector output become nine explicit temporal objects.</span><b>↗</b>
       </a>
       <a href="https://github.com/featuregraph/featuregraph/blob/main/src/featuregraph/behaviors/state_occurrence.py">
-        <span class="publication-type">PUBLIC API</span>
+        <span class="publication-type">DEVELOPMENT ADAPTER</span>
         <strong>Inspect from_state_sequence</strong>
-        <span>Review the detector-agnostic materialization contract.</span><b>↗</b>
+        <span>Review the detector-agnostic materialization contract on the unreleased main branch.</span><b>↗</b>
       </a>
       <a href="https://github.com/featuregraph/featuregraph/blob/beta/v0.1.x/artifacts/paper/bidmc_llm_preservation_study/manuscript.md">
-        <span class="publication-type">EARLIER BETA STUDY</span>
-        <strong>Read the BIDMC representation study</strong>
-        <span>See object-level agreement, disagreement, and transfer limits.</span><b>↗</b>
+        <span class="publication-type">BIDMC BETA PAPER</span>
+        <strong>Read the frozen BIDMC beta paper</strong>
+        <span>See the frozen beta result; use the study guide for the current workflow record.</span><b>↗</b>
       </a>
     </div>
   </section>
@@ -81,7 +81,7 @@
     <div class="study-copy">
       <p class="eyebrow">Evidence · CLaP interoperability study</p>
       <h2 id="study-title">A detector finds states. FeatureGraph makes them objects.</h2>
-      <p>CLaP detected three recurring states and eight change points in the 20,700-sample Crop benchmark. The public <code>featuregraph.from_state_sequence</code> API converted the unchanged labels into nine bounded <code>FeatureObject</code> instances and eight temporal relations.</p>
+      <p>CLaP detected three recurring states and eight change points in the 20,700-sample Crop benchmark. The main-branch state-sequence adapter converted the unchanged labels into nine bounded <code>FeatureObject</code> instances and eight temporal relations.</p>
       <p class="study-conclusion"><strong>Result:</strong> reconstructing the sample sequence from the objects reproduced every CLaP label exactly. FeatureGraph supplied the representation, not the detection.</p>
       <a class="button" href="research.html#clap-study">Read the experiment record</a>
     </div>
