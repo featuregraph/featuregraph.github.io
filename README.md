@@ -2,6 +2,8 @@
 
 Public website for the FeatureGraph research project.
 
+[Visit the live website](https://featuregraph.ai/?utm_source=github&utm_medium=referral&utm_campaign=website_repository).
+
 ## Local preview
 
 Open `index.html` directly in a browser, or run:
