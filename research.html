@@ -1,134 +1,435 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Research — FeatureGraph</title>
-  <meta name="description" content="FeatureGraph research on materializing detected states and events as explicit behavioral objects and relations.">
-  <link rel="stylesheet" href="styles.css">
-<script src="posthog.js" defer></script></head>
-<body>
-<header class="site-header">
-  <a class="brand" href="index.html">FeatureGraph</a>
-  <nav><a href="research.html">Research</a><a href="software.html">Software</a><a href="releases.html">Releases</a><a href="publications.html">Publications</a><a href="roadmap.html">Roadmap</a><a href="about.html">About</a></nav>
-  <a class="github-mark" href="https://github.com/featuregraph/featuregraph">GitHub ↗</a>
-</header>
-<main class="page-shell">
-  <section class="hero compact">
-    <p class="eyebrow">Research</p>
-    <h1>Turning LLM-assisted research into deterministic scientific representations.</h1>
-    <p class="lede">If you lose LLM access tomorrow, what happens to your data analysis workflow? FeatureGraph makes the workflow explicit: scientific methods determine states and events, then the framework materializes their outputs as bounded, inspectable objects, measurements, provenance, and relations. The research sequence moves from the BIDMC workflow, through frozen transfer in TEP, to external-detector interoperability in CLaP.</p>
-  </section>
-  <div class="content-layout">
-    <aside class="side-nav">
-      <a href="#problem">Research question</a>
-      <a href="#workflow">Representation workflow</a>
-      <a href="#contracts">What FeatureGraph does</a>
-      <a href="#bidmc-study">BIDMC study</a>
-      <a href="#tep-study">TEP transfer study</a>
-      <a href="#clap-study">CLaP study</a>
-      <a href="#accumulation">Accumulation</a>
-      <a href="#next">Next phase</a>
-    </aside>
-    <div class="content">
-      <section id="problem">
-        <p class="eyebrow">Research question</p>
-        <h2>What comes after a method labels every observation?</h2>
-        <p>A state detector answers an observation-level question: which state applies at each sample? Many downstream questions concern larger structures—one bounded occurrence, its duration and measurements, its completeness, and its relationship to neighboring occurrences.</p>
-        <p>FeatureGraph supplies that object layer while respecting scientific authority boundaries. The detector determines state membership. FeatureGraph deterministically materializes the returned sequence without smoothing, merging, splitting, relabeling, or reinterpreting it.</p>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Research — FeatureGraph</title>
+    <meta
+      name="description"
+      content="FeatureGraph research on materializing detected states and events as explicit behavioral objects and relations."
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="posthog.js" defer></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="index.html">FeatureGraph</a>
+      <nav>
+        <a href="research.html">Research</a><a href="software.html">Software</a
+        ><a href="releases.html">Releases</a
+        ><a href="publications.html">Publications</a
+        ><a href="roadmap.html">Roadmap</a><a href="about.html">About</a>
+      </nav>
+      <a class="github-mark" href="https://github.com/featuregraph/featuregraph"
+        >GitHub ↗</a
+      >
+    </header>
+    <main class="page-shell">
+      <section class="hero compact">
+        <p class="eyebrow">Research</p>
+        <h1>
+          Making scientific data analysis deterministic, inspectable, and
+          reproducible.
+        </h1>
+        <p class="lede">
+          FeatureGraph separates three levels of understanding: the structure of
+          the data, the analysis to perform, and the scientific meaning of the
+          results. It automates the declared structural and analytical work
+          while keeping scientific interpretation with researchers and domain
+          specialists.
+        </p>
       </section>
-      <section id="workflow">
-        <p class="eyebrow">Representation workflow</p>
-        <h2>Detection, materialization, validation, reuse.</h2>
-        <table class="object-table">
-          <thead><tr><th>Stage</th><th>Responsibility</th></tr></thead>
-          <tbody>
-            <tr><td>Scientific detector</td><td>Assign a state or event label to each observation.</td></tr>
-            <tr><td>FeatureGraph materialization</td><td>Convert maximal constant runs into bounded objects with identity, completeness, measurements, and provenance.</td></tr>
-            <tr><td>Structural validation</td><td>Reconstruct the source labels and verify coverage, boundaries, and relations.</td></tr>
-            <tr><td>Independent reuse</td><td>Inspect, query, compare, and compose the object representation downstream.</td></tr>
-          </tbody>
-        </table>
-      </section>
-      <section id="contracts">
-        <p class="eyebrow">Explicit limits</p>
-        <h2>Deterministic, repeatable data analysis.</h2>
-        <p>FeatureGraph is deterministic. It does not decide what the latent states mean, improve the source detector, or determine whether a scientific event is meaningful. Those decisions remain with the detector, researcher, or domain specialist.</p>
-        <p>What the framework does provide is equally important: inspectable boundary rules, stable object identities, incomplete-object handling, parent–child relationships, measurement contracts, and object tables that expose exactly how every result was produced.</p>
-      </section>
-      <section id="clap-study">
-        <p class="eyebrow">CLaP interoperability study</p>
-        <h2>Lossless materialization of an external state sequence.</h2>
-        <p>The maintained ClaSPy implementation of CLaP detected three recurring states and eight change points in the 20,700-sample Crop benchmark. The public <code>featuregraph.from_state_sequence</code> API consumed those unchanged labels and produced nine <code>FeatureObject</code> occurrences, including seven complete internal objects and two boundary-truncated fragments.</p>
-        <p>Eight <code>precedes</code> relations connect adjacent occurrences. Repeating each object's state label over its sample count reconstructs all 20,700 CLaP labels exactly. All eleven declared study validations and twelve focused package tests passed.</p>
-        <table class="object-table">
-          <thead><tr><th>Layer</th><th>Result</th><th>Authority</th></tr></thead>
-          <tbody>
-            <tr><td>State detection</td><td>3 classes; 8 detected change points</td><td>CLaP</td></tr>
-            <tr><td>Occurrence representation</td><td>9 bounded objects; 2 boundary fragments</td><td>FeatureGraph</td></tr>
-            <tr><td>Temporal relations</td><td>8 adjacent-object relations; 3 recurring transition types</td><td>FeatureGraph</td></tr>
-            <tr><td>Label reconstruction</td><td>20,700 of 20,700 labels reproduced</td><td>FeatureGraph validation</td></tr>
-            <tr><td>Reference agreement</td><td>ARI 0.977; AMI 0.959</td><td>CLaP versus benchmark</td></tr>
-          </tbody>
-        </table>
-        <figure>
-          <img src="https://raw.githubusercontent.com/featuregraph/featuregraph/main/artifacts/studies/clap_crop_object_construction.png" alt="CLaP state detections converted into nine FeatureGraph occurrence objects and three recurring state classes" style="width:100%;height:auto;border-radius:12px">
-          <figcaption>CLaP performs detection. FeatureGraph materializes the returned labels as bounded occurrences and relations without altering the segmentation.</figcaption>
-        </figure>
-        <div class="actions"><a class="button primary" href="https://github.com/featuregraph/featuregraph/blob/main/artifacts/studies/clap_state_object_study.md">Read the completed study ↗</a><a class="button" href="https://github.com/featuregraph/featuregraph/blob/main/notebooks/generated_study/clap_generated_study.ipynb">Open the generated notebook ↗</a><a class="button" href="https://github.com/featuregraph/featuregraph/blob/main/src/featuregraph/behaviors/state_occurrence.py">Inspect the public adapter ↗</a></div>
-      </section>
-      <section id="bidmc-study">
-        <p class="eyebrow">BIDMC respiration study</p>
-        <h2>Preservation and transfer results.</h2>
-        <p>BIDMC was chosen because it provides 53 public, eight-minute records at a fixed 125 Hz sampling rate, visible repeated waveform structure, and two independent manual annotation series. The researcher did not begin with respiration-domain expertise, so this is a representation study—not clinical validation and not a claim about calibrated airflow or volume.</p>
-        <p>The experiment began with an independent LLM-designed analysis of BIDMC subject 1. The researcher encoded a deterministic candidate-breath construction in the public alpha using a 45-sample difference lag, a fixed threshold, a seven-sample state-gap rule, explicit peak boundaries, and incomplete-object exclusion.</p>
-        <table class="object-table">
-          <thead><tr><th>Evaluation</th><th>FeatureGraph</th><th>LLM baseline</th><th>Interpretation</th></tr></thead>
-          <tbody>
-            <tr><td>Subject 1 complete objects</td><td>174</td><td>169</td><td>All 169 baseline objects matched; 5 FeatureGraph-only candidates.</td></tr>
-            <tr><td>Subject 1 estimated rate</td><td>21.9/min</td><td>21.1/min</td><td>Different endpoint coverage; close descriptive rates.</td></tr>
-            <tr><td>Subject 1 peak agreement</td><td colspan="2">Median absolute error: 10 samples</td><td>Strong object-level boundary agreement.</td></tr>
-            <tr><td>All 53 subjects, beta envelope/plateau rule</td><td>8,133 complete objects</td><td>7,168 objects</td><td>7,086 matched; 1,047 FeatureGraph-only; 82 baseline-only.</td></tr>
-            <tr><td>Detector-discordant handoff</td><td>1,047 bounded episodes</td><td>Two annotation series</td><td>680 excluded by both annotators; 367 not excluded by both; clinical interpretation remains unassigned.</td></tr>
-          </tbody>
-        </table>
-        <h3>What agreed</h3>
-        <table class="object-table">
-          <thead><tr><th>Matched-object measure</th><th>FeatureGraph</th><th>LLM path</th><th>Interpretation</th></tr></thead>
-          <tbody>
-            <tr><td>Mean period</td><td>2.802 s</td><td>2.821 s</td><td>Median absolute error 0.040 s.</td></tr>
-            <tr><td>Mean full excursion</td><td>0.896</td><td>0.903</td><td>Median absolute error 0.00489.</td></tr>
-            <tr><td>Mean temporal symmetry</td><td>0.596</td><td>0.844</td><td>Boundary semantics do not agree.</td></tr>
-          </tbody>
-        </table>
-        <p>On subject 1, cycle count, period, full excursion, and object boundaries agreed closely. Earlier amplitude disagreement was a measurement-contract issue: the raw-data run used full peak-to-trough height while FeatureGraph's radius amplitude was half that value. The harmonized comparison uses full excursion.</p>
-        <h3>What did not agree</h3>
-        <p>Temporal symmetry remains sensitive to different trough-boundary semantics and should not be treated as equivalent. Exact plateau intervals substantially improved transfer—especially for subjects 35, 38, and 39—without changing the detected-event count. The remaining 1,047 FeatureGraph-only objects are localized and retained as detector-discordant episodes rather than classified as false detections or clinical abnormalities.</p>
-        <h3>Methodological limitation</h3>
-        <p>The frozen comparator uses SciPy peak finding, while the beta FeatureGraph construction uses its own grouped rolling envelope, directional states, transition events, and interval-valued extrema. SciPy is not a core FeatureGraph dependency; it remains optional only for reproducing the comparator. The comparison supports deterministic native construction and auditable disagreement, not universal detector equivalence.</p>
-      </section>
-      <section id="tep-study">
-        <p class="eyebrow">Tennessee Eastman transfer study</p>
-        <h2>Frozen transfer beyond the development run.</h2>
-        <p>The TEP study freezes the reactor-pressure construction selected on Fault 2 run 10 and applies it unchanged to held-out Fault 2 runs, normal-operation windows, and contrasting fault classes. It supports a repeatable abnormal-pressure representation, not a Fault 2 classifier.</p>
-        <div class="actions"><a class="button primary" href="https://github.com/featuregraph/featuregraph/blob/main/artifacts/studies/tep_pressure_transfer_study.md">Read the TEP study ↗</a><a class="button" href="https://github.com/featuregraph/featuregraph/blob/main/notebooks/generated_study/tep_generated_study.ipynb">Open the generated notebook ↗</a></div>
-      </section>
-      <section id="accumulation">
-        <p class="eyebrow">Representation richness</p>
-        <h2>The same breath can support a dependent accumulation object.</h2>
-        <p>Within each candidate oscillation, accumulation integrates signal contribution relative to an explicit baseline. In a respiration waveform this is best interpreted as waveform area above that baseline—not literal inhaled volume unless the sensor has been calibrated to support that physical interpretation.</p>
-        <p>The dependent object records total area, rates, timing, centroid, and contribution before and after the peak while retaining its parent wave identity and completeness. This demonstrates that the representation can preserve compositional structure beyond a flat list of engineered features.</p>
-      </section>
-      <section id="next">
-        <p class="eyebrow">Next phase</p>
-        <h2>Test the same object contract across detectors and domains.</h2>
-        <p>Across BIDMC, TEP, and CLaP, the current studies establish native construction, frozen transfer, and external-detector interoperability. The frozen BIDMC beta paper remains the released record, while the current workflow studies are documented on <code>main</code>.</p>
-        <p>The next research phase tests whether the same observation–event–object separation and stable object schema can support additional maintained scientific methods without taking over their domain-specific decisions.</p>
-        <div class="actions"><a class="button primary" href="https://github.com/featuregraph/featuregraph/blob/main/artifacts/paper/master/featuregraph_master_draft.md">Read the framework paper draft ↗</a><a class="button" href="https://github.com/featuregraph/featuregraph/blob/beta/v0.1.x/artifacts/paper/bidmc_llm_preservation_study/manuscript.md">Read the frozen beta study ↗</a><a class="button" href="roadmap.html">View the next phase</a></div>
-      </section>
-    </div>
-  </div>
-</main>
-<footer><div><strong>FeatureGraph</strong><span>Turning LLM-assisted research into deterministic scientific representations.</span></div><div class="footer-links"><a href="https://github.com/featuregraph/featuregraph">GitHub</a><a href="https://zenodo.org/records/21984186">Zenodo</a><a href="https://orcid.org/0009-0000-5474-277X">ORCID</a></div></footer>
-</body>
+      <div class="content-layout">
+        <aside class="side-nav">
+          <a href="#problem">Research question</a>
+          <a href="#workflow">Representation workflow</a>
+          <a href="#contracts">What FeatureGraph does</a>
+          <a href="#bidmc-study">BIDMC study</a>
+          <a href="#tep-study">TEP transfer study</a>
+          <a href="#clap-study">CLaP study</a>
+          <a href="#accumulation">Accumulation</a>
+          <a href="#next">Next phase</a>
+        </aside>
+        <div class="content">
+          <section id="problem">
+            <p class="eyebrow">Research question</p>
+            <h2>How do we turn labeled measurements into a reusable study?</h2>
+            <p>
+              A state detector answers an observation-level question: which
+              state applies at each sample? Many downstream questions concern
+              larger structures—one bounded occurrence, its duration and
+              measurements, its completeness, and its relationship to
+              neighboring occurrences.
+            </p>
+            <p>
+              FeatureGraph performs that structural and analytical work while
+              respecting scientific authority. The source method determines the
+              labels; FeatureGraph groups and measures them without smoothing,
+              merging, splitting, relabeling, or reinterpreting the sequence.
+            </p>
+          </section>
+          <section id="workflow">
+            <p class="eyebrow">Representation workflow</p>
+            <h2>
+              Understand the data, specify the analysis, validate, and reuse.
+            </h2>
+            <table class="object-table">
+              <thead>
+                <tr>
+                  <th>Stage</th>
+                  <th>Responsibility</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Scientific detector</td>
+                  <td>Assign a state or event label to each observation.</td>
+                </tr>
+                <tr>
+                  <td>Researcher specification</td>
+                  <td>
+                    Declare how consecutive labels should be grouped, measured,
+                    compared, and checked.
+                  </td>
+                </tr>
+                <tr>
+                  <td>FeatureGraph analysis</td>
+                  <td>
+                    Run those steps deterministically and retain the source
+                    measurements behind every result.
+                  </td>
+                </tr>
+                <tr>
+                  <td>Structural validation</td>
+                  <td>
+                    Reconstruct the source labels and verify coverage, interval
+                    starts and ends, and sequence order.
+                  </td>
+                </tr>
+                <tr>
+                  <td>Scientific interpretation</td>
+                  <td>
+                    Decide what the results mean and whether they support a
+                    conclusion.
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </section>
+          <section id="contracts">
+            <p class="eyebrow">Explicit limits</p>
+            <h2>Deterministic, repeatable data analysis.</h2>
+            <p>
+              FeatureGraph is deterministic. It does not decide what the latent
+              states mean, improve the source detector, or determine whether a
+              scientific event is meaningful. Those decisions remain with the
+              detector, researcher, or domain specialist.
+            </p>
+            <p>
+              What the framework does provide is equally important: inspectable
+              rules for grouping measurements, exact interval starts and ends,
+              consistent handling of incomplete data, declared calculations, and
+              result tables that expose exactly how every value was produced.
+            </p>
+          </section>
+          <section id="clap-study">
+            <p class="eyebrow">CLaP interoperability study</p>
+            <h2>Lossless materialization of an external state sequence.</h2>
+            <p>
+              The maintained ClaSPy implementation of CLaP detected three
+              recurring states and eight change points in the 20,700-sample Crop
+              benchmark. The public
+              <code>featuregraph.from_state_sequence</code> API consumed those
+              unchanged labels and produced nine
+              <code>FeatureObject</code> occurrences, including seven complete
+              internal objects and two boundary-truncated fragments.
+            </p>
+            <p>
+              Eight <code>precedes</code> relations connect adjacent
+              occurrences. Repeating each object's state label over its sample
+              count reconstructs all 20,700 CLaP labels exactly. All eleven
+              declared study validations and twelve focused package tests
+              passed.
+            </p>
+            <table class="object-table">
+              <thead>
+                <tr>
+                  <th>Layer</th>
+                  <th>Result</th>
+                  <th>Authority</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>State detection</td>
+                  <td>3 classes; 8 detected change points</td>
+                  <td>CLaP</td>
+                </tr>
+                <tr>
+                  <td>Occurrence representation</td>
+                  <td>9 bounded objects; 2 boundary fragments</td>
+                  <td>FeatureGraph</td>
+                </tr>
+                <tr>
+                  <td>Temporal relations</td>
+                  <td>
+                    8 adjacent-object relations; 3 recurring transition types
+                  </td>
+                  <td>FeatureGraph</td>
+                </tr>
+                <tr>
+                  <td>Label reconstruction</td>
+                  <td>20,700 of 20,700 labels reproduced</td>
+                  <td>FeatureGraph validation</td>
+                </tr>
+                <tr>
+                  <td>Reference agreement</td>
+                  <td>ARI 0.977; AMI 0.959</td>
+                  <td>CLaP versus benchmark</td>
+                </tr>
+              </tbody>
+            </table>
+            <figure>
+              <img
+                src="https://raw.githubusercontent.com/featuregraph/featuregraph/main/artifacts/studies/clap_crop_object_construction.png"
+                alt="CLaP state detections converted into nine FeatureGraph occurrence objects and three recurring state classes"
+                style="width: 100%; height: auto; border-radius: 12px"
+              />
+              <figcaption>
+                CLaP performs detection. FeatureGraph materializes the returned
+                labels as bounded occurrences and relations without altering the
+                segmentation.
+              </figcaption>
+            </figure>
+            <div class="actions">
+              <a
+                class="button primary"
+                href="https://github.com/featuregraph/featuregraph/blob/main/artifacts/studies/clap_state_object_study.md"
+                >Read the completed study ↗</a
+              ><a
+                class="button"
+                href="https://github.com/featuregraph/featuregraph/blob/main/notebooks/generated_study/clap_generated_study.ipynb"
+                >Open the generated notebook ↗</a
+              ><a
+                class="button"
+                href="https://github.com/featuregraph/featuregraph/blob/main/src/featuregraph/behaviors/state_occurrence.py"
+                >Inspect the public adapter ↗</a
+              >
+            </div>
+          </section>
+          <section id="bidmc-study">
+            <p class="eyebrow">BIDMC respiration study</p>
+            <h2>Preservation and transfer results.</h2>
+            <p>
+              BIDMC was chosen because it provides 53 public, eight-minute
+              records at a fixed 125 Hz sampling rate, visible repeated waveform
+              structure, and two independent manual annotation series. The
+              researcher did not begin with respiration-domain expertise, so
+              this is a representation study—not clinical validation and not a
+              claim about calibrated airflow or volume.
+            </p>
+            <p>
+              The experiment began with an independent reference analysis of
+              BIDMC subject 1. The researcher then encoded a deterministic
+              candidate-breath construction in the public alpha using a
+              45-sample difference lag, a fixed threshold, a seven-sample
+              state-gap rule, explicit peak boundaries, and incomplete-object
+              exclusion.
+            </p>
+            <table class="object-table">
+              <thead>
+                <tr>
+                  <th>Evaluation</th>
+                  <th>FeatureGraph</th>
+                  <th>Reference analysis</th>
+                  <th>Interpretation</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Subject 1 complete objects</td>
+                  <td>174</td>
+                  <td>169</td>
+                  <td>
+                    All 169 baseline objects matched; 5 FeatureGraph-only
+                    candidates.
+                  </td>
+                </tr>
+                <tr>
+                  <td>Subject 1 estimated rate</td>
+                  <td>21.9/min</td>
+                  <td>21.1/min</td>
+                  <td>Different endpoint coverage; close descriptive rates.</td>
+                </tr>
+                <tr>
+                  <td>Subject 1 peak agreement</td>
+                  <td colspan="2">Median absolute error: 10 samples</td>
+                  <td>Strong object-level boundary agreement.</td>
+                </tr>
+                <tr>
+                  <td>All 53 subjects, beta envelope/plateau rule</td>
+                  <td>8,133 complete objects</td>
+                  <td>7,168 objects</td>
+                  <td>
+                    7,086 matched; 1,047 FeatureGraph-only; 82 baseline-only.
+                  </td>
+                </tr>
+                <tr>
+                  <td>Detector-discordant handoff</td>
+                  <td>1,047 bounded episodes</td>
+                  <td>Two annotation series</td>
+                  <td>
+                    680 excluded by both annotators; 367 not excluded by both;
+                    clinical interpretation remains unassigned.
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <h3>What agreed</h3>
+            <table class="object-table">
+              <thead>
+                <tr>
+                  <th>Matched-object measure</th>
+                  <th>FeatureGraph</th>
+                  <th>Reference path</th>
+                  <th>Interpretation</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Mean period</td>
+                  <td>2.802 s</td>
+                  <td>2.821 s</td>
+                  <td>Median absolute error 0.040 s.</td>
+                </tr>
+                <tr>
+                  <td>Mean full excursion</td>
+                  <td>0.896</td>
+                  <td>0.903</td>
+                  <td>Median absolute error 0.00489.</td>
+                </tr>
+                <tr>
+                  <td>Mean temporal symmetry</td>
+                  <td>0.596</td>
+                  <td>0.844</td>
+                  <td>Boundary semantics do not agree.</td>
+                </tr>
+              </tbody>
+            </table>
+            <p>
+              On subject 1, cycle count, period, full excursion, and object
+              boundaries agreed closely. Earlier amplitude disagreement was a
+              measurement-contract issue: the raw-data run used full
+              peak-to-trough height while FeatureGraph's radius amplitude was
+              half that value. The harmonized comparison uses full excursion.
+            </p>
+            <h3>What did not agree</h3>
+            <p>
+              Temporal symmetry remains sensitive to different trough-boundary
+              semantics and should not be treated as equivalent. Exact plateau
+              intervals substantially improved transfer—especially for subjects
+              35, 38, and 39—without changing the detected-event count. The
+              remaining 1,047 FeatureGraph-only objects are localized and
+              retained as detector-discordant episodes rather than classified as
+              false detections or clinical abnormalities.
+            </p>
+            <h3>Methodological limitation</h3>
+            <p>
+              The frozen comparator uses SciPy peak finding, while the beta
+              FeatureGraph construction uses its own grouped rolling envelope,
+              directional states, transition events, and interval-valued
+              extrema. SciPy is not a core FeatureGraph dependency; it remains
+              optional only for reproducing the comparator. The comparison
+              supports deterministic native construction and auditable
+              disagreement, not universal detector equivalence.
+            </p>
+          </section>
+          <section id="tep-study">
+            <p class="eyebrow">Tennessee Eastman transfer study</p>
+            <h2>Frozen transfer beyond the development run.</h2>
+            <p>
+              The TEP study freezes the reactor-pressure construction selected
+              on Fault 2 run 10 and applies it unchanged to held-out Fault 2
+              runs, normal-operation windows, and contrasting fault classes. It
+              supports a repeatable abnormal-pressure representation, not a
+              Fault 2 classifier.
+            </p>
+            <div class="actions">
+              <a
+                class="button primary"
+                href="https://github.com/featuregraph/featuregraph/blob/main/artifacts/studies/tep_pressure_transfer_study.md"
+                >Read the TEP study ↗</a
+              ><a
+                class="button"
+                href="https://github.com/featuregraph/featuregraph/blob/main/notebooks/generated_study/tep_generated_study.ipynb"
+                >Open the generated notebook ↗</a
+              >
+            </div>
+          </section>
+          <section id="accumulation">
+            <p class="eyebrow">Representation richness</p>
+            <h2>
+              The same breath can support a dependent accumulation object.
+            </h2>
+            <p>
+              Within each candidate oscillation, accumulation integrates signal
+              contribution relative to an explicit baseline. In a respiration
+              waveform this is best interpreted as waveform area above that
+              baseline—not literal inhaled volume unless the sensor has been
+              calibrated to support that physical interpretation.
+            </p>
+            <p>
+              The dependent object records total area, rates, timing, centroid,
+              and contribution before and after the peak while retaining its
+              parent wave identity and completeness. This demonstrates that the
+              representation can preserve compositional structure beyond a flat
+              list of engineered features.
+            </p>
+          </section>
+          <section id="next">
+            <p class="eyebrow">Next phase</p>
+            <h2>Test the same object contract across detectors and domains.</h2>
+            <p>
+              Across BIDMC, TEP, and CLaP, the current studies establish native
+              construction, frozen transfer, and external-detector
+              interoperability. The frozen BIDMC beta paper remains the released
+              record, while the current workflow studies are documented on
+              <code>main</code>.
+            </p>
+            <p>
+              The next research phase tests whether the same
+              observation–event–object separation and stable object schema can
+              support additional maintained scientific methods without taking
+              over their domain-specific decisions.
+            </p>
+            <div class="actions">
+              <a
+                class="button primary"
+                href="https://github.com/featuregraph/featuregraph/blob/main/artifacts/paper/master/featuregraph_master_draft.md"
+                >Read the framework paper draft ↗</a
+              ><a
+                class="button"
+                href="https://github.com/featuregraph/featuregraph/blob/main/artifacts/studies/bidmc_object_workflow_study.md"
+                >Read the BIDMC study ↗</a
+              ><a class="button" href="roadmap.html">View the next phase</a>
+            </div>
+          </section>
+        </div>
+      </div>
+    </main>
+    <footer>
+      <div>
+        <strong>FeatureGraph</strong
+        ><span
+          >Deterministic, inspectable, reproducible scientific data
+          analysis.</span
+        >
+      </div>
+      <div class="footer-links">
+        <a href="https://github.com/featuregraph/featuregraph">GitHub</a
+        ><a href="https://zenodo.org/records/21984186">Zenodo</a
+        ><a href="https://orcid.org/0009-0000-5474-277X">ORCID</a>
+      </div>
+    </footer>
+  </body>
 </html>
