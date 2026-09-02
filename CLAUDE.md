@@ -29,10 +29,16 @@ DNS for the whole domain is at **IONOS**, not Cloudflare.
   site's "Documentation" links should point at.
 - `featuregraph.readthedocs.io` — the **research record**.
 
-Both repositories publish a Python package named `featuregraph` at the same
-version, which is how every "Documentation" link on this site came to point at
-the research record for months. Nothing 404s when this is wrong; readers simply
-land somewhere else. Check the target, not just the status code.
+The shorter, more obvious URL belongs to the research record, not to the
+framework this site is about. Both repositories also once published a Python
+package named `featuregraph` at the same version — since resolved, the research
+one is now `featuregraph_research` — and between the two, every "Documentation"
+link on this site pointed at the research record for months.
+
+The package half is fixed; this half is not, and cannot be without renaming a
+published Read the Docs project. Nothing 404s when a link points at the wrong
+one — readers simply land somewhere else — which is exactly why it went
+unnoticed. Check where a docs link goes, not whether it resolves.
 
 ## Working conventions
 
