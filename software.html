@@ -25,91 +25,109 @@
     <main class="page-shell">
       <section class="hero compact">
         <p class="eyebrow">Software</p>
-        <h1>One released beta. One evolving successor.</h1>
+        <h1>One released compiler beta. One frozen 0.1 line.</h1>
         <p class="lede">
-          The beta remains usable and reproducible while a breaking architecture
-          is developed separately on main.
+          v0.2.0b1 is the compiler lineage on <code>main</code>, released on
+          3 September 2026 and archived on Zenodo. The 0.1 beta stays tagged
+          and reproducible for the results it archived.
         </p>
         <div class="actions">
           <a
             class="button primary"
-            href="https://github.com/featuregraph/featuregraph/tree/beta/v0.1.x"
-            >Use beta branch</a
+            href="https://github.com/featuregraph/featuregraph/releases/tag/v0.2.0b1"
+            >Open the v0.2.0b1 release</a
           ><a
             class="button secondary"
-            href="https://github.com/featuregraph/featuregraph/releases/tag/v0.1.0b1"
-            >Immutable release</a
+            href="https://github.com/featuregraph/featuregraph/tree/beta/v0.1.x"
+            >Use the 0.1 beta branch</a
           >
         </div>
       </section>
       <div class="content-layout">
         <aside class="side-nav">
-          <a href="#install">Installation</a><a href="#beta">Beta API</a
-          ><a href="#development">Development API</a
+          <a href="#install">Installation</a><a href="#compiler">Compiler API</a
+          ><a href="#beta">0.1 beta API</a
           ><a href="#reproducibility">Reproducibility</a>
         </aside>
         <div class="content">
           <section id="install">
             <p class="eyebrow">Getting started</p>
-            <h2>Install the beta release.</h2>
+            <h2>Install the current release.</h2>
             <pre class="code-block">
-python -m pip install "featuregraph @ git+https://github.com/featuregraph/featuregraph.git@v0.1.0b1"</pre
+python -m pip install "featuregraph @ git+https://github.com/featuregraph/featuregraph.git@v0.2.0b1"</pre
             >
             <p>
-              The tag is the exact released source. The
-              <code>beta/v0.1.x</code> branch provides a maintainable line for
-              beta-compatible work.
+              The tag is the exact released source. It is not API-compatible
+              with the 0.1 releases, and there is no migration path from the
+              0.1 object API: a 0.1 construction is re-expressed as a state
+              contract. To reproduce a 0.1 result, install
+              <code>v0.1.0b1</code> instead, or work from the
+              <code>beta/v0.1.x</code> branch.
+            </p>
+          </section>
+          <section id="compiler">
+            <p class="eyebrow">Released API · v0.2.0b1</p>
+            <h2>Contracts, compiled.</h2>
+            <p>
+              <code>compile_states</code> turns a declarative state contract
+              into states, occurrences with identity, and boundary events,
+              with exclusive and exhaustive validation and structured refusals.
+              <code>state-contract-v1</code> is frozen; <code>v2</code> lets a
+              contract carry its own derivations, so preprocessing sits inside
+              the fingerprinted document. Study contracts are fingerprinted
+              with SHA-256 and approved by a named person, and execution
+              refuses anything unapproved. The release also ships the study
+              intake and conversational builder behind the
+              <a href="https://assistant.featuregraph.ai/">research assistant</a>,
+              shape measures over compiled occurrences, and the frozen study
+              records.
+            </p>
+            <p>
+              <a href="https://github.com/featuregraph/featuregraph/blob/main/README.md"
+                >Read the v0.2 README →</a
+              >
+              <a href="https://featuregraph-framework.readthedocs.io/"
+                >Documentation →</a
+              >
             </p>
           </section>
           <section id="beta">
-            <p class="eyebrow">Released API</p>
+            <p class="eyebrow">0.1 line · v0.1.0b1</p>
             <h2>Oscillations, accumulations, and queries.</h2>
             <p>
               v0.1.0b1 constructs explicit oscillation objects and wave-derived
               accumulation objects, retains sample-level evidence, returns
-              object tables, and supports deterministic object queries. It also
-              includes dataset loaders, tests, notebooks, and reproducibility
-              tooling.
+              object tables, and supports deterministic object queries. It
+              remains the authority for the results it archived and is
+              maintained on <code>beta/v0.1.x</code>; nothing on
+              <code>main</code> regenerates them.
             </p>
             <p>
               <a
                 href="https://github.com/featuregraph/featuregraph/blob/v0.1.0b1/README.md"
-                >Read beta API examples →</a
-              >
-            </p>
-          </section>
-          <section id="development">
-            <p class="eyebrow">Unreleased API</p>
-            <h2>Transition-centered redesign.</h2>
-            <p>
-              The main branch is not API-compatible with v0.1.0b1. It is
-              revising the construction boundary around transition summaries and
-              how oscillation and accumulation consume earlier representations.
-              Its contracts are not yet stable, and no migration guide is
-              promised until they are.
-            </p>
-            <p>
-              <a
-                href="https://github.com/featuregraph/featuregraph/blob/main/docs/behavior-architecture.md"
-                >Development architecture →</a
+                >Read the 0.1 beta API examples →</a
               >
             </p>
           </section>
           <section id="reproducibility">
             <p class="eyebrow">Research package</p>
-            <h2>Reproduce the beta from the release.</h2>
+            <h2>Reproduce a result from its release.</h2>
             <p>
-              Use the Zenodo archive and tagged repository for beta results.
-              Current BIDMC, TEP, and CLaP development studies are documented
-              separately on <code>main</code>.
+              Each release has its own Zenodo version DOI, and the frozen
+              study records on <code>main</code> name the release they ran
+              under. Cite <a href="https://doi.org/10.5281/zenodo.22286856">10.5281/zenodo.22286856</a> for
+              v0.2.0b1, <a href="https://doi.org/10.5281/zenodo.21984186"
+                >10.5281/zenodo.21984186</a
+              > for the 0.1 beta, and
+              <a href="https://doi.org/10.5281/zenodo.21939317">10.5281/zenodo.21939317</a> for all versions.
             </p>
             <div class="actions">
-              <a
-                class="button primary"
-                href="https://zenodo.org/records/21984186"
-                >Open Zenodo record</a
-              ><a class="button secondary" href="documentation.html"
-                >Version guide</a
+              <a class="button primary" href="https://doi.org/10.5281/zenodo.22286856"
+                >Open the v0.2.0b1 record</a
+              ><a
+                class="button secondary"
+                href="https://doi.org/10.5281/zenodo.21984186"
+                >0.1 beta record</a
               >
             </div>
           </section>
@@ -126,7 +144,7 @@ python -m pip install "featuregraph @ git+https://github.com/featuregraph/featur
       </div>
       <div class="footer-links">
         <a href="https://github.com/featuregraph/featuregraph">GitHub</a
-        ><a href="https://zenodo.org/records/21984186">Zenodo</a
+        ><a href="https://doi.org/10.5281/zenodo.21939317">Zenodo</a
         ><a href="https://orcid.org/0009-0000-5474-277X">ORCID</a>
       </div>
     </footer>
