@@ -216,6 +216,14 @@ BIDMC or CapnoBase recordings.</p>
     </tr>
   </tbody>
 </table></div>
+<h2>How to read the colors</h2>
+<ul>
+<li><b style="color:#2e7d32">Green, answered.</b> The request passed every check and ran.</li>
+<li><b style="color:#6a1b9a">Purple, refused.</b> The request was valid, but the answer is not unique, for example a tie. The system does not pick one.</li>
+<li><b style="color:#b26a00">Amber, declined.</b> The model said the question cannot be asked with the operations available.</li>
+<li><b style="color:#c62828">Red, rejected.</b> The request was stopped before anything ran, because the reply was not a valid query or it named a dataset that is not in the table. Red says which check stopped it, not whose fault it was.</li>
+</ul>
+<p>None of these is a score. A request that passes every check can still mean something other than what was asked.</p>
 <h2>All runs</h2>
 <div class="demo-scroll"><table>
   <thead>
