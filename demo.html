@@ -1,0 +1,462 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Checkable Questions Demo — FeatureGraph</title>
+    <meta
+      name="description"
+      content="A recorded demonstration of an LLM writing questions as checkable queries over a small made-up table, with every run shown."
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+      .demo { max-width: 860px; }
+      .demo-scroll { overflow-x: auto; }
+      .demo table { border-collapse: collapse; width: 100%; font-size: 14px; }
+      .demo th, .demo td { border: 1px solid var(--line); padding: 6px 8px; text-align: left; vertical-align: top; }
+      .demo th { background: var(--blue-soft); }
+      .demo h2 { margin-top: 32px; }
+      .demo pre { overflow-x: auto; }
+    </style>
+    <script src="posthog.js" defer></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="index.html"
+        ><span class="brand-mark">◇</span><span>FeatureGraph</span></a
+      >
+      <nav>
+        <a href="research.html">Research</a><a href="software.html">Software</a
+        ><a href="documentation.html">Documentation</a
+        ><a href="releases.html">Releases</a
+        ><a href="publications.html">Publications</a
+        ><a href="roadmap.html">Roadmap</a><a href="updates.html">Updates</a
+        ><a href="about.html">About</a><a href="https://assistant.featuregraph.ai/">Assistant</a>
+      </nav>
+      <a class="github-mark" href="https://github.com/featuregraph/featuregraph"
+        >GitHub ↗</a
+      >
+    </header>
+    <main class="page-shell">
+      <section class="page-hero">
+        <p class="section-label">Demonstration</p>
+        <h1>Asking questions of a table, with every answer checkable</h1>
+      </section>
+      <div class="demo">
+<p>A language model translates a plain-English question into a short query. It never sees the
+data and never does arithmetic. A separate program checks the query, runs it on the table,
+and returns the answer. Every run is saved as a receipt: the question, the model's reply,
+the query, the answer, and fingerprints of the prompt, the table and the code.</p>
+<p><b>What this is:</b> a demonstration on a small made-up table of breathing recordings,
+recorded once. It is not a measurement of accuracy. Questions written in advance and a
+held-out test come next.</p>
+<p>When Cohere's API returned an empty response, the call was retried, up to three attempts.
+Nothing else was retried or edited.</p>
+<p><b>One limit, stated plainly:</b> a well-formed query that means something other than what
+was asked passes every check. The sentence beside each answer, the query written back in
+plain English, is how a person catches it.</p>
+
+<p><small>Recorded 2026-10-14 · models: Cohere command-a-03-2025, Ollama qwen3:0.6b · 13 runs</small></p>
+
+<p><b>The data is invented.</b> The table below is a small made-up table. The dataset names
+(bidmc, capnobase, flat, solo) are labels only. The numbers are not results from the real
+BIDMC or CapnoBase recordings.</p>
+
+<h2>The table the questions ran on</h2>
+<div class="demo-scroll"><table>
+  <thead>
+    <tr>
+      <th>dataset</th>
+      <th>id</th>
+      <th>is_confident</th>
+      <th>cycle_count</th>
+      <th>mean_symmetry</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>bidmc</td>
+      <td>1</td>
+      <td>True</td>
+      <td>49</td>
+      <td>0.66</td>
+    </tr>
+    <tr>
+      <td>bidmc</td>
+      <td>2</td>
+      <td>True</td>
+      <td>72</td>
+      <td>0.61</td>
+    </tr>
+    <tr>
+      <td>bidmc</td>
+      <td>3</td>
+      <td>True</td>
+      <td>59</td>
+      <td>0.4</td>
+    </tr>
+    <tr>
+      <td>bidmc</td>
+      <td>5</td>
+      <td>True</td>
+      <td>79</td>
+      <td>0.86</td>
+    </tr>
+    <tr>
+      <td>bidmc</td>
+      <td>8</td>
+      <td>True</td>
+      <td>89</td>
+      <td>0.49</td>
+    </tr>
+    <tr>
+      <td>bidmc</td>
+      <td>13</td>
+      <td>True</td>
+      <td>82</td>
+      <td>0.62</td>
+    </tr>
+    <tr>
+      <td>bidmc</td>
+      <td>21</td>
+      <td>True</td>
+      <td>46</td>
+      <td>0.26</td>
+    </tr>
+    <tr>
+      <td>bidmc</td>
+      <td>34</td>
+      <td>True</td>
+      <td>30</td>
+      <td>0.82</td>
+    </tr>
+    <tr>
+      <td>bidmc</td>
+      <td>10</td>
+      <td>False</td>
+      <td>—</td>
+      <td>—</td>
+    </tr>
+    <tr>
+      <td>bidmc</td>
+      <td>4</td>
+      <td>False</td>
+      <td>—</td>
+      <td>—</td>
+    </tr>
+    <tr>
+      <td>bidmc</td>
+      <td>7</td>
+      <td>False</td>
+      <td>—</td>
+      <td>—</td>
+    </tr>
+    <tr>
+      <td>capnobase</td>
+      <td>0101</td>
+      <td>True</td>
+      <td>10</td>
+      <td>0.5</td>
+    </tr>
+    <tr>
+      <td>capnobase</td>
+      <td>0102</td>
+      <td>True</td>
+      <td>10</td>
+      <td>0.55</td>
+    </tr>
+    <tr>
+      <td>capnobase</td>
+      <td>0103</td>
+      <td>True</td>
+      <td>10</td>
+      <td>0.45</td>
+    </tr>
+    <tr>
+      <td>capnobase</td>
+      <td>0104</td>
+      <td>True</td>
+      <td>50</td>
+      <td>0.5</td>
+    </tr>
+    <tr>
+      <td>capnobase</td>
+      <td>0105</td>
+      <td>False</td>
+      <td>—</td>
+      <td>—</td>
+    </tr>
+    <tr>
+      <td>flat</td>
+      <td>1</td>
+      <td>True</td>
+      <td>40</td>
+      <td>0.5</td>
+    </tr>
+    <tr>
+      <td>flat</td>
+      <td>2</td>
+      <td>True</td>
+      <td>40</td>
+      <td>0.5</td>
+    </tr>
+    <tr>
+      <td>flat</td>
+      <td>3</td>
+      <td>True</td>
+      <td>40</td>
+      <td>0.5</td>
+    </tr>
+    <tr>
+      <td>solo</td>
+      <td>1</td>
+      <td>True</td>
+      <td>25</td>
+      <td>0.5</td>
+    </tr>
+  </tbody>
+</table></div>
+<h2>All runs</h2>
+<div class="demo-scroll"><table>
+  <thead>
+    <tr>
+      <th>Question</th>
+      <th>Model</th>
+      <th>Setup</th>
+      <th>Model understood</th>
+      <th>What happened</th>
+      <th>Answer or reason</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>How many BIDMC subjects are confident?</td>
+      <td>Cohere command-a-03-2025</td>
+      <td>free-form</td>
+      <td>Count the bidmc subjects that are confident.</td>
+      <td>Answered</td>
+      <td>8 subjects</td>
+    </tr>
+    <tr>
+      <td>Which BIDMC subjects are not confident?</td>
+      <td>Cohere command-a-03-2025</td>
+      <td>free-form</td>
+      <td>List the ids of the bidmc subjects that are not confident.</td>
+      <td>Answered</td>
+      <td>10, 4, 7</td>
+    </tr>
+    <tr>
+      <td>How many CapnoBase cases are confident?</td>
+      <td>Cohere command-a-03-2025</td>
+      <td>free-form</td>
+      <td>Count the capnobase subjects that are confident.</td>
+      <td>Answered</td>
+      <td>4 subjects</td>
+    </tr>
+    <tr>
+      <td>Which confident BIDMC subject has the largest number of detected cycles?</td>
+      <td>Cohere command-a-03-2025</td>
+      <td>free-form</td>
+      <td>The id of the subject with the highest cycle_count among the bidmc subjects that are confident.</td>
+      <td>Answered</td>
+      <td>subject 8</td>
+    </tr>
+    <tr>
+      <td>Among confident CapnoBase cases, which are outliers in the number of detected cycles?</td>
+      <td>Cohere command-a-03-2025</td>
+      <td>free-form</td>
+      <td>The ids of the capnobase subjects that are confident whose cycle_count is at least 1.5 standard deviations from the group mean (high or low).</td>
+      <td>Answered</td>
+      <td>0104</td>
+    </tr>
+    <tr>
+      <td>Among confident CapnoBase cases, which are outliers in mean temporal symmetry?</td>
+      <td>Cohere command-a-03-2025</td>
+      <td>free-form</td>
+      <td>The ids of the capnobase subjects that are confident whose mean_symmetry is at least 1.5 standard deviations from the group mean (high or low).</td>
+      <td>Answered</td>
+      <td>no outliers</td>
+    </tr>
+    <tr>
+      <td>Among confident CapnoBase cases, which are outliers in BOTH the number of detected cycles and mean temporal symmetry?</td>
+      <td>Cohere command-a-03-2025</td>
+      <td>free-form</td>
+      <td>The ids that appear in both of: (1) The ids of the capnobase subjects that are confident whose cycle_count is at least 1.5 standard deviations from the group mean (high or low). (2) The ids of the capnobase subjects that are confident whose mean_symmetry is at least 1.5 standard deviations from the group mean (high or low).</td>
+      <td>Answered</td>
+      <td>no subjects in both groups</td>
+    </tr>
+    <tr>
+      <td>Among confident CapnoBase cases, which are outliers in BOTH the number of detected cycles and mean temporal symmetry?</td>
+      <td>Cohere command-a-03-2025</td>
+      <td>free-form</td>
+      <td>The ids that appear in both of: (1) The ids of the capnobase subjects that are confident whose cycle_count is at least 0.4 standard deviations from the group mean (high or low). (2) The ids of the capnobase subjects that are confident whose mean_symmetry is at least 0.4 standard deviations from the group mean (high or low).</td>
+      <td>Answered</td>
+      <td>0102, 0103</td>
+    </tr>
+    <tr>
+      <td>Which flat subject has the most cycles?</td>
+      <td>Cohere command-a-03-2025</td>
+      <td>structured output</td>
+      <td>The id of the subject with the highest cycle_count among the flat subjects that are confident.</td>
+      <td>Refused: ambiguous</td>
+      <td>The query is valid, but the answer is ambiguous: subjects 1, 2, 3 tie for the highest cycle_count. The system refuses to pick one.</td>
+    </tr>
+    <tr>
+      <td>What is the weather in Houston?</td>
+      <td>Cohere command-a-03-2025</td>
+      <td>free-form</td>
+      <td>—</td>
+      <td>Declined</td>
+      <td>The model said this question cannot be asked with the operations available. Nothing was run.</td>
+    </tr>
+    <tr>
+      <td>What is the weather in Houston?</td>
+      <td>Cohere command-a-03-2025</td>
+      <td>structured output</td>
+      <td>—</td>
+      <td>Rejected: not a valid query</td>
+      <td>The model's reply could not be read as a query. Nothing was run.</td>
+    </tr>
+    <tr>
+      <td>How many confident BIDMC subjects are there?</td>
+      <td>Ollama qwen3:0.6b</td>
+      <td>free-form</td>
+      <td>—</td>
+      <td>Rejected: not a valid query</td>
+      <td>The model wrote a query that breaks the rules of the language (count: unexpected key(s) ['is_confident']). Nothing was run.</td>
+    </tr>
+    <tr>
+      <td>How many confident subjects are in the dataset called zebra?</td>
+      <td>Cohere command-a-03-2025</td>
+      <td>free-form</td>
+      <td>Count the zebra subjects that are confident.</td>
+      <td>Rejected: unknown dataset</td>
+      <td>The question refers to a dataset called 'zebra', which is not in the table. The datasets that exist are: bidmc, capnobase, flat, solo. Nothing was run.</td>
+    </tr>
+  </tbody>
+</table></div>
+<h2>Answered</h2>
+<p><small>Model: Cohere command-a-03-2025</small></p><div style="border:1px solid rgba(128,128,128,.4);border-left:8px solid #2e7d32;border-radius:4px;padding:10px 16px;margin:12px 0;line-height:1.5"><div style="font-size:.8em;letter-spacing:.05em;color:#2e7d32;font-weight:bold">ANSWERED</div><div style="font-size:1.1em;margin:2px 0 8px 0"><b>How many BIDMC subjects are confident?</b></div><div>The model understood this as: <i>Count the bidmc subjects that are confident.</i></div><div style="margin:8px 0"><div style="">✓ The model wrote a query</div><div style="">✓ The query follows the rules of the language</div><div style="">✓ The datasets it names exist in the table</div><div style="">✓ The query ran on the table</div></div><div style="font-size:1.1em"><b>Answer:</b> 8 subjects</div><details style="margin-top:8px"><summary>Show the technical detail</summary><div style="font-size:.9em;margin-top:6px">Model: cohere:command-a-03-2025; free-form (the model may decline).</div><div style="font-size:.9em">Question as sent to the model:</div><pre style="white-space:pre-wrap">How many BIDMC subjects are confident?</pre><div style="font-size:.9em">The model's raw reply:</div><pre style="white-space:pre-wrap">{
+  &quot;op&quot;: &quot;count&quot;,
+  &quot;from&quot;: {
+    &quot;dataset&quot;: &quot;bidmc&quot;,
+    &quot;is_confident&quot;: true
+  }
+}</pre></details></div>
+<p><small>Model: Cohere command-a-03-2025</small></p><div style="border:1px solid rgba(128,128,128,.4);border-left:8px solid #2e7d32;border-radius:4px;padding:10px 16px;margin:12px 0;line-height:1.5"><div style="font-size:.8em;letter-spacing:.05em;color:#2e7d32;font-weight:bold">ANSWERED</div><div style="font-size:1.1em;margin:2px 0 8px 0"><b>Which BIDMC subjects are not confident?</b></div><div>The model understood this as: <i>List the ids of the bidmc subjects that are not confident.</i></div><div style="margin:8px 0"><div style="">✓ The model wrote a query</div><div style="">✓ The query follows the rules of the language</div><div style="">✓ The datasets it names exist in the table</div><div style="">✓ The query ran on the table</div></div><div style="font-size:1.1em"><b>Answer:</b> 10, 4, 7</div><details style="margin-top:8px"><summary>Show the technical detail</summary><div style="font-size:.9em;margin-top:6px">Model: cohere:command-a-03-2025; free-form (the model may decline).</div><div style="font-size:.9em">Question as sent to the model:</div><pre style="white-space:pre-wrap">Which BIDMC subjects are not confident?</pre><div style="font-size:.9em">The model's raw reply:</div><pre style="white-space:pre-wrap">{
+  &quot;op&quot;: &quot;ids&quot;,
+  &quot;from&quot;: {
+    &quot;dataset&quot;: &quot;bidmc&quot;,
+    &quot;is_confident&quot;: false
+  }
+}</pre></details></div>
+<p><small>Model: Cohere command-a-03-2025</small></p><div style="border:1px solid rgba(128,128,128,.4);border-left:8px solid #2e7d32;border-radius:4px;padding:10px 16px;margin:12px 0;line-height:1.5"><div style="font-size:.8em;letter-spacing:.05em;color:#2e7d32;font-weight:bold">ANSWERED</div><div style="font-size:1.1em;margin:2px 0 8px 0"><b>How many CapnoBase cases are confident?</b></div><div>The model understood this as: <i>Count the capnobase subjects that are confident.</i></div><div style="margin:8px 0"><div style="">✓ The model wrote a query</div><div style="">✓ The query follows the rules of the language</div><div style="">✓ The datasets it names exist in the table</div><div style="">✓ The query ran on the table</div></div><div style="font-size:1.1em"><b>Answer:</b> 4 subjects</div><details style="margin-top:8px"><summary>Show the technical detail</summary><div style="font-size:.9em;margin-top:6px">Model: cohere:command-a-03-2025; free-form (the model may decline).</div><div style="font-size:.9em">Question as sent to the model:</div><pre style="white-space:pre-wrap">How many CapnoBase cases are confident?</pre><div style="font-size:.9em">The model's raw reply:</div><pre style="white-space:pre-wrap">{
+  &quot;op&quot;: &quot;count&quot;,
+  &quot;from&quot;: {
+    &quot;dataset&quot;: &quot;capnobase&quot;,
+    &quot;is_confident&quot;: true
+  }
+}</pre></details></div>
+<p><small>Model: Cohere command-a-03-2025</small></p><div style="border:1px solid rgba(128,128,128,.4);border-left:8px solid #2e7d32;border-radius:4px;padding:10px 16px;margin:12px 0;line-height:1.5"><div style="font-size:.8em;letter-spacing:.05em;color:#2e7d32;font-weight:bold">ANSWERED</div><div style="font-size:1.1em;margin:2px 0 8px 0"><b>Which confident BIDMC subject has the largest number of detected cycles?</b></div><div>The model understood this as: <i>The id of the subject with the highest cycle_count among the bidmc subjects that are confident.</i></div><div style="margin:8px 0"><div style="">✓ The model wrote a query</div><div style="">✓ The query follows the rules of the language</div><div style="">✓ The datasets it names exist in the table</div><div style="">✓ The query ran on the table</div></div><div style="font-size:1.1em"><b>Answer:</b> subject 8</div><details style="margin-top:8px"><summary>Show the technical detail</summary><div style="font-size:.9em;margin-top:6px">Model: cohere:command-a-03-2025; free-form (the model may decline).</div><div style="font-size:.9em">Question as sent to the model:</div><pre style="white-space:pre-wrap">Which confident BIDMC subject has the largest number of detected cycles?</pre><div style="font-size:.9em">The model's raw reply:</div><pre style="white-space:pre-wrap">{
+  &quot;op&quot;: &quot;argmax&quot;,
+  &quot;measure&quot;: &quot;cycle_count&quot;,
+  &quot;from&quot;: {
+    &quot;dataset&quot;: &quot;bidmc&quot;,
+    &quot;is_confident&quot;: true
+  }
+}</pre></details></div>
+<p><small>Model: Cohere command-a-03-2025</small></p><div style="border:1px solid rgba(128,128,128,.4);border-left:8px solid #2e7d32;border-radius:4px;padding:10px 16px;margin:12px 0;line-height:1.5"><div style="font-size:.8em;letter-spacing:.05em;color:#2e7d32;font-weight:bold">ANSWERED</div><div style="font-size:1.1em;margin:2px 0 8px 0"><b>Among confident CapnoBase cases, which are outliers in the number of detected cycles?</b></div><div>The model understood this as: <i>The ids of the capnobase subjects that are confident whose cycle_count is at least 1.5 standard deviations from the group mean (high or low).</i></div><div style="margin:8px 0"><div style="">✓ The model wrote a query</div><div style="">✓ The query follows the rules of the language</div><div style="">✓ The datasets it names exist in the table</div><div style="">✓ The query ran on the table</div></div><div style="font-size:1.1em"><b>Answer:</b> 0104</div><details style="margin-top:8px"><summary>Show the technical detail</summary><div style="font-size:.9em;margin-top:6px">Model: cohere:command-a-03-2025; free-form (the model may decline).</div><div style="font-size:.9em">Question as sent to the model:</div><pre style="white-space:pre-wrap">Among confident CapnoBase cases, which are outliers in the number of detected cycles? An outlier is a value at least 1.5 sample standard deviations from the mean of that measure across the confident cases in that dataset.</pre><div style="font-size:.9em">The model's raw reply:</div><pre style="white-space:pre-wrap">{
+  &quot;op&quot;: &quot;outliers&quot;,
+  &quot;measure&quot;: &quot;cycle_count&quot;,
+  &quot;z&quot;: 1.5,
+  &quot;from&quot;: {
+    &quot;dataset&quot;: &quot;capnobase&quot;,
+    &quot;is_confident&quot;: true
+  }
+}</pre></details></div>
+<p><small>Model: Cohere command-a-03-2025</small></p><div style="border:1px solid rgba(128,128,128,.4);border-left:8px solid #2e7d32;border-radius:4px;padding:10px 16px;margin:12px 0;line-height:1.5"><div style="font-size:.8em;letter-spacing:.05em;color:#2e7d32;font-weight:bold">ANSWERED</div><div style="font-size:1.1em;margin:2px 0 8px 0"><b>Among confident CapnoBase cases, which are outliers in mean temporal symmetry?</b></div><div>The model understood this as: <i>The ids of the capnobase subjects that are confident whose mean_symmetry is at least 1.5 standard deviations from the group mean (high or low).</i></div><div style="margin:8px 0"><div style="">✓ The model wrote a query</div><div style="">✓ The query follows the rules of the language</div><div style="">✓ The datasets it names exist in the table</div><div style="">✓ The query ran on the table</div></div><div style="font-size:1.1em"><b>Answer:</b> no outliers</div><details style="margin-top:8px"><summary>Show the technical detail</summary><div style="font-size:.9em;margin-top:6px">Model: cohere:command-a-03-2025; free-form (the model may decline).</div><div style="font-size:.9em">Question as sent to the model:</div><pre style="white-space:pre-wrap">Among confident CapnoBase cases, which are outliers in mean temporal symmetry? An outlier is a value at least 1.5 sample standard deviations from the mean of that measure across the confident cases in that dataset.</pre><div style="font-size:.9em">The model's raw reply:</div><pre style="white-space:pre-wrap">{
+  &quot;op&quot;: &quot;outliers&quot;,
+  &quot;measure&quot;: &quot;mean_symmetry&quot;,
+  &quot;z&quot;: 1.5,
+  &quot;from&quot;: {
+    &quot;dataset&quot;: &quot;capnobase&quot;,
+    &quot;is_confident&quot;: true
+  }
+}</pre></details></div>
+<p><small>Model: Cohere command-a-03-2025</small></p><div style="border:1px solid rgba(128,128,128,.4);border-left:8px solid #2e7d32;border-radius:4px;padding:10px 16px;margin:12px 0;line-height:1.5"><div style="font-size:.8em;letter-spacing:.05em;color:#2e7d32;font-weight:bold">ANSWERED</div><div style="font-size:1.1em;margin:2px 0 8px 0"><b>Among confident CapnoBase cases, which are outliers in BOTH the number of detected cycles and mean temporal symmetry?</b></div><div>The model understood this as: <i>The ids that appear in both of: (1) The ids of the capnobase subjects that are confident whose cycle_count is at least 1.5 standard deviations from the group mean (high or low). (2) The ids of the capnobase subjects that are confident whose mean_symmetry is at least 1.5 standard deviations from the group mean (high or low).</i></div><div style="margin:8px 0"><div style="">✓ The model wrote a query</div><div style="">✓ The query follows the rules of the language</div><div style="">✓ The datasets it names exist in the table</div><div style="">✓ The query ran on the table</div></div><div style="font-size:1.1em"><b>Answer:</b> no subjects in both groups</div><details style="margin-top:8px"><summary>Show the technical detail</summary><div style="font-size:.9em;margin-top:6px">Model: cohere:command-a-03-2025; free-form (the model may decline).</div><div style="font-size:.9em">Question as sent to the model:</div><pre style="white-space:pre-wrap">Among confident CapnoBase cases, which are outliers in BOTH the number of detected cycles and mean temporal symmetry? An outlier is a value at least 1.5 sample standard deviations from the mean of that measure across the confident cases in that dataset.</pre><div style="font-size:.9em">The model's raw reply:</div><pre style="white-space:pre-wrap">{
+  &quot;op&quot;: &quot;intersect&quot;,
+  &quot;of&quot;: [
+    {
+      &quot;op&quot;: &quot;outliers&quot;,
+      &quot;measure&quot;: &quot;cycle_count&quot;,
+      &quot;z&quot;: 1.5,
+      &quot;from&quot;: {
+        &quot;dataset&quot;: &quot;capnobase&quot;,
+        &quot;is_confident&quot;: true
+      }
+    },
+    {
+      &quot;op&quot;: &quot;outliers&quot;,
+      &quot;measure&quot;: &quot;mean_symmetry&quot;,
+      &quot;z&quot;: 1.5,
+      &quot;from&quot;: {
+        &quot;dataset&quot;: &quot;capnobase&quot;,
+        &quot;is_confident&quot;: true
+      }
+    }
+  ]
+}</pre></details></div>
+<p><small>Model: Cohere command-a-03-2025</small></p><div style="border:1px solid rgba(128,128,128,.4);border-left:8px solid #2e7d32;border-radius:4px;padding:10px 16px;margin:12px 0;line-height:1.5"><div style="font-size:.8em;letter-spacing:.05em;color:#2e7d32;font-weight:bold">ANSWERED</div><div style="font-size:1.1em;margin:2px 0 8px 0"><b>Among confident CapnoBase cases, which are outliers in BOTH the number of detected cycles and mean temporal symmetry?</b></div><div>The model understood this as: <i>The ids that appear in both of: (1) The ids of the capnobase subjects that are confident whose cycle_count is at least 0.4 standard deviations from the group mean (high or low). (2) The ids of the capnobase subjects that are confident whose mean_symmetry is at least 0.4 standard deviations from the group mean (high or low).</i></div><div style="margin:8px 0"><div style="">✓ The model wrote a query</div><div style="">✓ The query follows the rules of the language</div><div style="">✓ The datasets it names exist in the table</div><div style="">✓ The query ran on the table</div></div><div style="font-size:1.1em"><b>Answer:</b> 0102, 0103</div><details style="margin-top:8px"><summary>Show the technical detail</summary><div style="font-size:.9em;margin-top:6px">Model: cohere:command-a-03-2025; free-form (the model may decline).</div><div style="font-size:.9em">Question as sent to the model:</div><pre style="white-space:pre-wrap">Among confident CapnoBase cases, which are outliers in BOTH the number of detected cycles and mean temporal symmetry? An outlier is a value at least 0.4 sample standard deviations from the mean of that measure across the confident cases in that dataset.</pre><div style="font-size:.9em">The model's raw reply:</div><pre style="white-space:pre-wrap">{
+  &quot;op&quot;: &quot;intersect&quot;,
+  &quot;of&quot;: [
+    {
+      &quot;op&quot;: &quot;outliers&quot;,
+      &quot;measure&quot;: &quot;cycle_count&quot;,
+      &quot;z&quot;: 0.4,
+      &quot;from&quot;: {
+        &quot;dataset&quot;: &quot;capnobase&quot;,
+        &quot;is_confident&quot;: true
+      }
+    },
+    {
+      &quot;op&quot;: &quot;outliers&quot;,
+      &quot;measure&quot;: &quot;mean_symmetry&quot;,
+      &quot;z&quot;: 0.4,
+      &quot;from&quot;: {
+        &quot;dataset&quot;: &quot;capnobase&quot;,
+        &quot;is_confident&quot;: true
+      }
+    }
+  ]
+}</pre></details></div>
+<h2>Stopped, with a reason</h2>
+<p><small>Model: Cohere command-a-03-2025</small></p><div style="border:1px solid rgba(128,128,128,.4);border-left:8px solid #6a1b9a;border-radius:4px;padding:10px 16px;margin:12px 0;line-height:1.5"><div style="font-size:.8em;letter-spacing:.05em;color:#6a1b9a;font-weight:bold">REFUSED: AMBIGUOUS</div><div style="font-size:1.1em;margin:2px 0 8px 0"><b>Which flat subject has the most cycles?</b></div><div>The model understood this as: <i>The id of the subject with the highest cycle_count among the flat subjects that are confident.</i></div><div style="margin:8px 0"><div style="">✓ The model wrote a query</div><div style="">✓ The query follows the rules of the language</div><div style="">✓ The datasets it names exist in the table</div><div style="">✗ The query ran on the table</div></div><div><b>No answer.</b> The query is valid, but the answer is ambiguous: subjects 1, 2, 3 tie for the highest cycle_count. The system refuses to pick one.</div><details style="margin-top:8px"><summary>Show the technical detail</summary><div style="font-size:.9em;margin-top:6px">Model: cohere:command-a-03-2025; with structured output requested.</div><div style="font-size:.9em">Question as sent to the model:</div><pre style="white-space:pre-wrap">Which flat subject has the most cycles?</pre><div style="font-size:.9em">The model's raw reply:</div><pre style="white-space:pre-wrap">{&quot;op&quot;: &quot;argmax&quot;, &quot;measure&quot;: &quot;cycle_count&quot;, &quot;from&quot;: {&quot;dataset&quot;: &quot;flat&quot;, &quot;is_confident&quot;: true}}</pre></details></div>
+<p><small>Model: Cohere command-a-03-2025</small></p><div style="border:1px solid rgba(128,128,128,.4);border-left:8px solid #b26a00;border-radius:4px;padding:10px 16px;margin:12px 0;line-height:1.5"><div style="font-size:.8em;letter-spacing:.05em;color:#b26a00;font-weight:bold">DECLINED</div><div style="font-size:1.1em;margin:2px 0 8px 0"><b>What is the weather in Houston?</b></div><div style="margin:8px 0"><div style="">✗ The model wrote a query</div><div style="opacity:.5">– The query follows the rules of the language (not reached)</div><div style="opacity:.5">– The datasets it names exist in the table (not reached)</div><div style="opacity:.5">– The query ran on the table (not reached)</div></div><div><b>No answer.</b> The model said this question cannot be asked with the operations available. Nothing was run.</div><details style="margin-top:8px"><summary>Show the technical detail</summary><div style="font-size:.9em;margin-top:6px">Model: cohere:command-a-03-2025; free-form (the model may decline).</div><div style="font-size:.9em">Question as sent to the model:</div><pre style="white-space:pre-wrap">What is the weather in Houston?</pre><div style="font-size:.9em">The model's raw reply:</div><pre style="white-space:pre-wrap">{}</pre></details></div>
+<p><small>Model: Cohere command-a-03-2025</small></p><div style="border:1px solid rgba(128,128,128,.4);border-left:8px solid #c62828;border-radius:4px;padding:10px 16px;margin:12px 0;line-height:1.5"><div style="font-size:.8em;letter-spacing:.05em;color:#c62828;font-weight:bold">REJECTED: NOT A VALID QUERY</div><div style="font-size:1.1em;margin:2px 0 8px 0"><b>What is the weather in Houston?</b></div><div style="margin:8px 0"><div style="">✗ The model wrote a query</div><div style="opacity:.5">– The query follows the rules of the language (not reached)</div><div style="opacity:.5">– The datasets it names exist in the table (not reached)</div><div style="opacity:.5">– The query ran on the table (not reached)</div></div><div><b>No answer.</b> The model&#x27;s reply could not be read as a query. Nothing was run.</div><details style="margin-top:8px"><summary>Show the technical detail</summary><div style="font-size:.9em;margin-top:6px">Model: cohere:command-a-03-2025; with structured output requested.</div><div style="font-size:.9em">Question as sent to the model:</div><pre style="white-space:pre-wrap">What is the weather in Houston?</pre><div style="font-size:.9em">The model's raw reply:</div><pre style="white-space:pre-wrap">I don&#x27;t have access to real-time weather data for Houston, but I can provide general information based on typical weather patterns. 
+
+However, I can tell you that Houston, Texas, typically experiences a humid subtropical climate. This means that the city often has warm and humid conditions throughout the year, with temperatures ranging from the mid-70s to the mid-90s Fahrenheit. 
+
+During the summer months, Houston can be particularly hot and humid, with temperatures often exceeding 100 degrees Fahrenheit. 
+
+I hope this information helps!</pre></details></div>
+<p><small>Model: Ollama qwen3:0.6b</small></p><div style="border:1px solid rgba(128,128,128,.4);border-left:8px solid #c62828;border-radius:4px;padding:10px 16px;margin:12px 0;line-height:1.5"><div style="font-size:.8em;letter-spacing:.05em;color:#c62828;font-weight:bold">REJECTED: NOT A VALID QUERY</div><div style="font-size:1.1em;margin:2px 0 8px 0"><b>How many confident BIDMC subjects are there?</b></div><div style="margin:8px 0"><div style="">✓ The model wrote a query</div><div style="">✗ The query follows the rules of the language</div><div style="opacity:.5">– The datasets it names exist in the table (not reached)</div><div style="opacity:.5">– The query ran on the table (not reached)</div></div><div><b>No answer.</b> The model wrote a query that breaks the rules of the language (count: unexpected key(s) [&#x27;is_confident&#x27;]). Nothing was run.</div><details style="margin-top:8px"><summary>Show the technical detail</summary><div style="font-size:.9em;margin-top:6px">Model: ollama:qwen3:0.6b; free-form (the model may decline).</div><div style="font-size:.9em">Question as sent to the model:</div><pre style="white-space:pre-wrap">How many confident BIDMC subjects are there?</pre><div style="font-size:.9em">The model's raw reply:</div><pre style="white-space:pre-wrap">{
+  &quot;op&quot;: &quot;count&quot;,
+  &quot;from&quot;: &quot;BIDMC&quot;,
+  &quot;is_confident&quot;: true
+}</pre></details></div>
+<p><small>Model: Cohere command-a-03-2025</small></p><div style="border:1px solid rgba(128,128,128,.4);border-left:8px solid #c62828;border-radius:4px;padding:10px 16px;margin:12px 0;line-height:1.5"><div style="font-size:.8em;letter-spacing:.05em;color:#c62828;font-weight:bold">REJECTED: UNKNOWN DATASET</div><div style="font-size:1.1em;margin:2px 0 8px 0"><b>How many confident subjects are in the dataset called zebra?</b></div><div>The model understood this as: <i>Count the zebra subjects that are confident.</i></div><div style="margin:8px 0"><div style="">✓ The model wrote a query</div><div style="">✓ The query follows the rules of the language</div><div style="">✗ The datasets it names exist in the table</div><div style="opacity:.5">– The query ran on the table (not reached)</div></div><div><b>No answer.</b> The question refers to a dataset called &#x27;zebra&#x27;, which is not in the table. The datasets that exist are: bidmc, capnobase, flat, solo. Nothing was run.</div><details style="margin-top:8px"><summary>Show the technical detail</summary><div style="font-size:.9em;margin-top:6px">Model: cohere:command-a-03-2025; free-form (the model may decline).</div><div style="font-size:.9em">Question as sent to the model:</div><pre style="white-space:pre-wrap">How many confident subjects are in the dataset called zebra?</pre><div style="font-size:.9em">The model's raw reply:</div><pre style="white-space:pre-wrap">{
+  &quot;op&quot;: &quot;count&quot;,
+  &quot;from&quot;: {
+    &quot;dataset&quot;: &quot;zebra&quot;,
+    &quot;is_confident&quot;: true
+  }
+}</pre></details></div>
+      </div>
+    </main>
+    <footer>
+      <span>© 2026 FeatureGraph Project</span><span>MIT License</span
+      ><span><a href="about.html">Contact</a></span
+      ><span><a href="publications.html">Cite FeatureGraph</a></span>
+    </footer>
+  </body>
+</html>
