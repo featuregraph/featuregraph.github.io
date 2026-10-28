@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>FeatureGraph blog</title>
+  <subtitle>Posts on standardizing scientific data analysis.</subtitle>
+  <link href="https://featuregraph.ai/feed.xml" rel="self" />
+  <link href="https://featuregraph.ai/blog/" />
+  <id>https://featuregraph.ai/blog/</id>
+  <updated>2026-10-28T00:00:00Z</updated>
+  <author><name>Nazia Habib</name></author>
+  <entry>
+    <title>One source of truth for scientific analysis</title>
+    <link href="https://featuregraph.ai/blog/standardizing-scientific-analysis.html" />
+    <id>https://featuregraph.ai/blog/standardizing-scientific-analysis.html</id>
+    <updated>2026-10-28T00:00:00Z</updated>
+    <summary>Researchers rebuild the same analysis decisions in every project. FeatureGraph writes them down once, runs them in deterministic code, and leaves the language model to do only the translation.</summary>
+  </entry>
+</feed>
