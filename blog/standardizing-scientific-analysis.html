@@ -1,0 +1,442 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>One source of truth for scientific analysis — FeatureGraph</title>
+    <meta
+      name="description"
+      content="Researchers rebuild the same analysis decisions in every project. FeatureGraph writes them down once, runs them in deterministic code, and lets a language model do only the translation."
+    />
+    <link rel="alternate" type="application/atom+xml" title="FeatureGraph blog" href="../feed.xml" />
+    <link rel="stylesheet" href="../styles.css" />
+    <link rel="stylesheet" href="blog.css" />
+    <script src="../posthog.js" defer></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="../index.html"
+        ><span class="brand-mark">◇</span><span>FeatureGraph</span></a
+      >
+      <nav>
+        <a href="../research.html">Research</a><a href="../software.html">Software</a
+        ><a href="../documentation.html">Documentation</a
+        ><a href="../releases.html">Releases</a
+        ><a href="../publications.html">Publications</a
+        ><a href="../roadmap.html">Roadmap</a><a href="../updates.html">Updates</a
+        ><a href="./">Blog</a><a href="../about.html">About</a><a href="https://assistant.featuregraph.ai/">Assistant</a>
+      </nav>
+      <a class="github-mark" href="https://github.com/featuregraph/featuregraph"
+        >GitHub ↗</a
+      >
+    </header>
+    <main class="page-shell">
+      <section class="page-hero">
+        <p class="section-label">Blog</p>
+        <h1>One source of truth for scientific analysis</h1>
+        <p class="post-meta">Nazia Habib · October 2026</p>
+        <p>
+          Researchers rebuild the same analysis decisions in every project.
+          FeatureGraph writes them down once, runs them in deterministic code,
+          and leaves the language model to do only the translation.
+        </p>
+      </section>
+
+      <article class="post">
+        <h2>The story in three points</h2>
+        <ol>
+          <li>
+            Researchers write a lot of code they should not need to write. They
+            either specify their analysis decisions, such as how much to smooth
+            a signal and what counts as a reliable recording, again for every
+            analysis and project, or leave them out and the model has to guess.
+          </li>
+          <li>
+            The structure of scientific data analysis in software is not
+            standardized, so the same question on the same data can produce
+            different answers with no shared record of why. An LLM that runs an
+            entire analysis itself can produce wrong answers, unverifiable
+            results, and errors that are silently missed.
+          </li>
+          <li>
+            FeatureGraph moves those decisions into one shared place, the
+            compiler's definitions, where they can be inspected, modified, and
+            discussed. It takes execution out of the hands of both the LLM and
+            the researcher's bespoke code and runs it on deterministic,
+            verifiable, standardized code, with a receipt for every result. The
+            LLM's job is then only to translate a question into a query, so a
+            smaller, more cost-efficient model can do work that would otherwise
+            need a general-reasoning frontier model and much more compute. The
+            same structure supports a hypothesis-generating and testing loop,
+            which is partly built and can be examined now.
+          </li>
+        </ol>
+
+        <h2>Scientific analysis needs one source of truth</h2>
+        <p>
+          Researchers specify these decisions as a matter of course. A
+          researcher who states the amount of smoothing, what counts as a
+          breath, which recordings are reliable enough to include, and the
+          outlier cutoff, either in the request to a model or in their own
+          script, will often get back results that are good for their
+          purposes.
+        </p>
+        <p>
+          But the work gets repeated. A researcher analyzing breathing
+          recordings has to specify how to find a breath, which recordings
+          count as reliable, and where the outlier cutoff sits, and then
+          specify it all again for the next analysis and the next project.
+          Across researchers the same code gets written many times, none of it
+          shared or standardized, and there is no single source of truth to
+          build on. The result is lost time, and two researchers asking the
+          same question of the same data can end up making different decisions
+          without knowing it. Data formats are often standardized. The
+          decisions made on that data are not.
+        </p>
+        <p>
+          The aim is for a researcher to begin a project with that scaffolding
+          already in place: the built-in assumptions and structure for how
+          scientific data is represented and analyzed, written down once and
+          shared. The model works inside that structure instead of being told
+          it again.
+        </p>
+        <p>
+          FeatureGraph is built to be that place. The parameters that describe
+          the data are written once, in the compiler's definitions, where they
+          apply to everyone using them and can be inspected and compared across
+          studies.
+          <mark class="todo"
+            >TODO: one sentence on where the discussion and changes happen
+            (GitHub issues, a page on this blog, other).</mark
+          >
+          Standardizing a parameter does not make it correct, so the aim is to
+          make these choices visible and shared, not to freeze them: a study
+          that needs a different value records it as a definition, not as an
+          edit in someone's code. Choices that belong to the question, like the
+          outlier cutoff, stay in the query, where the receipt records them.
+        </p>
+
+        <h3>An example: BIDMC and CapnoBase respiratory recordings</h3>
+        <p>
+          BIDMC and CapnoBase are two public datasets of respiration recordings
+          that measure breathing in different ways. BIDMC records a respiratory
+          impedance signal sampled at 125 Hz. CapnoBase records the carbon
+          dioxide waveform at the mouth, called a capnogram, sampled at 300 Hz.
+          FeatureGraph works in one-second intervals for both, so the same
+          measures can be computed on each, giving two readings of breathing
+          from different subjects.
+        </p>
+        <p>Here is a question a researcher might ask a model:</p>
+        <blockquote>
+          <p>
+            Which recordings are unusual in both the number of breaths and how
+            asymmetric each breath is, meaning the time it spends rising
+            compared with the time it spends falling?
+          </p>
+        </blockquote>
+        <p>
+          The question is one sentence, but answering it takes multiple
+          assumptions and decisions:
+        </p>
+        <p>
+          <strong>What counts as a breath.</strong> The waveform has to be
+          smoothed before breaths are found, and the amount of smoothing
+          changes how many breaths there are. A peak has to meet some minimum
+          height and spacing to count. A breath cut off at the start or end of
+          the recording has to be kept or dropped.
+        </p>
+        <p>
+          <strong>How asymmetry is measured.</strong> Each breath has a rising
+          part and a falling part. Asymmetry needs a rule for turning those
+          into one number per breath, and another for combining the breaths
+          into one number per recording.
+        </p>
+        <p>
+          <strong>Which recordings count.</strong> Some recordings have no
+          reliable breathing rhythm. Someone has to define "reliable" and
+          decide whether such recordings enter the comparison or are left out,
+          with their measurements blank.
+        </p>
+        <p>
+          <strong>What counts as an outlier.</strong> "Outlier" has no single
+          meaning. It needs a cutoff, a choice of sample or population standard
+          deviation, and a rule for a value that lands exactly on the cutoff.
+          These choices can change the answer.
+        </p>
+
+        <h2>Taking the analysis out of the LLM's hands</h2>
+        <p>
+          There are a few common ways to use an LLM to do data analysis. The
+          most common failure mode is when you paste data into the prompt and
+          the LLM reads it as numbers. You ask questions and the model
+          describes what it sees. The model miscounts, miscalculates, and stops
+          working once the data outgrows the context window.
+        </p>
+        <p>
+          As an alternative, the model uses a code tool and you give it a data
+          file. The model writes free Python as it chooses and reports back
+          results. This can work well for a first pass at a data table. A
+          frontier model can usually find the obvious groups, the obvious
+          outliers, and the ranges.
+        </p>
+        <p>
+          When a decision is left unstated, the model has to guess. The
+          freeform Python code it produces can run without errors and still
+          provide incorrect results or answer the wrong question. Windows and
+          thresholds chosen so that the constructed objects are distorted,
+          event definitions shifting at boundaries, and other silent
+          assumptions can cause plausible but incorrect output. Asking the same
+          question twice can lead to different answers, with no record of what
+          changed.
+        </p>
+        <p>
+          FeatureGraph proposes an alternative to both the model guessing the
+          requirements of an analysis and individual researchers having to
+          specify them with bespoke instructions. It bypasses the direct
+          response and has the LLM translate the original natural-language
+          question into a fixed-format query. The actual query and requested
+          data analysis are run by separate deterministic Python modules
+          outside of the LLM. The results come back with the full receipt of
+          what was understood by the LLM, what was run, and whether there are
+          any errors or the query could not be run.
+        </p>
+
+        <h3>How the compiler turns a recording into breaths</h3>
+        <p>
+          FeatureGraph has two parts: the compiler, which processes the raw
+          data and returns object-level summaries (in this case an object is a
+          breath), and the query layer, which runs a query on a summary table
+          and returns results. The compiler is where the standardization
+          happens. It takes a raw recording and produces the table the query
+          runs on, in the same five steps for every recording and every
+          researcher.
+        </p>
+        <ol>
+          <li>
+            <strong>Primitive.</strong> The compiler starts from built-in
+            operations that are trusted by construction. One of them identifies
+            whether the signal is rising or falling at each moment. It assumes
+            nothing about breathing and works on any oscillation.
+          </li>
+          <li>
+            <strong>Definition.</strong> The parameters that decide what a
+            breath is are written down as a definition:
+            <mark class="todo"
+              >TODO: list the parameters that matter (interval, smoothing,
+              peak rules).</mark
+            >
+            The compiler chooses the window size from the signal's
+            autocorrelation, and the same step decides whether a recording has
+            a reliable breathing rhythm: it is marked confident when
+            <mark class="todo">TODO: the criterion</mark>. This is where the
+            first three decisions above get fixed. The definition is recorded,
+            and the same one is applied to every recording in both datasets.
+          </li>
+          <li>
+            <strong>Object.</strong> Applying the definition to a recording
+            produces its breaths. Each breath is an object with its own start,
+            end, rising time, falling time, amplitude, and duration.
+          </li>
+          <li>
+            <strong>Measure.</strong> A measure summarizes one recording's
+            breaths as a single number. <code>cycle_count</code> is the number
+            of breaths, and <code>mean_symmetry</code> is
+            <mark class="todo"
+              >TODO: how per-breath symmetry is defined</mark
+            >
+            averaged over the recording's breaths.
+          </li>
+          <li>
+            <strong>Interpretation.</strong> What it means for a recording to
+            be unusual in both measures is a claim the compiler does not make.
+            That layer belongs to the person or agent asking the question, and
+            it is the layer the query works on.
+          </li>
+        </ol>
+        <p>
+          The first four layers are structural and analytical. They are based
+          only on the shape of the signal, not on its scientific context. The
+          compiler can verify that a definition is well-formed and that a
+          measure was computed the way it claims to have been. The fifth layer
+          sits outside that guarantee by design, and must be checked separately
+          before it can be trusted. Because the definition is recorded and
+          applied the same way each time, two researchers using it get the same
+          breaths from the same recording. A study that needs a different
+          smoothing window records a new definition, so the difference is
+          visible instead of buried in a script.
+        </p>
+        <p>
+          The current release of the compiler is
+          <code>featuregraph-core</code>, installable with
+          <code>pip install featuregraph-core</code>. More on the
+          architecture:
+          <mark class="todo">TODO: link the compiler paper</mark>.
+        </p>
+
+        <h3>How the model asks the question</h3>
+        <p>
+          The <a href="../demo.html">demo</a> runs the outlier question on a
+          small invented table with the same shape as the compiler's output on
+          BIDMC and CapnoBase. The first three decisions above are fixed in the
+          compiler's definitions, where they are recorded and can be inspected.
+          The fourth is stated in the question itself, so it appears in the
+          query and in the receipt. The question is sent as written:
+        </p>
+        <blockquote>
+          <p>
+            Among confident CapnoBase cases, which are outliers in BOTH the
+            number of detected cycles and mean temporal symmetry? An outlier is
+            a value at least 1.5 sample standard deviations from the mean of
+            that measure across the confident cases in that dataset.
+          </p>
+        </blockquote>
+        <p>The model's response is a JSON query:</p>
+        <pre class="code-block"><code>{
+  "op": "intersect",
+  "of": [
+    {"op": "outliers", "measure": "cycle_count", "z": 1.5,
+     "from": {"dataset": "capnobase", "is_confident": true}},
+    {"op": "outliers", "measure": "mean_symmetry", "z": 1.5,
+     "from": {"dataset": "capnobase", "is_confident": true}}
+  ]
+}</code></pre>
+        <p>
+          A separate Python program outside the model checks the query, then
+          runs it. It confirms that the query follows the rules of the
+          language, that the dataset it names exists in the table, and that it
+          can run. It then writes the query back as a sentence, so the
+          researcher can read what was asked:
+        </p>
+        <blockquote>
+          <p>
+            The ids that appear in both of: (1) The ids of the capnobase
+            subjects that are confident whose cycle_count is at least 1.5
+            standard deviations from the group mean (high or low). (2) The ids
+            of the capnobase subjects that are confident whose mean_symmetry is
+            at least 1.5 standard deviations from the group mean (high or low).
+          </p>
+        </blockquote>
+        <p>
+          This is what the model understood the question to be. More examples
+          can be found on the <a href="../demo.html">demo page</a>.
+        </p>
+
+        <h3>What changes for the model</h3>
+        <p>
+          This changes what the model is responsible for. It no longer needs to
+          calculate, count, or decide how an analysis should be run. Its job is
+          narrower: translate a natural-language question into a structured
+          query, then explain a result that has already been checked. A
+          malformed or unsupported query is rejected before anything runs, so
+          failures get caught and don't generate plausible but wrong answers.
+        </p>
+        <p>
+          Because the scaffolding carries the assumptions, the model's job is
+          translation, not judgment about how the analysis should be done.
+          That task is constrained, so it doesn't require open-ended reasoning,
+          and a smaller, less-expensive model can carry it out. In the demo,
+          Command A, a
+          <a href="https://huggingface.co/coherelabs/c4ai-command-a-03-2025"
+            >111-billion-parameter model</a
+          >, writes the queries. A 0.6-billion-parameter model (Qwen3) wrote a
+          query that broke the rules of the language and was rejected before
+          anything ran. The range between those sizes is the next test.
+        </p>
+
+        <h2>Where this is going: generating and testing hypotheses</h2>
+        <p>
+          The scientific interpretation, or query, layer in FeatureGraph is
+          composed of five agent types:
+        </p>
+        <ul>
+          <li>
+            <strong>Investigator:</strong> proposes hypotheses as labeled free
+            text. Nothing becomes a finding until tested. It can be replaced by
+            human-authored queries.
+          </li>
+          <li>
+            <strong>Tester:</strong> writes specs that run through an outside
+            deterministic program called the executor, checked by validation
+            and held-out data.
+          </li>
+          <li>
+            <strong>Critic:</strong> judges whether a stated finding follows
+            from what was actually run.
+          </li>
+          <li>
+            <strong>Recorder:</strong> writes the provenance record from run
+            logs.
+          </li>
+          <li>
+            <strong>Translator:</strong> maps a new domain's vocabulary onto
+            the schema. This role is deferred until a later release. For now,
+            each domain's choices are made by hand and recorded.
+          </li>
+        </ul>
+        <p>
+          The <a href="../demo.html">demo</a> is a Tester agent built on
+          Cohere's Command A. The next stage is an agent loop that generates
+          hypotheses and translates queries inside the language model, while
+          the analysis itself runs outside it. This has two potential benefits:
+        </p>
+        <ul>
+          <li>
+            The entire analysis can be tracked with receipts, rerun outside the
+            loop, and checked for accuracy.
+          </li>
+          <li>
+            The loop can be run on a smaller, more cost-efficient model than
+            the frontier-size models that currently do open-ended research and
+            hypothesis testing.
+          </li>
+        </ul>
+        <p>
+          <mark class="todo"
+            >TODO: what is built today for each part of the loop (Investigator,
+            Critic, Recorder), with links.</mark
+          >
+          The output is a short, usually 2-3 page analysis stub that a human
+          researcher can pick up, verify, and continue to build on. The
+          existing research record is on
+          <a href="https://featuregraph.readthedocs.io/">Read the Docs</a>.
+        </p>
+        <p>
+          The existing studies were built with an OpenAI Codex agent using
+          FeatureGraph's compiler architecture. New studies will be smaller and
+          more focused in scope, structured around the query language
+          requirements and agents built with Command A and potentially models
+          in the 10B-70B parameter range.
+        </p>
+
+        <h2>Summary</h2>
+        <p>
+          FeatureGraph writes the decisions behind a scientific analysis down
+          once, in one shared place, so researchers stop rebuilding them for
+          every project. It moves calculation out of the language model and
+          into deterministic code, so the model's job is to translate a
+          question into a structured query, and every result comes with a
+          receipt that can be rerun and verified outside the model. That is
+          also what lets a smaller model do the work, and what a
+          hypothesis-generating loop is being built on.
+        </p>
+
+        <h2>About the author</h2>
+        <p>
+          Nazia Habib is a research engineer and data scientist who builds
+          FeatureGraph
+          <mark class="todo"
+            >TODO: and what she offers, e.g. works with research teams to
+            standardize their data analysis</mark
+          >. Her background is in oil and gas drilling and automation. She
+          specializes in the verification and behavioral compliance of
+          automated systems.
+        </p>
+      </article>
+    </main>
+    <footer>
+      <span>© 2026 FeatureGraph Project</span><span>MIT License</span
+      ><span><a href="../about.html">Contact</a></span
+      ><span><a href="../publications.html">Cite FeatureGraph</a></span>
+    </footer>
+  </body>
+</html>
