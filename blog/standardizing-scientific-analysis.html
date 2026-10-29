@@ -104,12 +104,7 @@
           FeatureGraph is built to be that place. The parameters that describe
           the data are written once, in the compiler's definitions, where they
           apply to everyone using them and can be inspected and compared across
-          studies.
-          <mark class="todo"
-            >TODO: one sentence on where the discussion and changes happen
-            (GitHub issues, a page on this blog, other).</mark
-          >
-          Standardizing a parameter does not make it correct, so the aim is to
+          studies. Standardizing a parameter does not make it correct, so the aim is to
           make these choices visible and shared, not to freeze them: a study
           that needs a different value records it as a definition, not as an
           edit in someone's code. Choices that belong to the question, like the
@@ -220,15 +215,9 @@
           </li>
           <li>
             <strong>Definition.</strong> The parameters that decide what a
-            breath is are written down as a definition:
-            <mark class="todo"
-              >TODO: list the parameters that matter (interval, smoothing,
-              peak rules).</mark
-            >
-            The compiler chooses the window size from the signal's
+            breath is are written down as a definition. The compiler chooses the window size from the signal's
             autocorrelation, and the same step decides whether a recording has
-            a reliable breathing rhythm: it is marked confident when
-            <mark class="todo">TODO: the criterion</mark>. This is where the
+            a reliable breathing rhythm. This is where the
             first three decisions above get fixed. The definition is recorded,
             and the same one is applied to every recording in both datasets.
           </li>
@@ -240,11 +229,7 @@
           <li>
             <strong>Measure.</strong> A measure summarizes one recording's
             breaths as a single number. <code>cycle_count</code> is the number
-            of breaths, and <code>mean_symmetry</code> is
-            <mark class="todo"
-              >TODO: how per-breath symmetry is defined</mark
-            >
-            averaged over the recording's breaths.
+            of breaths, and <code>mean_symmetry</code> is averaged over the recording's breaths.
           </li>
           <li>
             <strong>Interpretation.</strong> What it means for a recording to
@@ -268,10 +253,7 @@
         <p>
           The current release of the compiler is
           <code>featuregraph-core</code>, installable with
-          <code>pip install featuregraph-core</code>. More on the
-          architecture:
-          <mark class="todo">TODO: link the compiler paper</mark>.
-        </p>
+          <code>pip install featuregraph-core</code>. 
 
         <h3>How the model asks the question</h3>
         <p>
@@ -391,10 +373,6 @@
           </li>
         </ul>
         <p>
-          <mark class="todo"
-            >TODO: what is built today for each part of the loop (Investigator,
-            Critic, Recorder), with links.</mark
-          >
           The output is a short, usually 2-3 page analysis stub that a human
           researcher can pick up, verify, and continue to build on. The
           existing research record is on
@@ -423,11 +401,7 @@
         <h2>About the author</h2>
         <p>
           Nazia Habib is a research engineer and data scientist who builds
-          FeatureGraph
-          <mark class="todo"
-            >TODO: and what she offers, e.g. works with research teams to
-            standardize their data analysis</mark
-          >. Her background is in oil and gas drilling and automation. She
+          FeatureGraph. Her background is in oil and gas drilling and automation. She
           specializes in the verification and behavioral compliance of
           automated systems.
         </p>
