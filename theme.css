@@ -1,8 +1,8 @@
 /*
-  Shared theme for every page. Loaded after the page's own stylesheets, so it
-  replaces the colour and type tokens and restyles the header, buttons and
+  Shared theme for every page: colours, plus one font (the system UI font) everywhere except code.
+  Loaded after the page's own stylesheets, so it replaces the colour tokens and restyles the header, buttons and
   panels without touching each page's layout rules.
-  Light theme only for now: several older rules use fixed light colours.
+  Light and dark (prefers-color-scheme) palettes are defined here.
 */
 :root{
   --ink:#15211d;
@@ -18,15 +18,11 @@
   --green:#1f7a46;
   --sidebar:#15211d;
   --shadow:none;
-  --serif:"Bricolage Grotesque","Segoe UI",system-ui,sans-serif;
-  --academic-serif:"Bricolage Grotesque","Segoe UI",system-ui,sans-serif;
-  --sans:"IBM Plex Sans","Segoe UI",system-ui,sans-serif;
-  --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+  --site-font:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  --site-mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
 }
 
-body{font-family:var(--sans);background:var(--page);color:var(--text)}
-h1,h2,h3{font-family:var(--serif);letter-spacing:-.02em}
-h1,h2{font-weight:700}
+body{background:var(--page);color:var(--text)}
 :focus-visible{outline:2px solid var(--blue);outline-offset:3px}
 
 /* Header: one look for both header systems */
@@ -37,24 +33,23 @@ header,.site-header{
   box-shadow:none;
 }
 header{position:sticky;top:0;z-index:20}
-.brand,.brand span{font-family:var(--serif);font-weight:700;letter-spacing:-.01em;color:var(--ink)}
+.brand,.brand span{color:var(--ink)}
 .brand-mark{border-radius:0}
 .brand span:first-child:not(.brand-mark){color:var(--blue)}
-nav a{color:var(--muted);font:500 .9rem var(--sans);border-radius:4px}
+nav a{color:var(--muted);border-radius:4px}
 nav a:hover{background:transparent;color:var(--blue);text-decoration:none}
-.github-mark{color:var(--muted);font:500 .9rem var(--sans)}
+.github-mark{color:var(--muted)}
 .github-mark:hover{color:var(--blue);text-decoration:none}
 
 /* Small labels set in mono, as on the intro page */
 .eyebrow,.overline,.section-label,.publication-type,.track-number{
-  font-family:var(--mono);
   font-weight:500;
   letter-spacing:.09em;
   color:var(--muted);
 }
 .section-label{border-bottom-color:var(--line)}
-.tag{background:var(--blue-soft);color:var(--blue);border-radius:4px;font-family:var(--mono);font-weight:500;letter-spacing:.06em}
-.date{color:var(--muted);font-family:var(--mono);font-weight:500}
+.tag{background:var(--blue-soft);color:var(--blue);border-radius:4px;font-weight:500;letter-spacing:.06em}
+.date{color:var(--muted);font-weight:500}
 
 /* Buttons */
 .button{
@@ -62,7 +57,6 @@ nav a:hover{background:transparent;color:var(--blue);text-decoration:none}
   border-color:var(--blue);
   background:transparent;
   color:var(--blue);
-  font:600 .9rem var(--sans);
 }
 .button:hover{background:var(--blue-soft);border-color:var(--blue-dark);color:var(--blue-dark)}
 .button.primary{background:var(--blue);border-color:var(--blue);color:#fff}
@@ -81,8 +75,8 @@ main{border-color:var(--line)}
 .track-grid{border-radius:6px;overflow:hidden}
 .track li{border-bottom-color:var(--line);color:var(--text)}
 .table-wrap,.demo{border-color:var(--line)}
-th{background:var(--tint);color:var(--muted);font-family:var(--mono);font-weight:500;letter-spacing:.05em}
-.object-table th{color:var(--muted);font-family:var(--mono);font-weight:500;letter-spacing:.05em}
+th{background:var(--tint);color:var(--muted);font-weight:500;letter-spacing:.05em}
+.object-table th{color:var(--muted);font-weight:500;letter-spacing:.05em}
 
 /* Code */
 .code-block,pre{
@@ -90,9 +84,7 @@ th{background:var(--tint);color:var(--muted);font-family:var(--mono);font-weight
   border-color:var(--line);
   color:var(--ink);
   border-radius:8px;
-  font-family:var(--mono);
 }
-code{font-family:var(--mono)}
 
 /* Reading width for long prose */
 .post p,.post li,.content p,.content li{max-width:68ch}
@@ -181,3 +173,8 @@ header nav a{padding:6px 4px}
   [style*="color:#c62828"]{color:#ff8a80!important}
   .study-results .negative strong{color:#e59a8e}
 }
+
+/* One font site-wide. Pages named several (Inter, Georgia, Iowan Old Style, Lato); this overrides them all. */
+*{font-family:var(--site-font)!important}
+code,pre,kbd,samp,code *,pre *{font-family:var(--site-mono)!important}
+h1,h2,h3{letter-spacing:-.01em}
