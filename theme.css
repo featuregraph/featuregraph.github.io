@@ -178,3 +178,10 @@ header nav a{padding:6px 4px}
 *{font-family:var(--site-font)!important}
 code,pre,kbd,samp,code *,pre *{font-family:var(--site-mono)!important}
 h1,h2,h3{letter-spacing:-.01em}
+
+/* Headlines: nothing larger than 30px on any page.
+   Page titles are capped at 30px and large section titles at 24px; smaller headings are left as they were. */
+h1{font-size:clamp(1.5rem,5.5vw,30px)!important;line-height:1.2!important}
+.idea h2,.resources h2,.initiative-heading h2,.publications-heading h2,.section-copy h2,.contact h2,
+.section-heading-row h2,.block h2,.study-copy h2,article.post h2,main section>h2,main .content>h2{
+  font-size:clamp(1.25rem,4.5vw,24px)!important;line-height:1.25!important}
