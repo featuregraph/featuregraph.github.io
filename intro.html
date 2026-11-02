@@ -50,6 +50,9 @@ p{margin:0 0 16px;max-width:68ch}
 .pains p{font-size:16px;color:var(--muted);margin:0}
 figure{margin:28px 0 8px;background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:16px 16px 10px}
 figure svg{display:block;width:100%;height:auto}
+@media (max-width:640px){.scroll-x{overflow-x:auto}.scroll-x img{min-width:620px}}
+figure img{display:block;width:100%;height:auto;border-radius:4px;background:#fff}
+@media (prefers-color-scheme: dark){figure img{filter:invert(1) hue-rotate(180deg) brightness(1.2);mix-blend-mode:screen;background:transparent}}
 figcaption{font-size:14px;color:var(--muted);margin-top:8px;max-width:72ch}
 svg text{font-family:var(--font-mono);font-size:13px;fill:var(--muted)}
 svg .strong{fill:var(--ink)}
@@ -185,7 +188,12 @@ footer p{max-width:none}
   ]
 }</code></pre>
   <p style="font-size:15px;color:var(--muted)">The demo runs on a small mock table. Its values are not derived from real data.</p>
-  <p>The query layer is planned as five agent types. The Investigator proposes hypotheses as labeled free text, and nothing becomes a finding until it is tested. The Tester writes specs that run through a deterministic executor, checked by validation and held-out data. The Critic judges whether a stated finding follows from what was run. The Recorder writes the provenance record from the run logs. The Translator maps a new domain's vocabulary onto the schema, and is deferred to a later release.</p>
+  <p>The query layer is made of five agent roles. Two are built, one is under construction and two are planned. The Investigator proposes hypotheses as labeled free text, and nothing becomes a finding until it is tested. The Tester writes specs that run through a deterministic executor, checked by validation and held-out data. The Critic judges whether a stated finding follows from what was run. The Recorder writes the provenance record from the run logs. The Translator maps a new domain's vocabulary onto the schema, and is deferred to a later release.</p>
+
+  <figure>
+    <div class="scroll-x"><img src="images/agent-roles.png" width="1344" height="684" loading="lazy" alt="Diagram of the five agent roles in order: Investigator (under construction), Tester (built), Critic (planned), Recorder (built). Translator (planned, later phase) branches off the Tester."></div>
+    <figcaption>Status of the five agent roles. Green is built, amber is under construction, and dashed outlines are planned for a later phase.</figcaption>
+  </figure>
   <p>The loop generates hypotheses and translates queries inside the language model, while the analysis runs outside it. That means the whole analysis can be tracked with receipts, rerun outside the loop and checked. It also means the loop can potentially run on a more cost-efficient model than the frontier-size models used for open-ended research. The output is a short analysis stub, usually two to three pages, that a researcher can pick up, verify and build on.</p>
 </section>
 
@@ -200,6 +208,7 @@ footer p{max-width:none}
         <li>The <code>featuregraph-core</code> package.</li>
         <li>Runs on breathing recordings (BIDMC, CapnoBase), a wearable study from PhysioNet and a Tennessee Eastman reactor signal.</li>
         <li>A public <a href="https://github.com/featuregraph/featuregraph-research">research record</a>.</li>
+        <li>Two of the five agent roles, the Tester and the Recorder.</li>
       </ul>
     </div>
     <div>
