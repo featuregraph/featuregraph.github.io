@@ -1,5 +1,5 @@
 /*
-  Shared theme for every page (colours only: each page keeps its own fonts).
+  Shared theme for every page: colours, plus one font (the system UI font) everywhere except code.
   Loaded after the page's own stylesheets, so it replaces the colour tokens and restyles the header, buttons and
   panels without touching each page's layout rules.
   Light and dark (prefers-color-scheme) palettes are defined here.
@@ -18,6 +18,8 @@
   --green:#1f7a46;
   --sidebar:#15211d;
   --shadow:none;
+  --site-font:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  --site-mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
 }
 
 body{background:var(--page);color:var(--text)}
@@ -171,3 +173,8 @@ header nav a{padding:6px 4px}
   [style*="color:#c62828"]{color:#ff8a80!important}
   .study-results .negative strong{color:#e59a8e}
 }
+
+/* One font site-wide. Pages named several (Inter, Georgia, Iowan Old Style, Lato); this overrides them all. */
+*{font-family:var(--site-font)!important}
+code,pre,kbd,samp,code *,pre *{font-family:var(--site-mono)!important}
+h1,h2,h3{letter-spacing:-.01em}
