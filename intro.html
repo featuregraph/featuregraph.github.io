@@ -5,98 +5,74 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>FeatureGraph Introduction</title>
 <meta name="description" content="FeatureGraph turns scientific and engineering time series into defined, checkable summaries, so every number traces back to the assumptions that produced it.">
+<link rel="stylesheet" href="home.css?v=20260816-publications-2">
+<link rel="stylesheet" href="theme.css?v=20261102f">
 <style>
-/* Layout: left-aligned reading column (68ch) with a full-width waveform figure; sections separated by space and a thin rule. */
-:root{
-  --bg:#f4f7f5; --paper:#ffffff; --ink:#15211d; --muted:#53655e; --line:#d3dcd7;
-  --accent:#0b6e5f; --accent-ink:#ffffff; --wave:#0b6e5f; --code-bg:#eaf0ed;
-  --font-display:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
-  --font-body:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
-  --font-mono:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;--font-code:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
-}
-@media (prefers-color-scheme: dark){
-  :root{
-    --bg:#0e1614; --paper:#15201d; --ink:#e8efec; --muted:#9db1a9; --line:#26352f;
-    --accent:#4fd1b0; --accent-ink:#06201a; --wave:#4fd1b0; --code-bg:#1a2823;
-    color-scheme:dark;
-  }
-}
-code,pre,pre *{font-family:var(--font-code)!important}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font-body);font-size:17px;line-height:1.6;padding-inline:20px}
-a{color:var(--accent)}
-a:focus-visible,summary:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
-.page{max-width:920px;margin:0 auto}
-nav{display:flex;flex-wrap:wrap;gap:8px 24px;align-items:center;justify-content:space-between;padding-block:18px;border-bottom:1px solid var(--line)}
-.mark{font:700 20px var(--font-display);letter-spacing:-.01em;color:var(--ink);text-decoration:none}
-nav ul{list-style:none;display:flex;flex-wrap:wrap;gap:6px 22px;margin:0;padding:0;font:500 13px var(--font-mono);letter-spacing:.04em;text-transform:uppercase}
-nav ul a{color:var(--muted);text-decoration:none}
-nav ul a:hover{color:var(--accent)}
-header.hero{padding-block:64px 48px}
-h1{font:700 clamp(32px,6vw,54px)/1.04 var(--font-display);letter-spacing:-.01em;margin:0;max-width:19ch;text-wrap:balance}
-.sub{margin:20px 0 0;font-size:19px;color:var(--muted);max-width:60ch}
-.cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
-.btn{font:600 15px var(--font-body);text-decoration:none;padding:11px 18px;border-radius:6px;border:1px solid var(--accent);color:var(--accent)}
-.btn.primary{background:var(--accent);color:var(--accent-ink)}
-.btn code{font-family:var(--font-mono);font-size:14px}
-section{padding-block:44px;border-top:1px solid var(--line)}
-h2{font:700 clamp(24px,3.6vw,32px)/1.12 var(--font-display);letter-spacing:-.015em;margin:0 0 16px;max-width:26ch;text-wrap:balance}
-p{margin:0 0 16px;max-width:68ch}
-.eyebrow{font:500 12px var(--font-mono);letter-spacing:.09em;text-transform:uppercase;color:var(--muted);margin:0 0 10px}
-.pains{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px 32px;margin-top:20px}
+/* Intro-only rules. Header, card, hero, buttons, colours, dark mode and fonts come from home.css and theme.css, so this page matches the home page. */
+:root{--wave:var(--blue);--accent:var(--blue)}
+.block{padding:54px 68px;border-bottom:1px solid var(--line)}
+.block h2{margin:0 0 16px;max-width:26ch;color:var(--ink);font-size:clamp(1.5rem,2.7vw,2.1rem);font-weight:600;line-height:1.2;letter-spacing:-.018em}
+.block p{max-width:68ch;margin:0 0 14px;color:var(--muted);font-size:.92rem}
+.block p.eyebrow{margin:0 0 12px;font-size:.7rem;color:var(--muted)}
+.block p a,.block li a{color:var(--blue);text-decoration:underline;text-underline-offset:2px}
+.button code{margin-left:.4em;font-size:.78rem}
+.pains{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px 32px;margin-top:20px}
 .pains div{min-width:0}
-.pains h3{font:600 17px var(--font-body);margin:0 0 6px}
-.pains p{font-size:16px;color:var(--muted);margin:0}
-figure{margin:28px 0 8px;background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:16px 16px 10px}
+.pains h3,.layers h3,.status h3{margin:0 0 6px;color:var(--ink);font-size:1rem;font-weight:600}
+.pains p{margin:0;color:var(--muted);font-size:.9rem}
+figure{margin:24px 0 8px;background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:16px 16px 10px}
 figure svg{display:block;width:100%;height:auto}
-@media (max-width:640px){.scroll-x{overflow-x:auto}.scroll-x img{min-width:620px}}
 figure img{display:block;width:100%;height:auto;border-radius:4px;background:#fff}
+@media (max-width:640px){.scroll-x{overflow-x:auto}.scroll-x img{min-width:620px}}
 @media (prefers-color-scheme: dark){figure img{filter:invert(1) hue-rotate(180deg) brightness(1.2);mix-blend-mode:screen;background:transparent}}
-figcaption{font-size:14px;color:var(--muted);margin-top:8px;max-width:72ch}
-svg text{font-family:var(--font-mono);font-size:13px;fill:var(--muted)}
+figcaption{margin-top:8px;max-width:72ch;color:var(--muted);font-size:.85rem}
+svg text{font-size:13px;fill:var(--muted)}
 svg .strong{fill:var(--ink)}
 .layers{list-style:none;margin:20px 0 0;padding:0;display:flex;flex-direction:column}
 .layers li{display:grid;grid-template-columns:48px 1fr;gap:4px 16px;padding-block:14px;border-top:1px solid var(--line)}
 .layers li:last-child{border-bottom:1px solid var(--line)}
-.layers .k{font:700 28px/1 var(--font-mono);color:var(--accent)}
-.layers h3{font:600 17px var(--font-body);margin:0}
-.layers p{margin:2px 0 0;font-size:16px;color:var(--muted)}
-.layers .tag{display:inline-block;margin-left:8px;font:500 11px var(--font-mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);border:1px solid var(--line);border-radius:4px;padding:1px 6px;vertical-align:2px}
-pre{background:var(--code-bg);border-radius:8px;padding:16px;overflow-x:auto;font:400 14px/1.55 var(--font-mono);margin:20px 0 8px;max-width:100%}
-.status{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px 40px;margin-top:20px}
-.status h3{font:600 17px var(--font-body);margin:0 0 8px}
+.layers .k{color:var(--blue);font-size:1.7rem;font-weight:700;line-height:1}
+.layers h3{margin:0}
+.layers p{margin:2px 0 0;color:var(--muted);font-size:.9rem}
+.layers .tag{display:inline-block;margin-left:8px;padding:1px 6px;border:1px solid var(--line);border-radius:4px;background:transparent;color:var(--muted);font-size:.68rem;font-weight:500;letter-spacing:.06em;text-transform:uppercase;vertical-align:2px}
+pre{margin:20px 0 8px;padding:16px;max-width:100%;overflow-x:auto;font-size:.82rem;line-height:1.55}
+.status{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px 40px;margin-top:20px}
+.status h3{margin:0 0 8px}
 .status ul{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:6px}
 .status li{max-width:56ch}
-footer{padding-block:36px 56px;border-top:1px solid var(--line);color:var(--muted);font-size:15px}
-footer p{max-width:none}
-@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+code{font-size:.9em}
+@media (max-width:800px){.block{padding:38px 28px}}
+@media (max-width:480px){.block{padding:32px 22px}}
 </style>
 </head>
 <body>
-<div class="page">
-
-<nav aria-label="Primary">
-  <a class="mark" href="/">FeatureGraph</a>
-  <ul>
-    <li><a href="/demo.html">Demo</a></li>
-    <li><a href="https://github.com/featuregraph">GitHub</a></li>
-    <li><a href="https://blog.featuregraph.ai">Blog</a></li>
-  </ul>
-</nav>
-
-<header class="hero">
-  <p class="eyebrow">Introduction</p>
-  <h1>When two teams analyze the same signal, they should get the same answer.</h1>
-  <p class="sub">FeatureGraph turns scientific and engineering time series into defined, checkable summaries, so every number traces back to the assumptions that produced it.</p>
-  <div class="cta">
-    <a class="btn primary" href="/demo.html">Try the demo</a>
-    <a class="btn" href="https://github.com/featuregraph/featuregraph-core">Install <code>featuregraph-core</code></a>
-    <a class="btn" href="https://github.com/featuregraph/featuregraph-research">Read the research record</a>
-  </div>
+<header>
+  <a class="brand" href="/" aria-label="FeatureGraph home"><span>◇</span>FeatureGraph</a>
+  <nav aria-label="Primary navigation">
+    <a href="intro.html" aria-current="page">Introduction</a>
+    <a href="https://featuregraph-framework.readthedocs.io/">Docs</a>
+    <a href="updates.html">Updates</a>
+    <a href="https://blog.featuregraph.ai/">Blog ↗</a>
+    <a href="index.html#publications">Publications</a>
+    <a href="research.html">Research</a>
+    <a href="https://assistant.featuregraph.ai/">Assistant</a>
+    <a href="https://github.com/featuregraph/">GitHub</a>
+  </nav>
 </header>
 
-<section id="problem">
+<main>
+<section class="hero">
+  <p class="eyebrow">Introduction</p>
+  <h1>When two teams analyze the same signal, they should get the same answer.</h1>
+  <p class="lead">FeatureGraph turns scientific and engineering time series into defined, checkable summaries, so every number traces back to the assumptions that produced it.</p>
+  <div class="actions">
+    <a class="button primary" href="/demo.html">Try the demo</a>
+    <a class="button" href="https://github.com/featuregraph/featuregraph-core">Install <code>featuregraph-core</code></a>
+    <a class="button" href="https://github.com/featuregraph/featuregraph-research">Read the research record</a>
+  </div>
+</section>
+
+<section class="block" id="problem">
   <p class="eyebrow">The problem</p>
   <h2>The same question gets different answers, and nobody can say why.</h2>
   <p>Scientific and engineering time-series analysis is not standardized. Researchers repeat ad hoc coding work, and the files and databases they produce diverge into several sources of truth.</p>
@@ -120,7 +96,7 @@ footer p{max-width:none}
   </div>
 </section>
 
-<section id="what">
+<section class="block" id="what">
   <p class="eyebrow">What FeatureGraph does</p>
   <h2>One place where an analysis is defined and answered.</h2>
   <p>FeatureGraph processes raw time-series data into summaries and records each result with the assumptions that produced it. Research teams run an analysis the same way every time, and query its results from one place where the provenance is defined.</p>
@@ -128,7 +104,7 @@ footer p{max-width:none}
   <p>FeatureGraph does not retain raw data in the service. Only the constructed summaries can be queried.</p>
 </section>
 
-<section id="example">
+<section class="block" id="example">
   <p class="eyebrow">An example</p>
   <h2>One breath at a time.</h2>
   <p>FeatureGraph reads a recording and splits it into individual waves. Each wave is called an object and is described by measures such as its height, duration and shape. In a respiration recording, each object is one breath.</p>
@@ -159,7 +135,7 @@ footer p{max-width:none}
   <p>BIDMC and CapnoBase are two public respiration datasets. They measure breathing with different signals and sampling frequencies. FeatureGraph works in one-second intervals on both, so the same measures can be computed on each.</p>
 </section>
 
-<section id="layers">
+<section class="block" id="layers">
   <p class="eyebrow">How it works</p>
   <h2>Every result passes through five layers.</h2>
   <p>The first four layers are built. They are fully deterministic and run outside any language model. The fifth layer is in development for both human queries and agent-driven loops.</p>
@@ -173,7 +149,7 @@ footer p{max-width:none}
   <p style="margin-top:20px">The compiler is <code>featuregraph-core</code>, installed with <code>pip install featuregraph-core</code>. The current version is built for oscillating signals and can be adapted to other kinds of time series.</p>
 </section>
 
-<section id="llm">
+<section class="block" id="llm">
   <p class="eyebrow">Language models</p>
   <h2>The model writes the question. A program outside the model answers it.</h2>
   <p>FeatureGraph is building natural-language access to its results. In the demo, an agent built on Cohere's Command A turns a question into a JSON query, and a separate Python program checks the query and runs it. The check confirms that the query is well formed, that the dataset it names exists in the table, and that it can run.</p>
@@ -197,7 +173,7 @@ footer p{max-width:none}
   <p>The loop generates hypotheses and translates queries inside the language model, while the analysis runs outside it. That means the whole analysis can be tracked with receipts, rerun outside the loop and checked. It also means the loop can potentially run on a more cost-efficient model than the frontier-size models used for open-ended research. The output is a short analysis stub, usually two to three pages, that a researcher can pick up, verify and build on.</p>
 </section>
 
-<section id="status">
+<section class="block" id="status">
   <p class="eyebrow">Where it stands</p>
   <h2>What is built, what is in development, and what it does not claim.</h2>
   <div class="status">
@@ -228,13 +204,19 @@ footer p{max-width:none}
   </div>
 </section>
 
-<footer>
-  <p><strong style="color:var(--ink)">About the author.</strong> Nazia Habib is a research engineer and data scientist building FeatureGraph, a framework for generative scientific data analysis using cost-effective language models. Her background is in helping research teams in oil and gas drilling and automation standardize their behavioral monitoring workflows. She specializes in the verification and behavioral compliance of automated systems.</p>
+<section class="block" id="author">
+  <p class="eyebrow">About the author</p>
+  <p>Nazia Habib is a research engineer and data scientist building FeatureGraph, a framework for generative scientific data analysis using cost-effective language models. Her background is in helping research teams in oil and gas drilling and automation standardize their behavioral monitoring workflows. She specializes in the verification and behavioral compliance of automated systems.</p>
   <p><a href="https://blog.featuregraph.ai">Blog</a> · <a href="https://github.com/featuregraph">GitHub</a> · <a href="/demo.html">Demo</a></p>
   <!-- TODO before publishing: add the link to the compiler paper in the layers section, and a contact address in the footer. -->
-</footer>
+</section>
+</main>
 
-</div>
+<footer>
+  <span>© 2026 FeatureGraph</span>
+  <span>Created by Nazia Habib</span>
+  <a href="https://github.com/featuregraph/featuregraph">MIT-licensed beta</a>
+</footer>
 <script>
 (function(){
   var el=document.getElementById('wave'); if(!el)return;
