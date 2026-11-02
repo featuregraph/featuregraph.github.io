@@ -118,3 +118,66 @@ header nav a{padding:6px 4px}
 
 /* Wide tables scroll inside themselves on narrow screens */
 .object-table{display:block;max-width:100%;overflow-x:auto}
+
+/* Dark theme: same palette as intro.html, follows the reader's system setting */
+@media (prefers-color-scheme: dark){
+  :root{
+    color-scheme:dark;
+    --ink:#e8efec;
+    --text:#cfdad5;
+    --muted:#9db1a9;
+    --line:#26352f;
+    --page:#0e1614;
+    --panel:#15201d;
+    --tint:#1a2823;
+    --blue:#4fd1b0;
+    --blue-dark:#7be0c6;
+    --blue-soft:#1f3a32;
+    --green:#5fd08a;
+    --sidebar:#0e1614;
+  }
+  body{background:var(--page);color:var(--text)}
+  header,.site-header{background:var(--page)}
+  nav a,.github-mark{color:var(--muted)}
+  .button{background:transparent}
+  .button.primary,.button.primary:hover{color:#06201a}
+  .button:hover{background:var(--blue-soft)}
+  .button.primary:hover{background:var(--blue-dark)}
+  .featured-publication-links .button{background:transparent}
+  .featured-publication-links .button:hover{background:var(--blue-soft);color:var(--blue-dark)}
+
+  /* surfaces that were hard-coded white or near-white */
+  main,.card,.panel,.study,.object-table,.pipeline-step,.metric-row article,
+  .publication-item,.track-grid,.demo,.why-section h2,.layer-queries rect{background:var(--panel);fill:var(--panel)}
+  .why-section h2,.layer-queries rect{fill:var(--panel)}
+  .gallery-preview>*,.pipeline-visual,.demo-chart-wrap,.layer-objects rect{background:var(--tint);fill:var(--tint)}
+  .principles,.example,.contact,.initiative,.study-results article,.citation-box,
+  .release-strip,.publications-featured{background:var(--tint)}
+  .code-block,pre,.citation-box pre{background:var(--tint);color:var(--ink)}
+  th{background:var(--tint);color:var(--muted)}
+  td{border-color:var(--line)}
+  .track li{border-bottom-color:var(--line)}
+  .research-timeline li.future::before{background:var(--page)}
+
+  /* SVG diagrams */
+  .diagram-labels{fill:var(--ink)}
+  .construction-figure svg{color:var(--muted)}
+  .axis,.layer-events line{stroke:var(--line)}
+  .signal{stroke:var(--ink)}
+  .peak-point,.trough-point{stroke:var(--panel)}
+  .mini-list:not(.done-list):not(.active-list) li::before{color:var(--muted)}
+
+  input,select,textarea{background:var(--panel);color:var(--ink);border-color:var(--line)}
+}
+
+/* Footer links were unspaced */
+.footer-links{display:flex;flex-wrap:wrap;gap:6px 18px}
+
+@media (prefers-color-scheme: dark){
+  /* demo status labels use inline colours chosen for a white page */
+  [style*="color:#2e7d32"]{color:#6fcf8a!important}
+  [style*="color:#6a1b9a"]{color:#c79bf0!important}
+  [style*="color:#b26a00"]{color:#e8a84a!important}
+  [style*="color:#c62828"]{color:#ff8a80!important}
+  .study-results .negative strong{color:#e59a8e}
+}
