@@ -271,3 +271,19 @@ main .card-grid.two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));g
 main .card-grid.two .card ul{margin:12px 0 20px;padding-left:18px}
 @media (max-width:700px){main .card-grid.two{grid-template-columns:1fr}}
 main .demo .object-table{width:100%}
+
+/* ===== Mobile menu: header links collapse behind a button ===== */
+.menu-toggle{display:none}
+@media (max-width:800px){
+  header{flex-direction:row;align-items:center;justify-content:space-between;min-height:56px;padding:8px 18px;gap:0}
+  .js .menu-toggle{display:inline-flex;flex-direction:column;justify-content:center;gap:5px;width:40px;height:40px;padding:0 9px;background:transparent;border:1px solid var(--line);border-radius:6px;cursor:pointer}
+  .menu-toggle span{display:block;height:2px;background:var(--ink);border-radius:1px;transition:transform .15s,opacity .15s}
+  header.nav-open .menu-toggle span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+  header.nav-open .menu-toggle span:nth-child(2){opacity:0}
+  header.nav-open .menu-toggle span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+  .js header nav{display:none}
+  .js header.nav-open nav{display:flex;flex-direction:column;align-items:stretch;flex:none;width:100%;gap:0;margin-top:8px;padding:8px 0 10px;border-top:1px solid var(--line)}
+  header nav a{padding:11px 2px!important;font-size:1rem!important}
+  header nav a.ext-first{margin-left:0;margin-top:8px;padding-top:15px!important;border-top:1px solid var(--line);border-radius:0}
+  header{max-height:100vh;overflow-y:auto}
+}

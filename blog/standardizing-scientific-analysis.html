@@ -11,13 +11,15 @@
     <link rel="alternate" type="application/atom+xml" title="FeatureGraph blog" href="../feed.xml" />
     <link rel="stylesheet" href="../styles.css" />
     <link rel="stylesheet" href="blog.css" />
-    <link rel="stylesheet" href="../theme.css?v=20261102q" />
+    <link rel="stylesheet" href="../theme.css?v=20261102r" />
     <script src="../posthog.js" defer></script>
-  </head>
+  <script src="../nav.js"></script>
+</head>
   <body>
     <header>
   <a class="brand" href="../index.html" aria-label="FeatureGraph home"><span>◇</span>FeatureGraph</a>
-  <nav aria-label="Primary navigation">
+  <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Menu"><span></span><span></span><span></span></button>
+  <nav id="site-nav" aria-label="Primary navigation">
     <a href="../index.html">Introduction</a>
     <a href="../research.html">Research</a>
     <a href="../software.html">Software</a>
