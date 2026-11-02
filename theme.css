@@ -1,0 +1,120 @@
+/*
+  Shared theme for every page. Loaded after the page's own stylesheets, so it
+  replaces the colour and type tokens and restyles the header, buttons and
+  panels without touching each page's layout rules.
+  Light theme only for now: several older rules use fixed light colours.
+*/
+:root{
+  --ink:#15211d;
+  --text:#2a3833;
+  --muted:#53655e;
+  --line:#d3dcd7;
+  --page:#f4f7f5;
+  --panel:#ffffff;
+  --tint:#eaf0ed;
+  --blue:#0b6e5f;
+  --blue-dark:#085a4e;
+  --blue-soft:#e0efeb;
+  --green:#1f7a46;
+  --sidebar:#15211d;
+  --shadow:none;
+  --serif:"Bricolage Grotesque","Segoe UI",system-ui,sans-serif;
+  --academic-serif:"Bricolage Grotesque","Segoe UI",system-ui,sans-serif;
+  --sans:"IBM Plex Sans","Segoe UI",system-ui,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+}
+
+body{font-family:var(--sans);background:var(--page);color:var(--text)}
+h1,h2,h3{font-family:var(--serif);letter-spacing:-.02em}
+h1,h2{font-weight:700}
+:focus-visible{outline:2px solid var(--blue);outline-offset:3px}
+
+/* Header: one look for both header systems */
+header,.site-header{
+  background:var(--page);
+  color:var(--ink);
+  border-bottom:1px solid var(--line);
+  box-shadow:none;
+}
+header{position:sticky;top:0;z-index:20}
+.brand,.brand span{font-family:var(--serif);font-weight:700;letter-spacing:-.01em;color:var(--ink)}
+.brand-mark{border-radius:0}
+.brand span:first-child:not(.brand-mark){color:var(--blue)}
+nav a{color:var(--muted);font:500 .9rem var(--sans);border-radius:4px}
+nav a:hover{background:transparent;color:var(--blue);text-decoration:none}
+.github-mark{color:var(--muted);font:500 .9rem var(--sans)}
+.github-mark:hover{color:var(--blue);text-decoration:none}
+
+/* Small labels set in mono, as on the intro page */
+.eyebrow,.overline,.section-label,.publication-type,.track-number{
+  font-family:var(--mono);
+  font-weight:500;
+  letter-spacing:.09em;
+  color:var(--muted);
+}
+.section-label{border-bottom-color:var(--line)}
+.tag{background:var(--blue-soft);color:var(--blue);border-radius:4px;font-family:var(--mono);font-weight:500;letter-spacing:.06em}
+.date{color:var(--muted);font-family:var(--mono);font-weight:500}
+
+/* Buttons */
+.button{
+  border-radius:6px;
+  border-color:var(--blue);
+  background:transparent;
+  color:var(--blue);
+  font:600 .9rem var(--sans);
+}
+.button:hover{background:var(--blue-soft);border-color:var(--blue-dark);color:var(--blue-dark)}
+.button.primary{background:var(--blue);border-color:var(--blue);color:#fff}
+.button.primary:hover{background:var(--blue-dark);border-color:var(--blue-dark);color:#fff}
+.text-link,.inline-link{color:var(--blue)}
+
+/* Panels and cards: flat, thin rules */
+.panel,.card,main{border-radius:8px;box-shadow:none}
+main{border-color:var(--line)}
+.panel,.card{border-color:var(--line)}
+.release-strip{background:var(--tint)}
+.principles,.example,.initiative,.contact,.publications-featured,.study-results article{background:var(--tint)}
+.publication-links,.publication-links a{border-color:var(--line)}
+.study{background:var(--panel)}
+.study-conclusion{background:var(--tint);border-left-color:var(--blue)}
+.track-grid{border-radius:6px;overflow:hidden}
+.track li{border-bottom-color:var(--line);color:var(--text)}
+.table-wrap,.demo{border-color:var(--line)}
+th{background:var(--tint);color:var(--muted);font-family:var(--mono);font-weight:500;letter-spacing:.05em}
+.object-table th{color:var(--muted);font-family:var(--mono);font-weight:500;letter-spacing:.05em}
+
+/* Code */
+.code-block,pre{
+  background:var(--tint);
+  border-color:var(--line);
+  color:var(--ink);
+  border-radius:8px;
+  font-family:var(--mono);
+}
+code{font-family:var(--mono)}
+
+/* Reading width for long prose */
+.post p,.post li,.content p,.content li{max-width:68ch}
+
+/* Footer */
+footer{color:var(--muted)}
+footer a{color:var(--ink)}
+footer a:hover{color:var(--blue)}
+
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+/* Long navigation wraps instead of widening the page */
+header{flex-wrap:wrap;gap:4px 20px}
+.site-header{gap:8px 24px}
+nav{flex-wrap:wrap;gap:2px 14px;min-width:0}
+.site-header nav{justify-content:center}
+header nav a{padding:6px 4px}
+@media (max-width:900px){
+  .site-header nav{display:flex}
+  .site-header{grid-template-columns:1fr;justify-items:start}
+  .github-mark{justify-self:start}
+}
+
+/* Wide tables scroll inside themselves on narrow screens */
+.object-table{display:block;max-width:100%;overflow-x:auto}

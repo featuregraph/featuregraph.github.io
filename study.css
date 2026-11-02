@@ -24,7 +24,7 @@
 .study-conclusion {
   padding: 13px 15px;
   border-left: 3px solid var(--blue);
-  background: #f5f9fc;
+  background: var(--tint);
 }
 
 .study-results {

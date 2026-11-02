@@ -10,16 +10,20 @@
     />
     <link rel="stylesheet" href="styles.css" />
     <link rel="stylesheet" href="enhancements.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="theme.css?v=20261102" />
     <style>
       .featured-publications {
         margin: 34px 0 42px;
         padding: 26px 28px;
-        background: #eef6fa;
-        border: 1px solid #b9d4e4;
+        background: var(--tint);
+        border: 1px solid var(--line);
       }
       .featured-publications h2 {
         margin: 0 0 18px;
-        color: #2b2b2b;
+        color: var(--ink);
         font-size: 1.55rem;
         line-height: 1.2;
       }
@@ -30,11 +34,11 @@
       }
       .featured-publication-links .button {
         background: #fff;
-        border-color: #2980b9;
-        color: #236f9f;
+        border-color: var(--blue);
+        color: var(--blue);
       }
       .featured-publication-links .button:hover {
-        background: #2980b9;
+        background: var(--blue);
         color: #fff;
       }
     </style>
@@ -47,7 +51,7 @@
         ><span>FeatureGraph</span></a
       >
       <nav aria-label="Primary navigation">
-        <a href="research.html">Research</a><a href="software.html">Software</a
+        <a href="intro.html">Introduction</a><a href="research.html">Research</a><a href="software.html">Software</a
         ><a href="documentation.html">Documentation</a
         ><a href="releases.html">Releases</a
         ><a href="publications.html">Publications</a
