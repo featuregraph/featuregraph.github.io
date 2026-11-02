@@ -9,14 +9,15 @@
       content="FeatureGraph research on materializing detected states and events as explicit behavioral objects and relations."
     />
     <link rel="stylesheet" href="styles.css" />
-    <link rel="stylesheet" href="theme.css?v=20261102n" />
+    <link rel="stylesheet" href="theme.css?v=20261102p" />
+    <script src="home.js" defer></script>
     <script src="posthog.js" defer></script>
   </head>
   <body>
     <header>
   <a class="brand" href="index.html" aria-label="FeatureGraph home"><span>◇</span>FeatureGraph</a>
   <nav aria-label="Primary navigation">
-    <a href="intro.html">Introduction</a>
+    <a href="index.html">Introduction</a>
     <a href="research.html" aria-current="page">Research</a>
     <a href="software.html">Software</a>
     <a href="releases.html">Releases</a>
@@ -49,11 +50,13 @@
         <aside class="side-nav">
           <a href="#problem">Research question</a>
           <a href="#workflow">Representation workflow</a>
+          <a href="#example">Worked example</a>
           <a href="#contracts">What FeatureGraph does</a>
           <a href="#bidmc-study">BIDMC study</a>
           <a href="#tep-study">TEP transfer study</a>
           <a href="#clap-study">CLaP study</a>
           <a href="#accumulation">Accumulation</a>
+          <a href="#program">Research program</a>
           <a href="#next">Next phase</a>
         </aside>
         <div class="content">
@@ -122,6 +125,39 @@
               </tbody>
             </table>
           </section>
+          <section id="example">
+            <p class="eyebrow">One concrete example</p>
+            <h2>Watch measurements become an inspectable analysis.</h2>
+            <p>
+              The demonstration below shows which measurements belong together,
+              where each interval starts and ends, and how its duration and
+              amplitude were calculated.
+            </p>
+            <p>
+              <button class="button primary" id="construct" type="button">Reveal the evidence</button>
+            </p>
+            <p class="status" id="status">
+              Raw observations are shown. Reveal the object boundaries and measurements.
+            </p>
+            <div class="demo">
+              <svg id="chart" viewBox="0 0 800 260" role="img" aria-label="Sample waveform">
+                <line class="axis" x1="32" y1="226" x2="780" y2="226"></line>
+                <polyline id="signal" points=""></polyline>
+                <g id="objects"></g>
+              </svg>
+              <div class="table-wrap">
+                <table class="object-table">
+                  <thead>
+                    <tr><th>Segment</th><th>Start</th><th>Peak</th><th>End</th><th>Duration</th><th>Amplitude</th></tr>
+                  </thead>
+                  <tbody id="object-table">
+                    <tr><td colspan="6">Objects not yet constructed.</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </section>
+
           <section id="contracts">
             <p class="eyebrow">Explicit limits</p>
             <h2>Deterministic, repeatable data analysis.</h2>
@@ -387,6 +423,44 @@
               list of engineered features.
             </p>
           </section>
+          <section id="program">
+            <p class="eyebrow">The research program</p>
+            <h2>Describe the analysis. Run it reproducibly.</h2>
+            <p>
+              FeatureGraph is an open scientific data-analysis framework. Each
+              study states what the source data and methods provide, automates
+              the declared grouping, measurement, comparison, and validation
+              steps, and records which conclusions still require scientific
+              judgment.
+            </p>
+            <div class="card-grid two">
+              <article class="card">
+                <p class="eyebrow">01</p>
+                <h3>Representation</h3>
+                <p>Turn state and event sequences into bounded objects that people and software can inspect, measure, relate, and query.</p>
+                <ul>
+                  <li>Reproducible studies and evaluations</li>
+                  <li>Open software and runnable demonstrations</li>
+                  <li>Explicit boundaries, properties, and provenance</li>
+                  <li>Citable datasets and research artifacts</li>
+                </ul>
+                <p><a class="button primary" href="https://doi.org/10.5281/zenodo.21984186" target="_blank" rel="noopener noreferrer">Explore the research</a></p>
+              </article>
+              <article class="card">
+                <p class="eyebrow">02</p>
+                <h3>Interoperability</h3>
+                <p>Connect external detectors to a shared object representation without taking over their scientific role.</p>
+                <ul>
+                  <li>Cross-detector and cross-domain evaluations</li>
+                  <li>Technical pilots and proof-of-concept studies</li>
+                  <li>Independent validation and failure analysis</li>
+                  <li>Research collaboration and integration</li>
+                </ul>
+                <p><a class="button primary" href="updates.html">Follow progress</a></p>
+              </article>
+            </div>
+          </section>
+
           <section id="next">
             <p class="eyebrow">Next phase</p>
             <h2>Test the same object contract across detectors and domains.</h2>
