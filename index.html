@@ -53,11 +53,13 @@ code{font-size:.9em}
 @media (max-width:800px){.block{padding:38px 28px}}
 @media (max-width:480px){.block{padding:32px 22px}}
 </style>
+<script src="nav.js"></script>
 </head>
 <body>
 <header>
   <a class="brand" href="index.html" aria-label="FeatureGraph home"><span>◇</span>FeatureGraph</a>
-  <nav aria-label="Primary navigation">
+  <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Menu"><span></span><span></span><span></span></button>
+  <nav id="site-nav" aria-label="Primary navigation">
     <a href="index.html" aria-current="page">Introduction</a>
     <a href="research.html">Research</a>
     <a href="software.html">Software</a>

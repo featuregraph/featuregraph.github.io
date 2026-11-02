@@ -19,12 +19,14 @@
       .demo h2 { margin-top: 32px; }
       .demo pre { overflow-x: auto; }
     </style>
+    <script src="nav.js"></script>
     <script src="posthog.js" defer></script>
   </head>
   <body>
     <header>
   <a class="brand" href="index.html" aria-label="FeatureGraph home"><span>◇</span>FeatureGraph</a>
-  <nav aria-label="Primary navigation">
+  <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Menu"><span></span><span></span><span></span></button>
+  <nav id="site-nav" aria-label="Primary navigation">
     <a href="index.html">Introduction</a>
     <a href="research.html">Research</a>
     <a href="software.html">Software</a>
