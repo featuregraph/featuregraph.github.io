@@ -9,7 +9,7 @@
       content="FeatureGraph research and software roadmap."
     />
     <link rel="stylesheet" href="styles.css" />
-    <link rel="stylesheet" href="theme.css?v=20261103d" />
+    <link rel="stylesheet" href="theme.css?v=20261103f" />
     <script src="posthog.js" defer></script>
   <script src="nav.js"></script>
 </head>
@@ -42,6 +42,39 @@
           The released BIDMC beta remains the citable record of the earlier
           native construction.
         </p>
+      </section>
+
+      <section class="section" id="status">
+        <div class="section-heading">
+          <p class="eyebrow">Where it stands</p>
+          <h2>What is built, what is in development, and what it does not claim.</h2>
+        </div>
+        <div class="card-grid three">
+          <article class="card">
+            <h3>Built</h3>
+            <ul>
+              <li>The compiler layers P, D, O and M, deterministic and outside any language model.</li>
+              <li>The <code>featuregraph-core</code> package.</li>
+              <li>Runs on breathing recordings (BIDMC, CapnoBase), a wearable study from PhysioNet and a Tennessee Eastman reactor signal.</li>
+              <li>A public <a href="https://github.com/featuregraph/featuregraph-research" target="_blank" rel="noopener noreferrer">research record</a>.</li>
+              <li>Two of the five agent roles, the Tester and the Recorder.</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h3>In development</h3>
+            <ul>
+              <li>The scientific interpretation layer and its agent loop.</li>
+              <li>Natural-language access beyond the mock-table demo.</li>
+              <li>Support for time series that do not oscillate.</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h3>Not claimed</h3>
+            <ul>
+              <li>FeatureGraph provides structure and an audit trail. It does not provide clinical validation or final scientific interpretation.</li>
+            </ul>
+          </article>
+        </div>
       </section>
 
       <section class="section">

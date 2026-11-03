@@ -302,3 +302,12 @@ main .block h2{max-width:none}
 .content{min-width:0}
 @media (max-width:900px){.content-layout{grid-template-columns:1fr}.side-nav{position:static;grid-template-columns:repeat(2,1fr);border-bottom:1px solid var(--line);padding-bottom:20px}}
 main .demo .object-table{display:table;width:100%}
+
+/* Figures (agent-roles diagram and example illustrations), shared by Introduction and Research */
+main figure{margin:24px 0 8px;background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:16px 16px 10px}
+main figure svg{display:block;width:100%;height:auto}
+main figure img{display:block;width:100%;height:auto;border-radius:4px;background:#fff}
+main figcaption{margin-top:8px;max-width:72ch;color:var(--muted);font-size:var(--fs-text)}
+@media (max-width:640px){.scroll-x{overflow-x:auto}.scroll-x img{min-width:620px}}
+@media (prefers-color-scheme: dark){main figure img{filter:invert(1) hue-rotate(180deg) brightness(1.2);mix-blend-mode:screen;background:transparent}}
+main pre{max-width:100%;overflow-x:auto}
