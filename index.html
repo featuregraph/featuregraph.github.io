@@ -75,7 +75,7 @@ code{font-size:.9em}
 <section class="hero compact">
   <p class="eyebrow">Introduction</p>
   <h1>The data science and analytics store built for agents.</h1>
-  <p class="lead">Your domain experts shouldn't have to spend their time writing Python code. FeatureGraph handles the timeseries analysis so your team can get back to the science and engineering work.</p>
+  <p class="lead">Your domain experts shouldn't have to spend their time writing Python code. FeatureGraph handles the time-series analysis so your team can get back to the science and engineering work.</p>
   <div class="actions">
     <a class="button primary" href="/demo.html">See a demo</a>
     <a class="button" href="https://github.com/featuregraph/featuregraph-core" target="_blank" rel="noopener noreferrer">Install <code>featuregraph-core</code></a>
@@ -97,17 +97,17 @@ code{font-size:.9em}
 <section class="block" id="shift">
   <p class="eyebrow">Why this exists</p>
   <h2>Agent-written analysis code built for your data.</h2>
-  <p>FeatureGraph is a coding tool built for data science teams. Every company's data has its own structure, units, sensors, definitions and rules for what counts as a valid result, and agents need to be built to work with them.</p>
-  <p>We make the infrastructure fit the company: what the data contains, what each measure means, and which checks a result must pass. All work that's usually done manually, in notebooks and scripts that only their author understands.</p>
+  <p>Each company's data has its own structure, units, sensors, definitions and rules for what counts as a valid result, and agents need to be built to work with them.</p>
+  <p>FeatureGraph makes the infrastructure fit the company. We help you move away from doing this work manually in notebooks and scripts and get it into a centralized store everyone in your organization works with.</p>
 </section>
 
 <section class="block" id="what">
   <p class="eyebrow">What FeatureGraph does</p>
   <h2>The bridge between your agents and your data.</h2>
-  <p>FeatureGraph is that infrastructure. It is set up with your team around your own time-series data, and it turns that setup into a store that agents can query, instead of code that agents have to write.</p>
-  <p><strong>Set up once, for your company.</strong> We work with your team to declare what the data contains and what the analysis should calculate and check. Those decisions are written down in one place.</p>
-  <p><strong>Compiled, not guessed.</strong> The compiler turns those declarations into explicit, measured objects. It is deterministic and runs outside any language model, so the same declaration gives the same result every time, and each result is recorded with the assumptions that produced it.</p>
-  <p><strong>Queried by agents and people.</strong> A question in plain language becomes a short query that a separate program checks and answers from the stored results. Natural-language access is in development; the demo shows how it works on a small mock table. Changing an assumption, such as a smoothing window, creates a new defined analysis, visible and recorded instead of buried in a notebook.</p>
+  <p>FeatureGraph is set up with your team around your own time-series data, and it turns that setup into a store that agents can query, instead of code that agents have to write.</p>
+  <p><strong>Set up once, for your company.</strong> We work with your team to declare what the data contains and what the analysis should calculate and check. Those decisions are recorded in one place.</p>
+  <p><strong>Analysis that's compiled, not written on the fly.</strong> The compiler turns those declarations into explicit, measured objects. It is deterministic and runs outside any language model, so the same declaration gives the same result every time, and each result is recorded with the assumptions that produced it.</p>
+  <p><strong>Queryable by agents and humans.</strong> A question in plain language becomes a short query that a separate program checks and answers from the stored results. Natural-language access is in development; the demo shows how it works on a small mock table. Changing an assumption, such as a smoothing window, creates a new defined analysis, visible and recorded instead of buried in a notebook.</p>
   <p>FeatureGraph does not retain raw data in the service. Only the constructed summaries can be queried.</p>
 </section>
 
