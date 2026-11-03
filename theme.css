@@ -258,19 +258,19 @@ main .content section{padding-bottom:0!important}
 main .content>section:first-child{padding-top:0}
 
 /* Worked example on the Research page (moved from the old home page) */
-main .demo{margin-top:20px;border:1px solid var(--line);border-radius:6px;background:var(--panel);overflow:hidden}
+main .example-demo{margin-top:20px;border:1px solid var(--line);border-radius:6px;background:var(--panel);overflow:hidden}
 main #chart{display:block;width:100%;height:auto;max-height:250px}
 main .axis{stroke:var(--line);stroke-width:1}
 main .signal{fill:none;stroke:var(--ink);stroke-width:2}
 main .object-band{fill:var(--blue);opacity:.12}
 main .object-point{fill:var(--blue)}
 main .object-label{fill:var(--blue);font-size:11px;font-weight:600;text-anchor:middle}
-main .demo .table-wrap{overflow:auto;border-top:1px solid var(--line)}
-main .demo .object-table{border:0;margin:0}
+main .example-demo .table-wrap{overflow:auto;border-top:1px solid var(--line)}
+main .example-demo .object-table{border:0;margin:0}
 main .card-grid.two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;margin-top:24px}
 main .card-grid.two .card ul{margin:12px 0 20px;padding-left:18px}
 @media (max-width:700px){main .card-grid.two{grid-template-columns:1fr}}
-main .demo .object-table{width:100%}
+main .example-demo .object-table{width:100%}
 
 /* ===== Mobile menu: header links collapse behind a button ===== */
 .menu-toggle{display:none}
@@ -287,3 +287,18 @@ main .demo .object-table{width:100%}
   header nav a.ext-first{margin-left:0;margin-top:8px;padding-top:15px!important;border-top:1px solid var(--line);border-radius:0}
   header{max-height:100vh;overflow-y:auto}
 }
+
+/* Long single-column pages (demo): same section rhythm as Research */
+main .demo{max-width:none;border:0;background:transparent;padding:0}
+main .demo>h2{margin-top:40px;padding-top:40px;border-top:1px solid var(--line)}
+main .demo>h2+p,main .demo>h2+.demo-scroll{margin-top:16px}
+/* Introduction: same two-column layout as Research */
+main .block{padding:0;border:0}
+main .block h2{max-width:none}
+/* Two-column page layout (side list + content): shared by Research and Introduction */
+.content-layout{display:grid;grid-template-columns:220px minmax(0,1fr);gap:clamp(48px,6vw,88px)}
+.side-nav{position:sticky;top:90px;display:grid;gap:10px}
+.side-nav a{display:block;color:var(--muted);font-size:var(--fs-text)}
+.content{min-width:0}
+@media (max-width:900px){.content-layout{grid-template-columns:1fr}.side-nav{position:static;grid-template-columns:repeat(2,1fr);border-bottom:1px solid var(--line);padding-bottom:20px}}
+main .demo .object-table{display:table;width:100%}

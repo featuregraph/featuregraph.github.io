@@ -15,12 +15,10 @@
 <meta name="twitter:image" content="https://featuregraph.ai/social-preview.png">
 <link rel="canonical" href="https://featuregraph.ai/">
 <link rel="stylesheet" href="home.css?v=20260816-publications-2">
-<link rel="stylesheet" href="theme.css?v=20261102r">
+<link rel="stylesheet" href="theme.css?v=20261103c">
 <style>
 /* Intro-only rules. Header, card, hero, buttons, colours, dark mode and fonts come from home.css and theme.css, so this page matches the home page. */
 :root{--wave:var(--blue);--accent:var(--blue)}
-.block{padding:54px 68px;border-bottom:1px solid var(--line)}
-.block h2{margin:0 0 16px;max-width:26ch;color:var(--ink);font-size:clamp(1.5rem,2.7vw,2.1rem);font-weight:600;line-height:1.2;letter-spacing:-.018em}
 .block p{max-width:68ch;margin:0 0 14px;color:var(--muted);font-size:.92rem}
 .block p.eyebrow{margin:0 0 12px;font-size:.7rem;color:var(--muted)}
 .block p a,.block li a{color:var(--blue);text-decoration:underline;text-underline-offset:2px}
@@ -50,8 +48,6 @@ pre{margin:20px 0 8px;padding:16px;max-width:100%;overflow-x:auto;font-size:.82r
 .status ul{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:6px}
 .status li{max-width:56ch}
 code{font-size:.9em}
-@media (max-width:800px){.block{padding:38px 28px}}
-@media (max-width:480px){.block{padding:32px 22px}}
 </style>
 <script src="nav.js"></script>
 </head>
@@ -75,8 +71,8 @@ code{font-size:.9em}
   </nav>
 </header>
 
-<main>
-<section class="hero">
+<main class="page-shell">
+<section class="hero compact">
   <p class="eyebrow">Introduction</p>
   <h1>The data science and analytics store built for agents.</h1>
   <p class="lead">Your domain experts shouldn't have to spend their time writing Python code. FeatureGraph handles the timeseries analysis so your team can get back to the science and engineering work.</p>
@@ -86,6 +82,17 @@ code{font-size:.9em}
     <a class="button" href="https://github.com/featuregraph/featuregraph-research" target="_blank" rel="noopener noreferrer">Read the research record</a>
   </div>
 </section>
+
+<div class="content-layout">
+<aside class="side-nav">
+  <a href="#what">What FeatureGraph does</a>
+  <a href="#example">An example</a>
+  <a href="#layers">How it works</a>
+  <a href="#llm">Language models</a>
+  <a href="#status">Where it stands</a>
+  <a href="#author">About the author</a>
+</aside>
+<div class="content">
 
 <section class="block" id="what">
   <p class="eyebrow">What FeatureGraph does</p>
@@ -201,6 +208,8 @@ code{font-size:.9em}
   <p><a href="https://blog.featuregraph.ai" target="_blank" rel="noopener noreferrer">Blog</a> · <a href="https://github.com/featuregraph" target="_blank" rel="noopener noreferrer">GitHub</a> · <a href="/demo.html">Demo</a></p>
   <!-- TODO before publishing: add the link to the compiler paper in the layers section, and a contact address in the footer. -->
 </section>
+</div>
+</div>
 </main>
 
 <footer>

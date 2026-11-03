@@ -9,14 +9,9 @@
       content="A recorded demonstration of an LLM writing questions as checkable queries over a small made-up table, with every run shown."
     />
     <link rel="stylesheet" href="styles.css" />
-    <link rel="stylesheet" href="theme.css?v=20261102r" />
+    <link rel="stylesheet" href="theme.css?v=20261103c" />
     <style>
-      .demo { max-width: 860px; }
       .demo-scroll { overflow-x: auto; }
-      .demo table { border-collapse: collapse; width: 100%; font-size: 14px; }
-      .demo th, .demo td { border: 1px solid var(--line); padding: 6px 8px; text-align: left; vertical-align: top; }
-      .demo th { background: var(--blue-soft); }
-      .demo h2 { margin-top: 32px; }
       .demo pre { overflow-x: auto; }
     </style>
     <script src="nav.js"></script>
@@ -67,7 +62,7 @@ plain English, is how a person catches it.</p>
 BIDMC or CapnoBase recordings.</p>
 
 <h2>The table the questions ran on</h2>
-<div class="demo-scroll"><table>
+<div class="demo-scroll"><table class="object-table">
   <thead>
     <tr>
       <th>dataset</th>
@@ -229,7 +224,7 @@ BIDMC or CapnoBase recordings.</p>
 </ul>
 <p>None of these is a score. A request that passes every check can still mean something other than what was asked.</p>
 <h2>All runs</h2>
-<div class="demo-scroll"><table>
+<div class="demo-scroll"><table class="object-table">
   <thead>
     <tr>
       <th>Question</th>
