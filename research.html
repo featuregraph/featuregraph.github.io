@@ -9,7 +9,7 @@
       content="FeatureGraph research on materializing detected states and events as explicit behavioral objects and relations."
     />
     <link rel="stylesheet" href="styles.css" />
-    <link rel="stylesheet" href="theme.css?v=20261103d" />
+    <link rel="stylesheet" href="theme.css?v=20261103f" />
     <script src="home.js" defer></script>
     <script src="posthog.js" defer></script>
   <script src="nav.js"></script>
@@ -58,6 +58,7 @@
           <a href="#tep-study">TEP transfer study</a>
           <a href="#clap-study">CLaP study</a>
           <a href="#accumulation">Accumulation</a>
+          <a href="#agents">Agents</a>
           <a href="#program">Research program</a>
           <a href="#next">Next phase</a>
         </aside>
@@ -425,6 +426,30 @@
               list of engineered features.
             </p>
           </section>
+          <section id="agents">
+            <p class="eyebrow">Agents</p>
+            <h2>The model writes the question. A program outside the model answers it.</h2>
+            <p>FeatureGraph is building natural-language access to its results. In the demo, an agent built on Cohere's Command A turns a question into a JSON query, and a separate Python program checks the query and runs it. The check confirms that the query is well formed, that the dataset it names exists in the table, and that it can run.</p>
+            <p>The demo question: <em>Among confident CapnoBase cases, which are outliers in both the number of detected cycles and mean temporal symmetry? An outlier is a value at least 1.5 sample standard deviations from the mean of that measure across the confident cases in that dataset.</em></p>
+            <pre><code>{
+  "op": "intersect",
+  "of": [
+    {"op": "outliers", "measure": "cycle_count", "z": 1.5,
+     "from": {"dataset": "capnobase", "is_confident": true}},
+    {"op": "outliers", "measure": "mean_symmetry", "z": 1.5,
+     "from": {"dataset": "capnobase", "is_confident": true}}
+  ]
+}</code></pre>
+            <p style="font-size:15px;color:var(--muted)">The demo runs on a small mock table. Its values are not derived from real data.</p>
+            <p>The query layer is made of five agent roles. Two are built, one is under construction and two are planned. The Investigator proposes hypotheses as labeled free text, and nothing becomes a finding until it is tested. The Tester writes specs that run through a deterministic executor, checked by validation and held-out data. The Critic judges whether a stated finding follows from what was run. The Recorder writes the provenance record from the run logs. The Translator maps a new domain's vocabulary onto the schema, and is deferred to a later release.</p>
+
+            <figure>
+              <div class="scroll-x"><img src="images/agent-roles.png" width="1344" height="684" loading="lazy" alt="Diagram of the five agent roles in order: Investigator (under construction), Tester (built), Critic (planned), Recorder (built). Translator (planned, later phase) branches off the Tester."></div>
+              <figcaption>Status of the five agent roles. Green is built, amber is under construction, and dashed outlines are planned for a later phase.</figcaption>
+            </figure>
+            <p>The loop generates hypotheses and translates queries inside the language model, while the analysis runs outside it. That means the whole analysis can be tracked with receipts, rerun outside the loop and checked. It also means the loop can potentially run on a more cost-efficient model than the frontier-size models used for open-ended research. The output is a short analysis stub, usually two to three pages, that a researcher can pick up, verify and build on.</p>
+          </section>
+
           <section id="program">
             <p class="eyebrow">The research program</p>
             <h2>Describe the analysis. Run it reproducibly.</h2>

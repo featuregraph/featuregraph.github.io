@@ -15,7 +15,7 @@
 <meta name="twitter:image" content="https://featuregraph.ai/social-preview.png">
 <link rel="canonical" href="https://featuregraph.ai/">
 <link rel="stylesheet" href="home.css?v=20260816-publications-2">
-<link rel="stylesheet" href="theme.css?v=20261103d">
+<link rel="stylesheet" href="theme.css?v=20261103f">
 <style>
 /* Intro-only rules. Header, card, hero, buttons, colours, dark mode and fonts come from home.css and theme.css, so this page matches the home page. */
 :root{--wave:var(--blue);--accent:var(--blue)}
@@ -25,14 +25,8 @@
 .button code{margin-left:.4em;font-size:.78rem}
 .pains{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px 32px;margin-top:20px}
 .pains div{min-width:0}
-.pains h3,.layers h3,.status h3{margin:0 0 6px;color:var(--ink);font-size:1rem;font-weight:600}
+.pains h3,.layers h3{margin:0 0 6px;color:var(--ink);font-size:1rem;font-weight:600}
 .pains p{margin:0;color:var(--muted);font-size:.9rem}
-figure{margin:24px 0 8px;background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:16px 16px 10px}
-figure svg{display:block;width:100%;height:auto}
-figure img{display:block;width:100%;height:auto;border-radius:4px;background:#fff}
-@media (max-width:640px){.scroll-x{overflow-x:auto}.scroll-x img{min-width:620px}}
-@media (prefers-color-scheme: dark){figure img{filter:invert(1) hue-rotate(180deg) brightness(1.2);mix-blend-mode:screen;background:transparent}}
-figcaption{margin-top:8px;max-width:72ch;color:var(--muted);font-size:.85rem}
 svg text{font-size:13px;fill:var(--muted)}
 svg .strong{fill:var(--ink)}
 .layers{list-style:none;margin:20px 0 0;padding:0;display:flex;flex-direction:column}
@@ -43,10 +37,6 @@ svg .strong{fill:var(--ink)}
 .layers p{margin:2px 0 0;color:var(--muted);font-size:.9rem}
 .layers .tag{display:inline-block;margin-left:8px;padding:1px 6px;border:1px solid var(--line);border-radius:4px;background:transparent;color:var(--muted);font-size:.68rem;font-weight:500;letter-spacing:.06em;text-transform:uppercase;vertical-align:2px}
 pre{margin:20px 0 8px;padding:16px;max-width:100%;overflow-x:auto;font-size:.82rem;line-height:1.55}
-.status{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px 40px;margin-top:20px}
-.status h3{margin:0 0 8px}
-.status ul{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:6px}
-.status li{max-width:56ch}
 code{font-size:.9em}
 </style>
 <script src="nav.js"></script>
@@ -89,8 +79,6 @@ code{font-size:.9em}
   <a href="#what">What FeatureGraph does</a>
   <a href="#example">An example</a>
   <a href="#layers">How it works</a>
-  <a href="#llm">Agents</a>
-  <a href="#status">Where it stands</a>
 </aside>
 <div class="content">
 
@@ -156,60 +144,7 @@ code{font-size:.9em}
   <p style="margin-top:20px">The compiler is <code>featuregraph-core</code>, installed with <code>pip install featuregraph-core</code>. The current version is built for oscillating signals and can be adapted to other kinds of time series.</p>
 </section>
 
-<section class="block" id="llm">
-  <p class="eyebrow">Agents</p>
-  <h2>The model writes the question. A program outside the model answers it.</h2>
-  <p>FeatureGraph is building natural-language access to its results. In the demo, an agent built on Cohere's Command A turns a question into a JSON query, and a separate Python program checks the query and runs it. The check confirms that the query is well formed, that the dataset it names exists in the table, and that it can run.</p>
-  <p>The demo question: <em>Among confident CapnoBase cases, which are outliers in both the number of detected cycles and mean temporal symmetry? An outlier is a value at least 1.5 sample standard deviations from the mean of that measure across the confident cases in that dataset.</em></p>
-  <pre><code>{
-  "op": "intersect",
-  "of": [
-    {"op": "outliers", "measure": "cycle_count", "z": 1.5,
-     "from": {"dataset": "capnobase", "is_confident": true}},
-    {"op": "outliers", "measure": "mean_symmetry", "z": 1.5,
-     "from": {"dataset": "capnobase", "is_confident": true}}
-  ]
-}</code></pre>
-  <p style="font-size:15px;color:var(--muted)">The demo runs on a small mock table. Its values are not derived from real data.</p>
-  <p>The query layer is made of five agent roles. Two are built, one is under construction and two are planned. The Investigator proposes hypotheses as labeled free text, and nothing becomes a finding until it is tested. The Tester writes specs that run through a deterministic executor, checked by validation and held-out data. The Critic judges whether a stated finding follows from what was run. The Recorder writes the provenance record from the run logs. The Translator maps a new domain's vocabulary onto the schema, and is deferred to a later release.</p>
 
-  <figure>
-    <div class="scroll-x"><img src="images/agent-roles.png" width="1344" height="684" loading="lazy" alt="Diagram of the five agent roles in order: Investigator (under construction), Tester (built), Critic (planned), Recorder (built). Translator (planned, later phase) branches off the Tester."></div>
-    <figcaption>Status of the five agent roles. Green is built, amber is under construction, and dashed outlines are planned for a later phase.</figcaption>
-  </figure>
-  <p>The loop generates hypotheses and translates queries inside the language model, while the analysis runs outside it. That means the whole analysis can be tracked with receipts, rerun outside the loop and checked. It also means the loop can potentially run on a more cost-efficient model than the frontier-size models used for open-ended research. The output is a short analysis stub, usually two to three pages, that a researcher can pick up, verify and build on.</p>
-</section>
-
-<section class="block" id="status">
-  <p class="eyebrow">Where it stands</p>
-  <h2>What is built, what is in development, and what it does not claim.</h2>
-  <div class="status">
-    <div>
-      <h3>Built</h3>
-      <ul>
-        <li>The compiler layers P, D, O and M, deterministic and outside any language model.</li>
-        <li>The <code>featuregraph-core</code> package.</li>
-        <li>Runs on breathing recordings (BIDMC, CapnoBase), a wearable study from PhysioNet and a Tennessee Eastman reactor signal.</li>
-        <li>A public <a href="https://github.com/featuregraph/featuregraph-research" target="_blank" rel="noopener noreferrer">research record</a>.</li>
-        <li>Two of the five agent roles, the Tester and the Recorder.</li>
-      </ul>
-    </div>
-    <div>
-      <h3>In development</h3>
-      <ul>
-        <li>The scientific interpretation layer and its agent loop.</li>
-        <li>Natural-language access beyond the mock-table demo.</li>
-        <li>Support for time series that do not oscillate.</li>
-      </ul>
-    </div>
-    <div>
-      <h3>Not claimed</h3>
-      <ul>
-        <li>FeatureGraph provides structure and an audit trail. It does not provide clinical validation or final scientific interpretation.</li>
-      </ul>
-    </div>
-  </div>
-</section>
 
 </div>
 </div>
