@@ -15,7 +15,7 @@
 <meta name="twitter:image" content="https://featuregraph.ai/social-preview.png">
 <link rel="canonical" href="https://featuregraph.ai/">
 <link rel="stylesheet" href="home.css?v=20260816-publications-2">
-<link rel="stylesheet" href="theme.css?v=20261104a">
+<link rel="stylesheet" href="theme.css?v=20261104b">
 <style>
 /* Intro-only rules. Header, card, hero, buttons, colours, dark mode and fonts come from home.css and theme.css, so this page matches the home page. */
 :root{--wave:var(--blue);--accent:var(--blue)}
@@ -77,8 +77,8 @@ code{font-size:.9em}
 <div class="content-layout">
 <aside class="side-nav">
   <a href="#what">What FeatureGraph does</a>
-  <a href="#example">An example</a>
   <a href="#layers">How it works</a>
+  <a href="#example">An example</a>
 </aside>
 <div class="content">
 
@@ -90,6 +90,20 @@ code{font-size:.9em}
   <p><strong>Analysis that's compiled, not vibe-coded.</strong> The compiler turns those declarations into explicit, measured objects. It is deterministic and runs outside any language model, so the same declaration gives the same result every time, and each result is recorded with the assumptions that produced it.</p>
   <p><strong>Queryable by agents and humans.</strong> A question in plain language becomes a short query that a separate program checks and answers from the stored results. Natural-language access is in development; the demo shows how it works on a small mock table. Changing an assumption, such as a smoothing window, creates a new defined analysis, visible and recorded instead of buried in a notebook.</p>
   <p>FeatureGraph does not retain raw data in the service. Only the constructed summaries can be queried.</p>
+</section>
+
+<section class="block" id="layers">
+  <p class="eyebrow">How it works</p>
+  <h2>Analysis that's compiled and verified, not vibe-coded.</h2>
+  <p>The first four layers are built. They are fully deterministic and run outside any language model. The fifth layer is in development for both human queries and agent-driven loops.</p>
+  <ol class="layers">
+    <li><span class="k" aria-hidden="true">P</span><div><h3>Primitive</h3><p>A built-in compiler operation trusted by construction, such as identifying a rising or falling state, or calculating how much a quantity has exceeded a threshold over time.</p></div></li>
+    <li><span class="k" aria-hidden="true">D</span><div><h3>Definition</h3><p>A parameter or configuration chosen by the user or supplied from outside the compiler, such as the window size.</p></div></li>
+    <li><span class="k" aria-hidden="true">O</span><div><h3>Object</h3><p>The compiled output of a definition, such as the amplitudes, periods and durations of the individual waves in a sample.</p></div></li>
+    <li><span class="k" aria-hidden="true">M</span><div><h3>Measure</h3><p>A value computed from one or more objects, such as average duration or maximum temporal asymmetry.</p></div></li>
+    <li><span class="k" aria-hidden="true">S</span><div><h3>Scientific interpretation <span class="tag">in development</span></h3><p>A claim about what the measures mean, written by a person or an agent. This layer sits outside the deterministic compiler.</p></div></li>
+  </ol>
+  <p style="margin-top:20px">The compiler is <code>featuregraph-core</code>, installed with <code>pip install featuregraph-core</code>. The current version is built for oscillating signals and can be adapted to other kinds of time series.</p>
 </section>
 
 <section class="block" id="example">
@@ -121,20 +135,6 @@ code{font-size:.9em}
   </figure>
   <p>The same construction applies to other oscillating signals, such as pressure changes in an industrial reactor or mechanical pulses from a rotating drill string. It depends only on the shape of the signal, not on outside context, so the method is not tied to one field. The accuracy of each measure traces back to the construction parameters, such as the smoothing window size and the detected period of the wave.</p>
   <p>BIDMC and CapnoBase are two public respiration datasets. They measure breathing with different signals and sampling frequencies. FeatureGraph works in one-second intervals on both, so the same measures can be computed on each.</p>
-</section>
-
-<section class="block" id="layers">
-  <p class="eyebrow">How it works</p>
-  <h2>Analysis that's compiled and verified, not vibe-coded.</h2>
-  <p>The first four layers are built. They are fully deterministic and run outside any language model. The fifth layer is in development for both human queries and agent-driven loops.</p>
-  <ol class="layers">
-    <li><span class="k" aria-hidden="true">P</span><div><h3>Primitive</h3><p>A built-in compiler operation trusted by construction, such as identifying a rising or falling state, or calculating how much a quantity has exceeded a threshold over time.</p></div></li>
-    <li><span class="k" aria-hidden="true">D</span><div><h3>Definition</h3><p>A parameter or configuration chosen by the user or supplied from outside the compiler, such as the window size.</p></div></li>
-    <li><span class="k" aria-hidden="true">O</span><div><h3>Object</h3><p>The compiled output of a definition, such as the amplitudes, periods and durations of the individual waves in a sample.</p></div></li>
-    <li><span class="k" aria-hidden="true">M</span><div><h3>Measure</h3><p>A value computed from one or more objects, such as average duration or maximum temporal asymmetry.</p></div></li>
-    <li><span class="k" aria-hidden="true">S</span><div><h3>Scientific interpretation <span class="tag">in development</span></h3><p>A claim about what the measures mean, written by a person or an agent. This layer sits outside the deterministic compiler.</p></div></li>
-  </ol>
-  <p style="margin-top:20px">The compiler is <code>featuregraph-core</code>, installed with <code>pip install featuregraph-core</code>. The current version is built for oscillating signals and can be adapted to other kinds of time series.</p>
 </section>
 
 
