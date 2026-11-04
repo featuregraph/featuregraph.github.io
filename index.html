@@ -93,7 +93,7 @@ code{font-size:.9em}
 
 <section class="block" id="example">
   <p class="eyebrow">An example</p>
-  <h2>Splitting a data column into objects.</h2>
+  <h2>Built-in representation of signal structure.</h2>
   <p>In an oscillatory signal, FeatureGraph reads a recording and splits it into individual waves. Each wave is called an object and is described by measures such as its height, duration and shape. In a respiration recording, each object is one breath.</p>
   <figure>
     <svg viewBox="0 0 720 232" role="img" aria-label="A synthetic breathing-like wave split into two breaths, with the rising and falling parts of the first breath and its height marked.">
@@ -124,7 +124,7 @@ code{font-size:.9em}
 
 <section class="block" id="layers">
   <p class="eyebrow">How it works</p>
-  <h2>Every result passes through five layers.</h2>
+  <h2>Analysis that's compiled and verified, not built on the fly.</h2>
   <p>The first four layers are built. They are fully deterministic and run outside any language model. The fifth layer is in development for both human queries and agent-driven loops.</p>
   <ol class="layers">
     <li><span class="k" aria-hidden="true">P</span><div><h3>Primitive</h3><p>A built-in compiler operation trusted by construction, such as identifying a rising or falling state, or calculating how much a quantity has exceeded a threshold over time.</p></div></li>
