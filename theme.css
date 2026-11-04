@@ -311,3 +311,12 @@ main figcaption{margin-top:8px;max-width:72ch;color:var(--muted);font-size:var(-
 @media (max-width:640px){.scroll-x{overflow-x:auto}.scroll-x img{min-width:620px}}
 @media (prefers-color-scheme: dark){main figure img{filter:invert(1) hue-rotate(180deg) brightness(1.2);mix-blend-mode:screen;background:transparent}}
 main pre{max-width:100%;overflow-x:auto}
+
+/* Mobile: the page's section links become a labelled row of chips that scrolls sideways */
+@media (max-width:900px){
+  main .side-nav{display:flex;flex-wrap:nowrap;align-items:center;gap:8px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;margin:0 0 8px;padding:0 0 20px;border-bottom:1px solid var(--line)}
+  main .side-nav::-webkit-scrollbar{display:none}
+  main .side-nav::before{content:"On this page";flex:none;margin-right:4px;color:var(--muted);font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase}
+  main .side-nav a{flex:none;display:inline-block;padding:7px 14px;border:1px solid var(--line);border-radius:999px;background:var(--panel);color:var(--ink);font-weight:600;white-space:nowrap}
+  main .side-nav a:hover,main .side-nav a:active{border-color:var(--blue);color:var(--blue);text-decoration:none}
+}
