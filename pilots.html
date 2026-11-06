@@ -10,7 +10,9 @@
     />
     <link rel="stylesheet" href="styles.css" />
     <link rel="stylesheet" href="theme.css?v=20261104b" />
+    <link rel="stylesheet" href="forms.css" />
     <script src="nav.js"></script>
+    <script src="form.js" defer></script>
     <script src="posthog.js" defer></script>
   </head>
   <body>
@@ -109,8 +111,8 @@
             </li>
           </ol>
           <p>
-            A pilot takes a few weeks from the day we receive your data. The
-            fee is fixed and agreed before work begins.
+            A pilot takes three to four weeks from the day we receive your
+            data. The fee is fixed and agreed before work begins.
           </p>
         </div>
       </section>
@@ -174,7 +176,52 @@
       <section class="cta">
         <p class="eyebrow">Ask about a pilot</p>
         <h2>Tell us about your data and the question you want answered.</h2>
-        <p>Contact: [contact address]</p>
+        <p class="form-note">
+          Send a short description to start a conversation about a fit call.
+          You can also write to
+          <a href="mailto:nazia.habib@featuregraph.ai">nazia.habib@featuregraph.ai</a>.
+        </p>
+        <form
+          class="form"
+          action="mailto:nazia.habib@featuregraph.ai"
+          method="post"
+          enctype="text/plain"
+          data-mailto="nazia.habib@featuregraph.ai"
+          data-subject="FeatureGraph analysis pilot inquiry"
+        >
+          <div class="field">
+            <label for="pilot-name">Your name</label>
+            <input id="pilot-name" name="name" data-label="Name" type="text" autocomplete="name" required />
+          </div>
+          <div class="field">
+            <label for="pilot-email">Email</label>
+            <input id="pilot-email" name="email" data-label="Email" type="email" autocomplete="email" required />
+          </div>
+          <div class="field">
+            <label for="pilot-company">Company <span class="opt">(optional)</span></label>
+            <input id="pilot-company" name="company" data-label="Company" type="text" autocomplete="organization" />
+          </div>
+          <div class="field">
+            <label for="pilot-data">What kind of data do you have? <span class="opt">(optional)</span></label>
+            <textarea id="pilot-data" name="data" data-label="Data" placeholder="Signal type, sampling rate, roughly how much history"></textarea>
+          </div>
+          <div class="field">
+            <label for="pilot-storage">Where is it stored? <span class="opt">(optional)</span></label>
+            <input id="pilot-storage" name="storage" data-label="Where the data is stored" type="text" placeholder="Files, Snowflake, InfluxDB, another system" />
+          </div>
+          <div class="field">
+            <label for="pilot-question">What question do you want answered?</label>
+            <textarea id="pilot-question" name="question" data-label="Question" required></textarea>
+          </div>
+          <div class="field">
+            <label for="pilot-start">When would you like to start? <span class="opt">(optional)</span></label>
+            <input id="pilot-start" name="start" data-label="Start" type="text" />
+          </div>
+          <div class="form-actions">
+            <button class="button primary" type="submit">Ask about a pilot</button>
+          </div>
+        </form>
+        <p class="form-status" role="status" aria-live="polite"></p>
         <div class="actions">
           <a class="button light" href="index.html">Back to the introduction</a>
         </div>

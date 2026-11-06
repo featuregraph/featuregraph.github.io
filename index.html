@@ -16,7 +16,9 @@
 <link rel="canonical" href="https://featuregraph.ai/">
 <link rel="stylesheet" href="home.css?v=20260816-publications-2">
 <link rel="stylesheet" href="theme.css?v=20261104b">
+<link rel="stylesheet" href="forms.css">
 <style>
+.js #build:not(.open){display:none}
 /* Intro-only rules. Header, card, hero, buttons, colours, dark mode and fonts come from home.css and theme.css, so this page matches the home page. */
 :root{--wave:var(--blue);--accent:var(--blue)}
 .block p{max-width:68ch;margin:0 0 14px;color:var(--muted);font-size:.92rem}
@@ -44,6 +46,7 @@ pre{margin:20px 0 8px;padding:16px;max-width:100%;overflow-x:auto;font-size:.82r
 code{font-size:.9em}
 </style>
 <script src="nav.js"></script>
+<script src="form.js" defer></script>
 </head>
 <body>
 <header>
@@ -101,7 +104,8 @@ code{font-size:.9em}
         <li>The research record and published studies</li>
       </ul>
       <div class="track-actions">
-        <a class="button primary" href="https://github.com/featuregraph/featuregraph-core" target="_blank" rel="noopener noreferrer">Install <code>featuregraph-core</code></a>
+        <a class="button primary" href="#build" data-reveal="build" aria-controls="build">Show me how</a>
+        <a class="text-link" href="https://github.com/featuregraph/featuregraph-core" target="_blank" rel="noopener noreferrer">Install <code>featuregraph-core</code> ↗</a>
         <a class="text-link" href="https://featuregraph-framework.readthedocs.io/" target="_blank" rel="noopener noreferrer">Documentation ↗</a>
         <a class="text-link" href="demo.html">Demo</a>
         <a class="text-link" href="https://github.com/featuregraph/featuregraph#research-record" target="_blank" rel="noopener noreferrer">Research record ↗</a>
@@ -110,11 +114,12 @@ code{font-size:.9em}
   </div>
 </section>
 
-<div class="content-layout">
+<div class="content-layout" id="build">
 <aside class="side-nav">
   <a href="#what">What FeatureGraph does</a>
   <a href="#layers">How it works</a>
   <a href="#example">An example</a>
+  <a href="#build-form">Tell us what you're building</a>
 </aside>
 <div class="content">
 
@@ -173,6 +178,38 @@ code{font-size:.9em}
   <p>BIDMC and CapnoBase are two public respiration datasets. They measure breathing with different signals and sampling frequencies. FeatureGraph works in one-second intervals on both, so the same measures can be computed on each.</p>
 </section>
 
+<section class="block" id="build-form">
+  <p class="eyebrow">Building your own</p>
+  <h2>Tell us what you're building.</h2>
+  <p>If you are using FeatureGraph to build your own analyses, tell us a little about your project. You can also write to <a href="mailto:nazia.habib@featuregraph.ai">nazia.habib@featuregraph.ai</a>.</p>
+  <form class="form" action="mailto:nazia.habib@featuregraph.ai" method="post" enctype="text/plain" data-mailto="nazia.habib@featuregraph.ai" data-subject="FeatureGraph build-your-own inquiry">
+    <div class="field">
+      <label for="build-name">Your name</label>
+      <input id="build-name" name="name" data-label="Name" type="text" autocomplete="name" required>
+    </div>
+    <div class="field">
+      <label for="build-email">Email</label>
+      <input id="build-email" name="email" data-label="Email" type="email" autocomplete="email" required>
+    </div>
+    <div class="field">
+      <label for="build-what">What are you building?</label>
+      <textarea id="build-what" name="building" data-label="What they are building" required></textarea>
+    </div>
+    <div class="field">
+      <label for="build-data">What kind of signals or data do you work with? <span class="opt">(optional)</span></label>
+      <textarea id="build-data" name="data" data-label="Data"></textarea>
+    </div>
+    <div class="field">
+      <label for="build-want">What would you like from FeatureGraph? <span class="opt">(optional)</span></label>
+      <textarea id="build-want" name="want" data-label="Wanted from FeatureGraph"></textarea>
+    </div>
+    <div class="form-actions">
+      <button class="button primary" type="submit">Send</button>
+    </div>
+  </form>
+  <p class="form-status" role="status" aria-live="polite"></p>
+</section>
+
 
 
 </div>
@@ -186,6 +223,26 @@ code{font-size:.9em}
   <a href="https://zenodo.org/records/21984186" target="_blank" rel="noopener noreferrer">Zenodo</a>
   <a href="https://orcid.org/0009-0000-5474-277X" target="_blank" rel="noopener noreferrer">ORCID</a>
 </footer>
+<script>
+(function(){
+  var panel=document.getElementById('build'); if(!panel)return;
+  function open(){panel.classList.add('open');}
+  function fromHash(){
+    var id=decodeURIComponent(location.hash.slice(1)); if(!id)return;
+    var t=document.getElementById(id);
+    if(t&&(t===panel||panel.contains(t))){open();if(t!==panel)t.scrollIntoView();}
+  }
+  document.querySelectorAll('[data-reveal]').forEach(function(a){
+    a.addEventListener('click',function(e){
+      e.preventDefault();open();
+      panel.scrollIntoView({behavior:'smooth',block:'start'});
+      if(history.replaceState)history.replaceState(null,'','#build');
+    });
+  });
+  window.addEventListener('hashchange',fromHash);
+  fromHash();
+})();
+</script>
 <script>
 (function(){
   var el=document.getElementById('wave'); if(!el)return;
