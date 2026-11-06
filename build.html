@@ -47,6 +47,7 @@
       <section class="section">
         <form
           class="form"
+          data-kind="build"
           action="mailto:nazia.habib@featuregraph.ai"
           method="post"
           enctype="text/plain"
@@ -73,10 +74,14 @@
             <label for="build-want">What would you like from FeatureGraph? <span class="opt">(optional)</span></label>
             <textarea id="build-want" name="want" data-label="Wanted from FeatureGraph"></textarea>
           </div>
+          <div class="hp" aria-hidden="true">
+            <label>Leave this field empty <input type="text" name="website" tabindex="-1" autocomplete="off" /></label>
+          </div>
           <div class="form-actions">
             <button class="button primary" type="submit">Send</button>
           </div>
         </form>
+        <p class="form-note">We keep your name, email address and message so that we can reply to you.</p>
         <p class="form-status" role="status" aria-live="polite"></p>
       </section>
     </main>
