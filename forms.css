@@ -1,0 +1,12 @@
+/* Inquiry forms. Colours come from the theme tokens, so light and dark mode follow the rest of the site. */
+.form{display:grid;gap:16px;max-width:560px;margin:20px 0 0}
+.form .field{display:grid;gap:6px}
+.form .field>label{color:var(--ink);font-size:.92rem;font-weight:600;letter-spacing:0;text-transform:none}
+.form .field .opt{color:var(--muted);font-weight:400}
+.form input,.form textarea{width:100%;padding:9px 11px;border:1px solid var(--line);border-radius:6px;background:var(--panel);color:var(--ink);font:inherit;font-weight:400}
+.form textarea{min-height:96px;resize:vertical}
+.form input:focus-visible,.form textarea:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+.form .form-actions{margin-top:4px}
+.form button.button{cursor:pointer}
+.form-status{margin:12px 0 0;max-width:560px;color:var(--muted);font-size:.9rem}
+.form-note{max-width:560px;margin:0 0 4px;color:var(--muted);font-size:.9rem}

@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Build your own — FeatureGraph</title>
+    <meta
+      name="description"
+      content="Build your own analyses with the open-source FeatureGraph compiler. Tell us what you are building."
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="theme.css?v=20261104b" />
+    <link rel="stylesheet" href="forms.css" />
+    <script src="nav.js"></script>
+    <script src="form.js" defer></script>
+    <script src="posthog.js" defer></script>
+  </head>
+  <body>
+    <header>
+  <a class="brand" href="index.html" aria-label="FeatureGraph home"><span>◇</span>FeatureGraph</a>
+  <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Menu"><span></span><span></span><span></span></button>
+  <nav id="site-nav" aria-label="Primary navigation">
+    <a href="index.html">Introduction</a>
+    <a href="research.html">Research</a>
+    <a href="software.html">Software</a>
+    <a href="releases.html">Releases</a>
+    <a href="publications.html">Publications</a>
+    <a href="roadmap.html">Roadmap</a>
+    <a href="updates.html">Updates</a>
+    <a href="about.html">About</a>
+    <a href="demo.html">Demo</a>
+    <a class="ext ext-first" href="https://featuregraph-framework.readthedocs.io/" target="_blank" rel="noopener noreferrer">Docs ↗</a>
+    <a class="ext" href="https://blog.featuregraph.ai/" target="_blank" rel="noopener noreferrer">Blog ↗</a>
+    <a class="ext" href="https://assistant.featuregraph.ai/" target="_blank" rel="noopener noreferrer">Assistant ↗</a>
+    <a class="ext" href="https://github.com/featuregraph/" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+  </nav>
+</header>
+    <main class="page-shell">
+      <section class="hero compact">
+        <p class="eyebrow">Build your own</p>
+        <h1>Tell us what you're building.</h1>
+        <p class="lede">
+          Send a short description and your email app will open with it ready
+          to send. <a href="how-it-works.html">How FeatureGraph works</a>.
+        </p>
+      </section>
+      <section class="section">
+        <form
+          class="form"
+          action="mailto:nazia.habib@featuregraph.ai"
+          method="post"
+          enctype="text/plain"
+          data-mailto="nazia.habib@featuregraph.ai"
+          data-subject="FeatureGraph build-your-own inquiry"
+        >
+          <div class="field">
+            <label for="build-name">Your name</label>
+            <input id="build-name" name="name" data-label="Name" type="text" autocomplete="name" required />
+          </div>
+          <div class="field">
+            <label for="build-email">Email</label>
+            <input id="build-email" name="email" data-label="Email" type="email" autocomplete="email" required />
+          </div>
+          <div class="field">
+            <label for="build-what">What are you building?</label>
+            <textarea id="build-what" name="building" data-label="What they are building" required></textarea>
+          </div>
+          <div class="field">
+            <label for="build-data">What kind of signals or data do you work with? <span class="opt">(optional)</span></label>
+            <textarea id="build-data" name="data" data-label="Data"></textarea>
+          </div>
+          <div class="field">
+            <label for="build-want">What would you like from FeatureGraph? <span class="opt">(optional)</span></label>
+            <textarea id="build-want" name="want" data-label="Wanted from FeatureGraph"></textarea>
+          </div>
+          <div class="form-actions">
+            <button class="button primary" type="submit">Send</button>
+          </div>
+        </form>
+        <p class="form-status" role="status" aria-live="polite"></p>
+      </section>
+    </main>
+    <footer>
+  <span>© 2026 FeatureGraph</span>
+  <span>Created by Nazia Habib</span>
+  <a href="https://github.com/featuregraph/featuregraph" target="_blank" rel="noopener noreferrer">MIT-licensed beta</a>
+  <a href="https://zenodo.org/records/21984186" target="_blank" rel="noopener noreferrer">Zenodo</a>
+  <a href="https://orcid.org/0009-0000-5474-277X" target="_blank" rel="noopener noreferrer">ORCID</a>
+</footer>
+  </body>
+</html>

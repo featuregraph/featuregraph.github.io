@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Analysis pilots — FeatureGraph</title>
+    <meta
+      name="description"
+      content="A fixed-fee pilot: FeatureGraph builds a checked analysis on a historical extract of your scientific or engineering time-series data."
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="theme.css?v=20261104b" />
+    <link rel="stylesheet" href="forms.css" />
+    <script src="nav.js"></script>
+    <script src="form.js" defer></script>
+    <script src="posthog.js" defer></script>
+  </head>
+  <body>
+    <header>
+  <a class="brand" href="index.html" aria-label="FeatureGraph home"><span>◇</span>FeatureGraph</a>
+  <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Menu"><span></span><span></span><span></span></button>
+  <nav id="site-nav" aria-label="Primary navigation">
+    <a href="index.html">Introduction</a>
+    <a href="research.html">Research</a>
+    <a href="software.html">Software</a>
+    <a href="releases.html">Releases</a>
+    <a href="publications.html">Publications</a>
+    <a href="roadmap.html">Roadmap</a>
+    <a href="updates.html">Updates</a>
+    <a href="about.html">About</a>
+    <a href="demo.html">Demo</a>
+    <a class="ext ext-first" href="https://featuregraph-framework.readthedocs.io/" target="_blank" rel="noopener noreferrer">Docs ↗</a>
+    <a class="ext" href="https://blog.featuregraph.ai/" target="_blank" rel="noopener noreferrer">Blog ↗</a>
+    <a class="ext" href="https://assistant.featuregraph.ai/" target="_blank" rel="noopener noreferrer">Assistant ↗</a>
+    <a class="ext" href="https://github.com/featuregraph/" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+  </nav>
+</header>
+    <main class="page-shell">
+      <section class="hero compact">
+        <p class="eyebrow">Analysis built for you</p>
+        <h1>Tell us about your data and the question you want answered.</h1>
+        <p class="lede">
+          Send a short description and your email app will open with it ready
+          to send. <a href="pilot-details.html">How a pilot works</a>.
+        </p>
+      </section>
+      <section class="section">
+        <form
+          class="form"
+          action="mailto:nazia.habib@featuregraph.ai"
+          method="post"
+          enctype="text/plain"
+          data-mailto="nazia.habib@featuregraph.ai"
+          data-subject="FeatureGraph analysis pilot inquiry"
+        >
+          <div class="field">
+            <label for="pilot-name">Your name</label>
+            <input id="pilot-name" name="name" data-label="Name" type="text" autocomplete="name" required />
+          </div>
+          <div class="field">
+            <label for="pilot-email">Email</label>
+            <input id="pilot-email" name="email" data-label="Email" type="email" autocomplete="email" required />
+          </div>
+          <div class="field">
+            <label for="pilot-company">Company <span class="opt">(optional)</span></label>
+            <input id="pilot-company" name="company" data-label="Company" type="text" autocomplete="organization" />
+          </div>
+          <div class="field">
+            <label for="pilot-data">What kind of data do you have? <span class="opt">(optional)</span></label>
+            <textarea id="pilot-data" name="data" data-label="Data" placeholder="Signal type, sampling rate, roughly how much history"></textarea>
+          </div>
+          <div class="field">
+            <label for="pilot-storage">Where is it stored? <span class="opt">(optional)</span></label>
+            <input id="pilot-storage" name="storage" data-label="Where the data is stored" type="text" placeholder="Files, Snowflake, InfluxDB, another system" />
+          </div>
+          <div class="field">
+            <label for="pilot-question">What question do you want answered?</label>
+            <textarea id="pilot-question" name="question" data-label="Question" required></textarea>
+          </div>
+          <div class="field">
+            <label for="pilot-start">When would you like to start? <span class="opt">(optional)</span></label>
+            <input id="pilot-start" name="start" data-label="Start" type="text" />
+          </div>
+          <div class="form-actions">
+            <button class="button primary" type="submit">Send request</button>
+          </div>
+        </form>
+        <p class="form-status" role="status" aria-live="polite"></p>
+      </section>
+    </main>
+    <footer>
+  <span>© 2026 FeatureGraph</span>
+  <span>Created by Nazia Habib</span>
+  <a href="https://github.com/featuregraph/featuregraph" target="_blank" rel="noopener noreferrer">MIT-licensed beta</a>
+  <a href="https://zenodo.org/records/21984186" target="_blank" rel="noopener noreferrer">Zenodo</a>
+  <a href="https://orcid.org/0009-0000-5474-277X" target="_blank" rel="noopener noreferrer">ORCID</a>
+</footer>
+  </body>
+</html>
