@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How FeatureGraph works — FeatureGraph</title>
+<meta name="description" content="FeatureGraph handles checked analysis of scientific and engineering time-series data. Have an analysis built on your data, or build your own with the open-source compiler.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://featuregraph.ai/how-it-works.html">
+<meta property="og:title" content="FeatureGraph — Deterministic, inspectable, reproducible scientific data analysis">
+<meta property="og:description" content="FeatureGraph turns declared analytical decisions into repeatable computations and traceable scientific results.">
+<meta property="og:image" content="https://featuregraph.ai/social-preview.png">
+<meta property="og:image:alt" content="Connected FeatureGraph objects arranged across a time axis.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://featuregraph.ai/social-preview.png">
+<link rel="canonical" href="https://featuregraph.ai/how-it-works.html">
+<link rel="stylesheet" href="home.css?v=20260816-publications-2">
+<link rel="stylesheet" href="theme.css?v=20261104b">
+<style>
+/* Intro-only rules. Header, card, hero, buttons, colours, dark mode and fonts come from home.css and theme.css, so this page matches the home page. */
+:root{--wave:var(--blue);--accent:var(--blue)}
+.block p{max-width:68ch;margin:0 0 14px;color:var(--muted);font-size:.92rem}
+.block p.eyebrow{margin:0 0 12px;font-size:.7rem;color:var(--muted)}
+.block p a,.block li a{color:var(--blue);text-decoration:underline;text-underline-offset:2px}
+.button code{margin-left:.4em;font-size:.78rem}
+.paths{margin:8px 0 48px}
+.paths>h2{margin:0 0 16px;color:var(--ink);font-size:1.25rem;font-weight:600}
+.track p code,.track li code{font-size:.88em}
+.track .button code{margin-left:.4em}
+.pains{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px 32px;margin-top:20px}
+.pains div{min-width:0}
+.pains h3,.layers h3{margin:0 0 6px;color:var(--ink);font-size:1rem;font-weight:600}
+.pains p{margin:0;color:var(--muted);font-size:.9rem}
+svg text{font-size:13px;fill:var(--muted)}
+svg .strong{fill:var(--ink)}
+.layers{list-style:none;margin:20px 0 0;padding:0;display:flex;flex-direction:column}
+.layers li{display:grid;grid-template-columns:48px 1fr;gap:4px 16px;padding-block:14px;border-top:1px solid var(--line)}
+.layers li:last-child{border-bottom:1px solid var(--line)}
+.layers .k{color:var(--blue);font-size:1.7rem;font-weight:700;line-height:1}
+.layers h3{margin:0}
+.layers p{margin:2px 0 0;color:var(--muted);font-size:.9rem}
+.layers .tag{display:inline-block;margin-left:8px;padding:1px 6px;border:1px solid var(--line);border-radius:4px;background:transparent;color:var(--muted);font-size:.68rem;font-weight:500;letter-spacing:.06em;text-transform:uppercase;vertical-align:2px}
+pre{margin:20px 0 8px;padding:16px;max-width:100%;overflow-x:auto;font-size:.82rem;line-height:1.55}
+code{font-size:.9em}
+</style>
+<script src="nav.js"></script>
+</head>
+<body>
+<header>
+  <a class="brand" href="index.html" aria-label="FeatureGraph home"><span>◇</span>FeatureGraph</a>
+  <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Menu"><span></span><span></span><span></span></button>
+  <nav id="site-nav" aria-label="Primary navigation">
+    <a href="index.html">Introduction</a>
+    <a href="research.html">Research</a>
+    <a href="software.html">Software</a>
+    <a href="releases.html">Releases</a>
+    <a href="publications.html">Publications</a>
+    <a href="roadmap.html">Roadmap</a>
+    <a href="updates.html">Updates</a>
+    <a href="about.html">About</a>
+    <a href="demo.html">Demo</a>
+    <a class="ext ext-first" href="https://featuregraph-framework.readthedocs.io/" target="_blank" rel="noopener noreferrer">Docs ↗</a>
+    <a class="ext" href="https://blog.featuregraph.ai/" target="_blank" rel="noopener noreferrer">Blog ↗</a>
+    <a class="ext" href="https://assistant.featuregraph.ai/" target="_blank" rel="noopener noreferrer">Assistant ↗</a>
+    <a class="ext" href="https://github.com/featuregraph/" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+  </nav>
+</header>
+
+<main class="page-shell">
+<section class="hero compact">
+  <p class="eyebrow">How it works</p>
+  <h1>Checked analysis for scientific and engineering time-series data.</h1>
+  <p class="lead">Your domain experts shouldn't have to spend their time writing Python code by hand. FeatureGraph handles the time-series analysis so your team can focus on interpreting the results.</p>
+</section>
+
+<div class="content-layout">
+<aside class="side-nav">
+  <a href="#what">What FeatureGraph does</a>
+  <a href="#layers">How it works</a>
+  <a href="#example">An example</a>
+</aside>
+<div class="content">
+
+<section class="block" id="what">
+  <p class="eyebrow">What FeatureGraph does</p>
+  <h2>The bridge between your agents and your data.</h2>
+  <p>FeatureGraph is set up with your team around your own science and engineering time-series data, and it turns that setup into a store that agents can query, instead of code that agents have to write.</p>
+  <p><strong>Set up once, for your company.</strong> We work with your team to declare what the data contains and what the analysis should calculate and check. Those decisions are recorded in one place.</p>
+  <p><strong>Analysis that's compiled, not vibe-coded.</strong> The compiler turns those declarations into explicit, measured objects. It is deterministic and runs outside any language model, so the same declaration gives the same result every time, and each result is recorded with the assumptions that produced it.</p>
+  <p><strong>Queryable by agents and humans.</strong> A question in plain language becomes a short query that a separate program checks and answers from the stored results. Natural-language access is in development; the demo shows how it works on a small mock table. Changing an assumption, such as a smoothing window, creates a new defined analysis, visible and recorded instead of buried in a notebook.</p>
+  <p>FeatureGraph does not retain raw data in the service. Only the constructed summaries can be queried.</p>
+</section>
+
+<section class="block" id="layers">
+  <p class="eyebrow">How it works</p>
+  <h2>Analysis that's compiled and verified, not vibe-coded.</h2>
+  <p>The first four layers are built. They are fully deterministic and run outside any language model. The fifth layer is in development for both human queries and agent-driven loops.</p>
+  <ol class="layers">
+    <li><span class="k" aria-hidden="true">P</span><div><h3>Primitive</h3><p>A built-in compiler operation trusted by construction, such as identifying a rising or falling state, or calculating how much a quantity has exceeded a threshold over time.</p></div></li>
+    <li><span class="k" aria-hidden="true">D</span><div><h3>Definition</h3><p>A parameter or configuration chosen by the user or supplied from outside the compiler, such as the window size.</p></div></li>
+    <li><span class="k" aria-hidden="true">O</span><div><h3>Object</h3><p>The compiled output of a definition, such as the amplitudes, periods and durations of the individual waves in a sample.</p></div></li>
+    <li><span class="k" aria-hidden="true">M</span><div><h3>Measure</h3><p>A value computed from one or more objects, such as average duration or maximum temporal asymmetry.</p></div></li>
+    <li><span class="k" aria-hidden="true">S</span><div><h3>Scientific interpretation <span class="tag">in development</span></h3><p>A claim about what the measures mean, written by a person or an agent. This layer sits outside the deterministic compiler.</p></div></li>
+  </ol>
+  <p style="margin-top:20px">The compiler is <code>featuregraph-core</code>, installed with <code>pip install featuregraph-core</code>. The current version is built for oscillating signals and can be adapted to other kinds of time series.</p>
+</section>
+
+<section class="block" id="example">
+  <p class="eyebrow">An example</p>
+  <h2>Built-in representation of signal structure.</h2>
+  <p>In an oscillatory signal, FeatureGraph reads a recording and splits it into individual waves. Each wave is called an object and is described by measures such as its height, duration and shape. In a respiration recording, each object is one breath.</p>
+  <figure>
+    <svg viewBox="0 0 720 232" role="img" aria-label="A synthetic breathing-like wave split into two breaths, with the rising and falling parts of the first breath and its height marked.">
+      <line x1="20" y1="150" x2="700" y2="150" stroke="currentColor" stroke-opacity=".25" stroke-dasharray="3 5" style="color:var(--muted)"/>
+      <polyline id="wave" fill="none" stroke="var(--wave)" stroke-width="2.5" stroke-linejoin="round" points=""/>
+      <g fill="var(--ink)">
+        <circle cx="40" cy="150" r="4"/><circle cx="360" cy="150" r="4"/><circle cx="680" cy="150" r="4"/>
+        <circle cx="168" cy="40" r="4"/><circle cx="488" cy="40" r="4"/>
+      </g>
+      <!-- height -->
+      <path d="M192 40 V150 M188 40 H196 M188 150 H196" stroke="var(--muted)" stroke-width="1.2" fill="none"/>
+      <text x="202" y="104">height</text>
+      <!-- rising and falling -->
+      <path d="M40 166 V172 H168 V166" stroke="var(--muted)" stroke-width="1.2" fill="none"/>
+      <text x="76" y="190">rising</text>
+      <path d="M168 166 V172 H360 V166" stroke="var(--muted)" stroke-width="1.2" fill="none"/>
+      <text x="238" y="190">falling</text>
+      <!-- breaths -->
+      <path d="M40 206 V212 H360 V206 M360 212 H680 V206" stroke="var(--ink)" stroke-width="1.4" fill="none"/>
+      <text class="strong" x="170" y="228">Breath 1</text>
+      <text class="strong" x="490" y="228">Breath 2</text>
+    </svg>
+    <figcaption>Illustration with synthetic data, not a recording. Each breath runs from one trough to the next. Its measures include period, rising time, falling time, height and symmetry, the balance between rising and falling time.</figcaption>
+  </figure>
+  <p>The same construction applies to other oscillating signals, such as pressure changes in an industrial reactor or mechanical pulses from a rotating drill string. It depends only on the shape of the signal, not on outside context, so the method is not tied to one field. The accuracy of each measure traces back to the construction parameters, such as the smoothing window size and the detected period of the wave.</p>
+  <p>BIDMC and CapnoBase are two public respiration datasets. They measure breathing with different signals and sampling frequencies. FeatureGraph works in one-second intervals on both, so the same measures can be computed on each.</p>
+</section>
+
+
+
+</div>
+</div>
+</main>
+
+<footer>
+  <span>© 2026 FeatureGraph</span>
+  <span>Created by Nazia Habib</span>
+  <a href="https://github.com/featuregraph/featuregraph" target="_blank" rel="noopener noreferrer">MIT-licensed beta</a>
+  <a href="https://zenodo.org/records/21984186" target="_blank" rel="noopener noreferrer">Zenodo</a>
+  <a href="https://orcid.org/0009-0000-5474-277X" target="_blank" rel="noopener noreferrer">ORCID</a>
+</footer>
+<script>
+(function(){
+  var el=document.getElementById('wave'); if(!el)return;
+  var x0=40, per=320, pts=[];
+  for(var x=x0; x<=x0+2*per; x+=4){
+    var p=((x-x0)%per)/per, y;
+    if(p<0.4){ y=0.5-0.5*Math.cos(Math.PI*p/0.4); }
+    else { y=0.5+0.5*Math.cos(Math.PI*(p-0.4)/0.6); }
+    pts.push(x+','+(150-110*y).toFixed(1));
+  }
+  el.setAttribute('points',pts.join(' '));
+})();
+</script>
+</body>
+</html>

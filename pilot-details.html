@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Analysis pilots — FeatureGraph</title>
+    <meta
+      name="description"
+      content="A fixed-fee pilot: FeatureGraph builds a checked analysis on a historical extract of your scientific or engineering time-series data."
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="theme.css?v=20261104b" />
+        <script src="nav.js"></script>
+    <script src="posthog.js" defer></script>
+  </head>
+  <body>
+    <header>
+  <a class="brand" href="index.html" aria-label="FeatureGraph home"><span>◇</span>FeatureGraph</a>
+  <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Menu"><span></span><span></span><span></span></button>
+  <nav id="site-nav" aria-label="Primary navigation">
+    <a href="index.html">Introduction</a>
+    <a href="research.html">Research</a>
+    <a href="software.html">Software</a>
+    <a href="releases.html">Releases</a>
+    <a href="publications.html">Publications</a>
+    <a href="roadmap.html">Roadmap</a>
+    <a href="updates.html">Updates</a>
+    <a href="about.html">About</a>
+    <a href="demo.html">Demo</a>
+    <a class="ext ext-first" href="https://featuregraph-framework.readthedocs.io/" target="_blank" rel="noopener noreferrer">Docs ↗</a>
+    <a class="ext" href="https://blog.featuregraph.ai/" target="_blank" rel="noopener noreferrer">Blog ↗</a>
+    <a class="ext" href="https://assistant.featuregraph.ai/" target="_blank" rel="noopener noreferrer">Assistant ↗</a>
+    <a class="ext" href="https://github.com/featuregraph/" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+  </nav>
+</header>
+    <main class="page-shell">
+      <section class="hero compact">
+        <p class="eyebrow">Analysis pilots</p>
+        <h1>An analysis built on your data, checked and delivered.</h1>
+        <p class="lede">
+          A pilot is a fixed-fee engagement. We set up FeatureGraph on a
+          historical extract of your scientific or engineering time-series data
+          and answer an agreed set of questions. Your team gets the results,
+          and a record of how each one was produced.
+        </p>
+      </section>
+      <section class="section intro-grid">
+        <div>
+          <p class="eyebrow">What you get</p>
+          <h2>Results you can check without reading code.</h2>
+        </div>
+        <div class="prose">
+          <ul>
+            <li>
+              <strong>A report</strong> written for your domain experts: the
+              answer to each agreed question, figures of your signals with the
+              detected objects marked, the parameters we chose and why, and
+              what the results do and do not show.
+            </li>
+            <li>
+              <strong>Result tables</strong> in CSV files, so you can use the
+              measurements in your own tools.
+            </li>
+            <li>
+              <strong>A provenance record</strong> for every result, so each
+              one can be reproduced from the same data and the same
+              definitions.
+            </li>
+          </ul>
+          <p>
+            Every analysis is run through the FeatureGraph compiler, which
+            checks it before it executes. Running it uses no language model.
+          </p>
+        </div>
+      </section>
+      <section class="section intro-grid">
+        <div>
+          <p class="eyebrow">How it works</p>
+          <h2>From first conversation to results.</h2>
+        </div>
+        <div class="prose">
+          <ol>
+            <li>
+              <strong>Fit call.</strong> A short call to confirm your data
+              suits FeatureGraph and the question can be answered. If it does
+              not, we say so.
+            </li>
+            <li>
+              <strong>Written scope and fixed fee.</strong> The questions, the
+              dataset, what “done” means, and the price, on one page.
+            </li>
+            <li>
+              <strong>Agreement.</strong> A confidentiality agreement and
+              written pilot terms, including how your data and results are
+              handled.
+            </li>
+            <li>
+              <strong>Setup and analysis.</strong> You send one data extract.
+              We set up the data, choose the processing parameters, build the
+              objects and answer the agreed questions.
+            </li>
+            <li>
+              <strong>Delivery and review.</strong> We walk your team through
+              the report and the record.
+            </li>
+            <li>
+              <strong>Decision.</strong> You continue with FeatureGraph, or you
+              stop and keep the report.
+            </li>
+          </ol>
+          <p>
+            A pilot takes three to four weeks from the day we receive your
+            data. The fee is fixed and agreed before work begins.
+          </p>
+        </div>
+      </section>
+      <section class="section intro-grid">
+        <div>
+          <p class="eyebrow">What we need</p>
+          <h2>One data extract and a few hours of an expert’s time.</h2>
+        </div>
+        <div class="prose">
+          <ul>
+            <li>
+              An extract of the historical signals to analyze, with timestamps,
+              units and sampling rate, plus any events or labels you trust.
+            </li>
+            <li>
+              A short description of the data: what each column is and any
+              known problems such as gaps or calibration changes.
+            </li>
+            <li>
+              A point of contact who can answer questions about the data during
+              setup.
+            </li>
+            <li>
+              A review of how we have mapped your data, to confirm that the
+              objects match what you mean by an event.
+            </li>
+          </ul>
+          <p>
+            The current version is built for oscillating signals, such as
+            respiration, pressure changes in industrial equipment, or
+            mechanical pulses from a rotating drill string.
+          </p>
+        </div>
+      </section>
+      <section class="section intro-grid">
+        <div>
+          <p class="eyebrow">Your data</p>
+          <h2>Handled by written agreement.</h2>
+        </div>
+        <div class="prose">
+          <p>
+            FeatureGraph does not retain your raw data after the pilot. The
+            terms for your data and for the results are agreed in writing
+            before work starts. You keep your data and your results.
+          </p>
+        </div>
+      </section>
+      <section class="section intro-grid">
+        <div>
+          <p class="eyebrow">Not included</p>
+          <h2>What a pilot does not cover.</h2>
+        </div>
+        <div class="prose">
+          <ul>
+            <li>A live connection to your data warehouse or database.</li>
+            <li>Production deployment.</li>
+            <li>Clinical or medical interpretation of results.</li>
+          </ul>
+        </div>
+      </section>
+      <section class="cta">
+        <div class="actions">
+          <a class="button primary" href="pilots.html">Request an analysis</a>
+        </div>
+      </section>
+    </main>
+    <footer>
+  <span>© 2026 FeatureGraph</span>
+  <span>Created by Nazia Habib</span>
+  <a href="https://github.com/featuregraph/featuregraph" target="_blank" rel="noopener noreferrer">MIT-licensed beta</a>
+  <a href="https://zenodo.org/records/21984186" target="_blank" rel="noopener noreferrer">Zenodo</a>
+  <a href="https://orcid.org/0009-0000-5474-277X" target="_blank" rel="noopener noreferrer">ORCID</a>
+</footer>
+  </body>
+</html>

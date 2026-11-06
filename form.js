@@ -22,8 +22,7 @@
       document.body.removeChild(link);
       var status = form.parentNode.querySelector(".form-status");
       if (status) {
-        status.textContent = "Your email app should open with your message ready to send. If it does not, write to " +
-          form.getAttribute("data-mailto") + ".";
+        status.textContent = "Your email app should open with your message ready to send. If nothing opens, your browser may not have an email app set up.";
       }
     });
   });
