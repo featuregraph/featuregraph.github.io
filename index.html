@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>FeatureGraph — Deterministic, inspectable, reproducible scientific data analysis</title>
-<meta name="description" content="FeatureGraph is the data science and analytics store built for agents: set up around your company's time-series data, so agents query defined, checkable results instead of writing analysis code.">
+<meta name="description" content="FeatureGraph handles checked analysis of scientific and engineering time-series data. Have an analysis built on your data, or build your own with the open-source compiler.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://featuregraph.ai/">
 <meta property="og:title" content="FeatureGraph — Deterministic, inspectable, reproducible scientific data analysis">
@@ -23,6 +23,10 @@
 .block p.eyebrow{margin:0 0 12px;font-size:.7rem;color:var(--muted)}
 .block p a,.block li a{color:var(--blue);text-decoration:underline;text-underline-offset:2px}
 .button code{margin-left:.4em;font-size:.78rem}
+.paths{margin:8px 0 48px}
+.paths>h2{margin:0 0 16px;color:var(--ink);font-size:1.25rem;font-weight:600}
+.track p code,.track li code{font-size:.88em}
+.track .button code{margin-left:.4em}
 .pains{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px 32px;margin-top:20px}
 .pains div{min-width:0}
 .pains h3,.layers h3{margin:0 0 6px;color:var(--ink);font-size:1rem;font-weight:600}
@@ -65,12 +69,44 @@ code{font-size:.9em}
 <main class="page-shell">
 <section class="hero compact">
   <p class="eyebrow">Introduction</p>
-  <h1>The coding tool built for data science.</h1>
+  <h1>Checked analysis for scientific and engineering time-series data.</h1>
   <p class="lead">Your domain experts shouldn't have to spend their time writing Python code by hand. FeatureGraph handles the time-series analysis so your team can focus on interpreting the results.</p>
-  <div class="actions">
-    <a class="button primary" href="https://github.com/featuregraph/featuregraph-api-demo" target="_blank" rel="noopener noreferrer">Try a demo</a>
-    <a class="button" href="https://github.com/featuregraph/featuregraph-core" target="_blank" rel="noopener noreferrer">Install <code>featuregraph-core</code></a>
-    <a class="button" href="https://github.com/featuregraph/featuregraph#research-record" target="_blank" rel="noopener noreferrer">Read the research record</a>
+</section>
+
+<section class="paths" aria-labelledby="paths-heading">
+  <h2 id="paths-heading">Where would you like to start?</h2>
+  <div class="track-grid">
+    <article class="track">
+      <p class="track-number">01 · Analysis built for you</p>
+      <h3>I'd like an analysis built on my data</h3>
+      <p>We set up FeatureGraph on a historical extract of your time-series data and answer an agreed set of questions. You receive a checked report and a record of how every result was produced.</p>
+      <ul>
+        <li>A report written for your domain experts</li>
+        <li>Result tables you can use in your own tools</li>
+        <li>A provenance record, so every result can be reproduced</li>
+        <li>Raw data is not retained after the pilot</li>
+      </ul>
+      <div class="track-actions">
+        <a class="button primary" href="pilots.html">About analysis pilots</a>
+      </div>
+    </article>
+    <article class="track">
+      <p class="track-number">02 · Build your own</p>
+      <h3>I'd like to build my own analyses and software</h3>
+      <p><code>featuregraph-core</code> is the open-source compiler. Define your own analyses and build on the same objects and measures used in our studies.</p>
+      <ul>
+        <li><code>pip install featuregraph-core</code> (MIT-licensed beta)</li>
+        <li>Documentation for the framework</li>
+        <li>A public demo of the question-to-query loop</li>
+        <li>The research record and published studies</li>
+      </ul>
+      <div class="track-actions">
+        <a class="button primary" href="https://github.com/featuregraph/featuregraph-core" target="_blank" rel="noopener noreferrer">Install <code>featuregraph-core</code></a>
+        <a class="text-link" href="https://featuregraph-framework.readthedocs.io/" target="_blank" rel="noopener noreferrer">Documentation ↗</a>
+        <a class="text-link" href="demo.html">Demo</a>
+        <a class="text-link" href="https://github.com/featuregraph/featuregraph#research-record" target="_blank" rel="noopener noreferrer">Research record ↗</a>
+      </div>
+    </article>
   </div>
 </section>
 
