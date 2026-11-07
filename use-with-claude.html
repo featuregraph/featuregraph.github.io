@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="robots" content="noindex" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Use FeatureGraph from Claude — FeatureGraph</title>
+    <meta
+      name="description"
+      content="Ask questions of FeatureGraph's public datasets from Claude. Every answer comes from a checked query and has a receipt."
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="theme.css?v=20261104b" />
+    <link rel="stylesheet" href="forms.css" />
+    <script src="nav.js"></script>
+    <script src="form.js" defer></script>
+    <style>.draft-banner{background:#fff4d6;border:1px solid #e2b34a;color:#5a4300;padding:10px 14px;border-radius:4px;margin:0 0 28px;font-size:.9rem}.sample{border:1px solid var(--line);background:var(--panel);padding:18px 20px;border-radius:4px;max-width:640px}.sample p{margin:0 0 .6em}.sample .who{font-size:.7rem;letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}</style>
+    <script src="posthog.js" defer></script>
+  </head>
+  <body>
+    <header>
+  <a class="brand" href="index.html" aria-label="FeatureGraph home"><span>◇</span>FeatureGraph</a>
+  <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Menu"><span></span><span></span><span></span></button>
+  <nav id="site-nav" aria-label="Primary navigation">
+    <a href="index.html">Introduction</a>
+    <a href="research.html">Research</a>
+    <a href="software.html">Software</a>
+    <a href="releases.html">Releases</a>
+    <a href="publications.html">Publications</a>
+    <a href="roadmap.html">Roadmap</a>
+    <a href="updates.html">Updates</a>
+    <a href="about.html">About</a>
+    <a href="demo.html">Demo</a>
+    <a class="ext ext-first" href="https://featuregraph-framework.readthedocs.io/" target="_blank" rel="noopener noreferrer">Docs ↗</a>
+    <a class="ext" href="https://blog.featuregraph.ai/" target="_blank" rel="noopener noreferrer">Blog ↗</a>
+    <a class="ext" href="https://assistant.featuregraph.ai/" target="_blank" rel="noopener noreferrer">Assistant ↗</a>
+    <a class="ext" href="https://github.com/featuregraph/" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+  </nav>
+</header>
+    <main class="page-shell">
+      <p class="draft-banner"><strong>Draft for review.</strong> This service does not exist yet. The connector address, the access key and the datasets listed are placeholders. Not linked from the site.</p>
+      <section class="hero compact">
+        <p class="eyebrow">Use FeatureGraph from Claude</p>
+        <h1>Ask questions of FeatureGraph’s public datasets, in plain English.</h1>
+        <p class="lede">
+          Connect FeatureGraph to Claude and ask about the respiration
+          recordings in our database. Each answer comes from a checked query run
+          on the data, and comes with a receipt anyone can use to verify it.
+        </p>
+      </section>
+      <section class="section intro-grid">
+        <div>
+          <p class="eyebrow">What you can ask</p>
+          <h2>Questions about public datasets.</h2>
+        </div>
+        <div class="prose">
+          <p>
+            The first datasets are the BIDMC and CapnoBase respiration
+            recordings, already converted to FeatureGraph objects. More will
+            follow. Questions that work well:
+          </p>
+          <ul>
+            <li>How many BIDMC subjects have a confident respiration period?</li>
+            <li>List the BIDMC subjects where no reliable period was found.</li>
+            <li>Among confident CapnoBase cases, which are outliers in both the number of detected cycles and mean temporal symmetry?</li>
+          </ul>
+        </div>
+      </section>
+      <section class="section intro-grid">
+        <div>
+          <p class="eyebrow">Connect</p>
+          <h2>Add it once, then just ask.</h2>
+        </div>
+        <div class="prose">
+          <ol>
+            <li><strong>Request an access key</strong> with the form below.</li>
+            <li>In Claude, add a custom connector. Paste the address
+              <code>[connector address]</code> and your key. The menu names
+              depend on your Claude plan.</li>
+            <li>Start a chat and ask a question. Claude asks FeatureGraph, and
+              FeatureGraph checks and runs the query.</li>
+          </ol>
+        </div>
+      </section>
+      <section class="section intro-grid">
+        <div>
+          <p class="eyebrow">What you get back</p>
+          <h2>An answer you can check.</h2>
+        </div>
+        <div class="prose">
+          <p>Every answer has three parts:</p>
+          <ul>
+            <li><strong>The answer</strong>, in plain words.</li>
+            <li><strong>The query, written back in plain English</strong>, so you can confirm it asked what you meant.</li>
+            <li><strong>A receipt</strong>: the question, the query, the answer, and fingerprints of the data and the code. Anyone can open it and rerun it for the same result.</li>
+          </ul>
+          <p>
+            No language model runs inside FeatureGraph. The calculation is done
+            by a program that checks the query first.
+          </p>
+        </div>
+      </section>
+      <section class="section intro-grid">
+        <div>
+          <p class="eyebrow">Limits</p>
+          <h2>What it does not do.</h2>
+        </div>
+        <div class="prose">
+          <ul>
+            <li>It answers only from the public datasets above. You cannot upload data here.</li>
+            <li>Some questions get a refusal instead of an answer: the result is a tie, the question needs an operation FeatureGraph does not have, or the query names something that is not in the table. You will see which.</li>
+            <li>Claude writes the reply. FeatureGraph guarantees the numbers and the receipt, not the wording around them, so check the restated query.</li>
+            <li>The results describe signal structure. They are not clinical findings.</li>
+          </ul>
+          <p>Want your own data analyzed? <a href="pilots.html">Ask for an analysis built on your data.</a></p>
+        </div>
+      </section>
+      <section class="cta">
+        <p class="eyebrow">Access</p>
+        <h2>Request an access key.</h2>
+        <form class="form" action="mailto:" method="post" enctype="text/plain" data-kind="access">
+          <div class="field">
+            <label for="acc-name">Your name</label>
+            <input id="acc-name" name="name" type="text" autocomplete="name" required />
+          </div>
+          <div class="field">
+            <label for="acc-email">Email</label>
+            <input id="acc-email" name="email" type="email" autocomplete="email" required />
+          </div>
+          <div class="field">
+            <label for="acc-ask">What would you like to ask? <span class="opt">(optional)</span></label>
+            <textarea id="acc-ask" name="question"></textarea>
+          </div>
+          <div class="hp" aria-hidden="true">
+            <label>Leave this field empty <input type="text" name="website" tabindex="-1" autocomplete="off" /></label>
+          </div>
+          <div class="form-actions">
+            <button class="button primary" type="submit">Request a key</button>
+          </div>
+        </form>
+        <p class="form-note">We keep your name, email address and message so that we can reply to you.</p>
+        <p class="form-status" role="status" aria-live="polite"></p>
+      </section>
+    </main>
+    <footer>
+  <span>© 2026 FeatureGraph</span>
+  <span>Created by Nazia Habib</span>
+  <a href="https://github.com/featuregraph/featuregraph" target="_blank" rel="noopener noreferrer">MIT-licensed beta</a>
+  <a href="https://zenodo.org/records/21984186" target="_blank" rel="noopener noreferrer">Zenodo</a>
+  <a href="https://orcid.org/0009-0000-5474-277X" target="_blank" rel="noopener noreferrer">ORCID</a>
+</footer>
+  </body>
+</html>
