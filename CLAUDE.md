@@ -19,7 +19,7 @@ top, then the Updates timeline. It is the page for researchers, and the one
 shared links and search results land on.
 
 The **product** landing page is `product.html` (served at `/product`, "For
-teams" in the nav). Link product audiences there directly. `updates.html` and
+Teams" in the nav). Link product audiences there directly. `updates.html` and
 `intro.html` are redirect stubs to these two; keep them so old links work.
 
 To change the featured item, edit the `featured` section at the top of
