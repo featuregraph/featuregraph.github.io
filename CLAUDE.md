@@ -12,6 +12,19 @@ were the deploy, because it is.
 
 `CNAME` holds `featuregraph.ai`. `www` is a CNAME to `featuregraph.github.io`.
 
+## Two front doors
+
+The root (`index.html`) is the **research** front page: a featured item at the
+top, then the Updates timeline. It is the page for researchers, and the one
+shared links and search results land on.
+
+The **product** landing page is `product.html` (served at `/product`, "For
+teams" in the nav). Link product audiences there directly. `updates.html` and
+`intro.html` are redirect stubs to these two; keep them so old links work.
+
+To change the featured item, edit the `featured` section at the top of
+`index.html`, and keep the same item in the timeline below it as the record.
+
 ## The other hostname is not this repository
 
 `assistant.featuregraph.ai` is a **separate application**: a Python server in

@@ -1,62 +1,48 @@
 <!doctype html>
 <html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>FeatureGraph — Deterministic, inspectable, reproducible scientific data analysis</title>
-<meta name="description" content="FeatureGraph handles checked analysis of scientific and engineering time-series data. Have an analysis built on your data, or build your own with the open-source compiler.">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://featuregraph.ai/">
-<meta property="og:title" content="FeatureGraph — Deterministic, inspectable, reproducible scientific data analysis">
-<meta property="og:description" content="FeatureGraph turns declared analytical decisions into repeatable computations and traceable scientific results.">
-<meta property="og:image" content="https://featuregraph.ai/social-preview.png">
-<meta property="og:image:alt" content="Connected FeatureGraph objects arranged across a time axis.">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://featuregraph.ai/social-preview.png">
-<link rel="canonical" href="https://featuregraph.ai/">
-<link rel="stylesheet" href="home.css?v=20260816-publications-2">
-<link rel="stylesheet" href="theme.css?v=20261104b">
-<style>
-/* Intro-only rules. Header, card, hero, buttons, colours, dark mode and fonts come from home.css and theme.css, so this page matches the home page. */
-:root{--wave:var(--blue);--accent:var(--blue)}
-.block p{max-width:68ch;margin:0 0 14px;color:var(--muted);font-size:.92rem}
-.block p.eyebrow{margin:0 0 12px;font-size:.7rem;color:var(--muted)}
-.block p a,.block li a{color:var(--blue);text-decoration:underline;text-underline-offset:2px}
-.button code{margin-left:.4em;font-size:.78rem}
-.paths{margin:28px 0 0}
-.paths>h2{margin:0 0 16px;color:var(--ink);font-size:1.25rem;font-weight:600}
-.track p code,.track li code{font-size:.88em}
-.track .button code{margin-left:.4em}
-.pains{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px 32px;margin-top:20px}
-.pains div{min-width:0}
-.pains h3,.layers h3{margin:0 0 6px;color:var(--ink);font-size:1rem;font-weight:600}
-.pains p{margin:0;color:var(--muted);font-size:.9rem}
-svg text{font-size:13px;fill:var(--muted)}
-svg .strong{fill:var(--ink)}
-.layers{list-style:none;margin:20px 0 0;padding:0;display:flex;flex-direction:column}
-.layers li{display:grid;grid-template-columns:48px 1fr;gap:4px 16px;padding-block:14px;border-top:1px solid var(--line)}
-.layers li:last-child{border-bottom:1px solid var(--line)}
-.layers .k{color:var(--blue);font-size:1.7rem;font-weight:700;line-height:1}
-.layers h3{margin:0}
-.layers p{margin:2px 0 0;color:var(--muted);font-size:.9rem}
-.layers .tag{display:inline-block;margin-left:8px;padding:1px 6px;border:1px solid var(--line);border-radius:4px;background:transparent;color:var(--muted);font-size:.68rem;font-weight:500;letter-spacing:.06em;text-transform:uppercase;vertical-align:2px}
-pre{margin:20px 0 8px;padding:16px;max-width:100%;overflow-x:auto;font-size:.82rem;line-height:1.55}
-code{font-size:.9em}
-</style>
-<script src="nav.js"></script>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>FeatureGraph — Research updates</title>
+    <meta
+      name="description"
+      content="FeatureGraph is an open research program on making scientific and engineering time-series analysis inspectable and reproducible. Research notes, results and milestones."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://featuregraph.ai/" />
+    <meta property="og:title" content="FeatureGraph — Research updates" />
+    <meta property="og:description" content="An open research program on making scientific and engineering time-series analysis inspectable and reproducible." />
+    <meta property="og:image" content="https://featuregraph.ai/social-preview.png" />
+    <meta property="og:image:alt" content="Connected FeatureGraph objects arranged across a time axis." />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content="https://featuregraph.ai/social-preview.png" />
+    <link rel="canonical" href="https://featuregraph.ai/" />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="theme.css?v=20261104b" />
+    <style>
+      .featured{padding-bottom:clamp(32px,4vw,48px)}
+      .featured h1 a{color:inherit}
+      .featured .actions{margin-top:22px}
+      .updates-head{margin:clamp(24px,3vw,40px) 0 4px}
+      .updates-head h2{margin:0 0 8px}
+      .updates-head p{margin:0;max-width:70ch;color:var(--muted)}
+      .for-teams{margin-top:clamp(32px,4vw,48px)}
+    </style>
+    <script src="posthog.js" defer></script>
+  <script src="nav.js"></script>
 </head>
-<body>
-<header>
+  <body>
+    <header>
   <a class="brand" href="index.html" aria-label="FeatureGraph home"><span>◇</span>FeatureGraph</a>
   <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Menu"><span></span><span></span><span></span></button>
   <nav id="site-nav" aria-label="Primary navigation">
-    <a href="index.html" aria-current="page">Introduction</a>
+    <a href="index.html" aria-current="page">Updates</a>
     <a href="research.html">Research</a>
-    <a href="software.html">Software</a>
-    <a href="releases.html">Releases</a>
     <a href="publications.html">Publications</a>
+    <a href="releases.html">Releases</a>
     <a href="roadmap.html">Roadmap</a>
-    <a href="updates.html">Updates</a>
+    <a href="software.html">Software</a>
+    <a href="product.html">For teams</a>
     <a href="about.html">About</a>
     <a href="demo.html">Demo</a>
     <a class="ext ext-first" href="https://featuregraph-framework.readthedocs.io/" target="_blank" rel="noopener noreferrer">Docs ↗</a>
@@ -65,52 +51,194 @@ code{font-size:.9em}
     <a class="ext" href="https://github.com/featuregraph/" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
   </nav>
 </header>
-
-<main class="page-shell">
-<section class="hero compact">
-  <h1>The coding tool for scientific and engineering time-series data.</h1>
-  <p class="lead">Your domain experts shouldn't have to spend their time writing Python code by hand. FeatureGraph handles the time-series analysis so your team can focus on interpreting the results.</p>
-</section>
-
-<div class="paths" role="group" aria-label="Where would you like to start?">
-  <div class="track-grid">
-    <article class="track">
-      <h3>I'd like an analysis built on my data</h3>
-      <p>We set up FeatureGraph on a historical extract of your time-series data and answer an agreed set of questions. You receive a checked report and a record of how every result was produced.</p>
-      <ul>
-        <li>A report written for your domain experts</li>
-        <li>Result tables you can use in your own tools</li>
-        <li>A provenance record, so every result can be reproduced</li>
-        <li>Raw data is not retained after the pilot</li>
-      </ul>
-      <div class="track-actions">
-        <a class="button primary" href="pilots.html">Request an analysis</a>
-      </div>
-    </article>
-    <article class="track">
-      <h3>I'd like to build my own software</h3>
-      <p>We provide the data store, agent layer, and the analysis backend built using <code>featuregraph-core</code>, the open-source compiler. Everything you need to integrate FeatureGraph into your workflow.</p>
-      <ul>
-        <li><code>pip install featuregraph-core</code> (MIT-license)</li>
-        <li>Documentation for the framework</li>
-        <li>A public demo of the question-to-query loop</li>
-        <li>The research record and published studies</li>
-      </ul>
-      <div class="track-actions">
-        <a class="button primary" href="build.html">Build your own</a>
-      </div>
-    </article>
-  </div>
-</div>
-
-</main>
-
-<footer>
+    <main class="page-shell">
+      <section class="page-hero featured">
+        <p class="section-label">Featured · Cohere Labs Community blog · November 2026</p>
+        <h1>
+          <a href="https://cohere-labs-community.github.io/blog/2026/featuregraph-automating-timeseries-analysis/" target="_blank" rel="noopener noreferrer">FeatureGraph: Automating Scientific and Engineering Time-Series Analysis</a>
+        </h1>
+        <p>
+          How FeatureGraph builds reproducible summaries of oscillating
+          scientific and engineering signals, and how its compiler and
+          language-model query layer fit together.
+        </p>
+        <div class="actions">
+          <a class="button primary" href="https://cohere-labs-community.github.io/blog/2026/featuregraph-automating-timeseries-analysis/" target="_blank" rel="noopener noreferrer">Read the post ↗</a>
+          <a class="button" href="research.html">Guide to the research</a>
+        </div>
+      </section>
+      <section class="updates-head">
+        <h2>Research updates</h2>
+        <p>
+          A public record of how FeatureGraph is evolving, including positive
+          and negative results, as the project develops explicit, inspectable
+          behavioral representations.
+        </p>
+      </section>
+      <section class="timeline">
+        <article>
+          <span class="date">November 2026</span>
+          <div>
+            <h2>
+              <a href="https://cohere-labs-community.github.io/blog/2026/featuregraph-automating-timeseries-analysis/" target="_blank" rel="noopener noreferrer">FeatureGraph: Automating Scientific and Engineering Time-Series
+                Analysis ↗</a
+              >
+            </h2>
+            <p>
+              A post on the Cohere Labs Community blog introducing FeatureGraph:
+              how it builds reproducible summaries of oscillating scientific and
+              engineering signals, and how its compiler and language-model query
+              layer fit together.
+            </p>
+          </div>
+        </article>
+        <article>
+          <span class="date">October 2026</span>
+          <div>
+            <h2>
+              <a href="demo.html"
+                >Checkable questions: a recorded demonstration</a
+              >
+            </h2>
+            <p>
+              An LLM writes a plain-English question as a request in a small,
+              fixed query language. A separate program checks it, runs it on
+              the table and saves a receipt. The page shows 13 recorded runs
+              on a small made-up table. It is a demonstration, not a
+              measurement of accuracy.
+            </p>
+          </div>
+        </article>
+        <article>
+          <span class="date">August 2026</span>
+          <div>
+            <h2>
+              <a
+                href="https://github.com/featuregraph/featuregraph/blob/main/artifacts/studies/clap_state_object_study.md" target="_blank" rel="noopener noreferrer">CLaP detector output becomes explicit FeatureGraph objects
+                ↗</a
+              >
+            </h2>
+            <p>
+              The public <code>from_state_sequence</code> adapter materialized
+              20,700 unchanged CLaP labels as nine bounded objects and eight
+              temporal relations. All eleven study checks passed, including
+              exact reconstruction of the original state sequence.
+            </p>
+          </div>
+        </article>
+        <article>
+          <span class="date">August 2026</span>
+          <div>
+            <h2>
+              <a href="https://github.com/featuregraph/featuregraph/pull/30" target="_blank" rel="noopener noreferrer">BIDMC study reproduces a reference analysis—and exposes a
+                transfer failure ↗</a
+              >
+            </h2>
+            <p>
+              On subject 1, all 169 reference candidate breaths matched
+              FeatureGraph results. Across subjects, the same fixed rule
+              over-segmented, and robust MAD scaling increased recall while
+              producing still more extra candidates. The study supports
+              FeatureGraph as a deterministic preservation and audit layer, not
+              an autonomous judge of meaningful peaks.
+            </p>
+          </div>
+        </article>
+        <article>
+          <span class="date">August 2026</span>
+          <div>
+            <h2>
+              <a href="research.html#accumulation"
+                >Respiration accumulation as a dependent behavioral object</a
+              >
+            </h2>
+            <p>
+              Waveform area relative to an explicit baseline is recorded with
+              parent identity, completeness, timing, rates, and centroid. It is
+              not interpreted as physical inhaled volume without sensor
+              calibration.
+            </p>
+          </div>
+        </article>
+        <article>
+          <span class="date">July 2026</span>
+          <div>
+            <h2>
+              <a href="https://github.com/featuregraph/featuregraph/pull/6" target="_blank" rel="noopener noreferrer">Transition objects become the compositional layer ↗</a
+              >
+            </h2>
+            <p>
+              Rising, falling, and inactive behavior is represented as explicit
+              Transition objects. This development line now motivates the
+              transition-only successor study.
+            </p>
+          </div>
+        </article>
+        <article>
+          <span class="date">July 2026</span>
+          <div>
+            <h2>
+              <a href="https://blog.featuregraph.ai/" target="_blank" rel="noopener noreferrer">One Month to Alpha ↗</a
+              >
+            </h2>
+            <p>
+              A summary of the research, architecture, testing, reproducibility
+              work, and public release that took FeatureGraph from an initial
+              idea to version 0.1.0a1.
+            </p>
+          </div>
+        </article>
+        <article>
+          <span class="date">July 2026</span>
+          <div>
+            <h2>
+              <a href="https://blog.featuregraph.ai/" target="_blank" rel="noopener noreferrer">Accumulation as a First-Class Object ↗</a
+              >
+            </h2>
+            <p>
+              Why accumulated quantities should be represented explicitly and
+              what the object exposes beyond a cumulative sum.
+            </p>
+          </div>
+        </article>
+        <article>
+          <span class="date">June 2026</span>
+          <div>
+            <h2>
+              <a href="https://blog.featuregraph.ai/" target="_blank" rel="noopener noreferrer">Why FeatureGraph Exists ↗</a
+              >
+            </h2>
+            <p>
+              The original motivation: convert observation sequences into
+              explicit structures that can be inspected, measured, related, and
+              queried without repeatedly rebuilding the same logic.
+            </p>
+          </div>
+        </article>
+      </section>
+      <section class="card for-teams">
+        <h2>Using FeatureGraph on your own data?</h2>
+        <p>
+          Have an analysis built on your time-series data, or build your own
+          with the open-source compiler.
+          <a href="product.html">FeatureGraph for teams →</a>
+        </p>
+      </section>
+      <section class="card">
+        <h2>FeatureGraph on Substack</h2>
+        <p>
+          Read research updates and follow the project on
+          <a href="https://blog.featuregraph.ai/" target="_blank" rel="noopener noreferrer">Nazia Habib’s Substack ↗</a
+          >.
+        </p>
+      </section>
+    </main>
+    <footer>
   <span>© 2026 FeatureGraph</span>
   <span>Created by Nazia Habib</span>
   <a href="https://github.com/featuregraph/featuregraph" target="_blank" rel="noopener noreferrer">MIT-licensed beta</a>
   <a href="https://zenodo.org/records/21984186" target="_blank" rel="noopener noreferrer">Zenodo</a>
   <a href="https://orcid.org/0009-0000-5474-277X" target="_blank" rel="noopener noreferrer">ORCID</a>
 </footer>
-</body>
+  </body>
 </html>
