@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FeatureGraph — Deterministic, inspectable, reproducible scientific data analysis</title>
+<meta name="description" content="FeatureGraph handles checked analysis of scientific and engineering time-series data. Have an analysis built on your data, or build your own with the open-source compiler.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://featuregraph.ai/product">
+<meta property="og:title" content="FeatureGraph — Deterministic, inspectable, reproducible scientific data analysis">
+<meta property="og:description" content="FeatureGraph turns declared analytical decisions into repeatable computations and traceable scientific results.">
+<meta property="og:image" content="https://featuregraph.ai/social-preview.png">
+<meta property="og:image:alt" content="Connected FeatureGraph objects arranged across a time axis.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://featuregraph.ai/social-preview.png">
+<link rel="canonical" href="https://featuregraph.ai/product">
+<link rel="stylesheet" href="home.css?v=20260816-publications-2">
+<link rel="stylesheet" href="theme.css?v=20261104b">
+<style>
+/* Intro-only rules. Header, card, hero, buttons, colours, dark mode and fonts come from home.css and theme.css, so this page matches the home page. */
+:root{--wave:var(--blue);--accent:var(--blue)}
+.block p{max-width:68ch;margin:0 0 14px;color:var(--muted);font-size:.92rem}
+.block p.eyebrow{margin:0 0 12px;font-size:.7rem;color:var(--muted)}
+.block p a,.block li a{color:var(--blue);text-decoration:underline;text-underline-offset:2px}
+.button code{margin-left:.4em;font-size:.78rem}
+.paths{margin:28px 0 0}
+.paths>h2{margin:0 0 16px;color:var(--ink);font-size:1.25rem;font-weight:600}
+.track p code,.track li code{font-size:.88em}
+.track .button code{margin-left:.4em}
+.pains{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px 32px;margin-top:20px}
+.pains div{min-width:0}
+.pains h3,.layers h3{margin:0 0 6px;color:var(--ink);font-size:1rem;font-weight:600}
+.pains p{margin:0;color:var(--muted);font-size:.9rem}
+svg text{font-size:13px;fill:var(--muted)}
+svg .strong{fill:var(--ink)}
+.layers{list-style:none;margin:20px 0 0;padding:0;display:flex;flex-direction:column}
+.layers li{display:grid;grid-template-columns:48px 1fr;gap:4px 16px;padding-block:14px;border-top:1px solid var(--line)}
+.layers li:last-child{border-bottom:1px solid var(--line)}
+.layers .k{color:var(--blue);font-size:1.7rem;font-weight:700;line-height:1}
+.layers h3{margin:0}
+.layers p{margin:2px 0 0;color:var(--muted);font-size:.9rem}
+.layers .tag{display:inline-block;margin-left:8px;padding:1px 6px;border:1px solid var(--line);border-radius:4px;background:transparent;color:var(--muted);font-size:.68rem;font-weight:500;letter-spacing:.06em;text-transform:uppercase;vertical-align:2px}
+pre{margin:20px 0 8px;padding:16px;max-width:100%;overflow-x:auto;font-size:.82rem;line-height:1.55}
+code{font-size:.9em}
+</style>
+<script src="posthog.js" defer></script>
+<script src="nav.js"></script>
+</head>
+<body>
+<header>
+  <a class="brand" href="index.html" aria-label="FeatureGraph home"><span>◇</span>FeatureGraph</a>
+  <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Menu"><span></span><span></span><span></span></button>
+  <nav id="site-nav" aria-label="Primary navigation">
+    <a href="index.html">Updates</a>
+    <a href="research.html">Research</a>
+    <a href="publications.html">Publications</a>
+    <a href="releases.html">Releases</a>
+    <a href="roadmap.html">Roadmap</a>
+    <a href="software.html">Software</a>
+    <a href="product.html" aria-current="page">For teams</a>
+    <a href="about.html">About</a>
+    <a href="demo.html">Demo</a>
+    <a class="ext ext-first" href="https://featuregraph-framework.readthedocs.io/" target="_blank" rel="noopener noreferrer">Docs ↗</a>
+    <a class="ext" href="https://blog.featuregraph.ai/" target="_blank" rel="noopener noreferrer">Blog ↗</a>
+    <a class="ext" href="https://assistant.featuregraph.ai/" target="_blank" rel="noopener noreferrer">Assistant ↗</a>
+    <a class="ext" href="https://github.com/featuregraph/" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+  </nav>
+</header>
+
+<main class="page-shell">
+<section class="hero compact">
+  <h1>The coding tool for scientific and engineering time-series data.</h1>
+  <p class="lead">Your domain experts shouldn't have to spend their time writing Python code by hand. FeatureGraph handles the time-series analysis so your team can focus on interpreting the results.</p>
+</section>
+
+<div class="paths" role="group" aria-label="Where would you like to start?">
+  <div class="track-grid">
+    <article class="track">
+      <h3>I'd like an analysis built on my data</h3>
+      <p>We set up FeatureGraph on a historical extract of your time-series data and answer an agreed set of questions. You receive a checked report and a record of how every result was produced.</p>
+      <ul>
+        <li>A report written for your domain experts</li>
+        <li>Result tables you can use in your own tools</li>
+        <li>A provenance record, so every result can be reproduced</li>
+        <li>Raw data is not retained after the pilot</li>
+      </ul>
+      <div class="track-actions">
+        <a class="button primary" href="pilots.html">Request an analysis</a>
+      </div>
+    </article>
+    <article class="track">
+      <h3>I'd like to build my own software</h3>
+      <p>We provide the data store, agent layer, and the analysis backend built using <code>featuregraph-core</code>, the open-source compiler. Everything you need to integrate FeatureGraph into your workflow.</p>
+      <ul>
+        <li><code>pip install featuregraph-core</code> (MIT-license)</li>
+        <li>Documentation for the framework</li>
+        <li>A public demo of the question-to-query loop</li>
+        <li>The research record and published studies</li>
+      </ul>
+      <div class="track-actions">
+        <a class="button primary" href="build.html">Build your own</a>
+      </div>
+    </article>
+  </div>
+</div>
+
+</main>
+
+<footer>
+  <span>© 2026 FeatureGraph</span>
+  <span>Created by Nazia Habib</span>
+  <a href="https://github.com/featuregraph/featuregraph" target="_blank" rel="noopener noreferrer">MIT-licensed beta</a>
+  <a href="https://zenodo.org/records/21984186" target="_blank" rel="noopener noreferrer">Zenodo</a>
+  <a href="https://orcid.org/0009-0000-5474-277X" target="_blank" rel="noopener noreferrer">ORCID</a>
+</footer>
+</body>
+</html>
