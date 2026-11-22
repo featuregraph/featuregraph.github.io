@@ -27,6 +27,9 @@
       .updates-head h2{margin:0 0 8px}
       .updates-head p{margin:0;max-width:70ch;color:var(--muted)}
       .for-teams{margin-top:clamp(32px,4vw,48px)}
+      .audience-bar{display:flex;flex-wrap:wrap;align-items:center;justify-content:flex-end;gap:10px 14px}
+      .audience-bar span{color:var(--muted);font-size:.92rem}
+      .audience-bar + .featured{padding-top:clamp(32px,4vw,48px)}
     </style>
     <script src="posthog.js" defer></script>
   <script src="nav.js"></script>
@@ -52,6 +55,10 @@
   </nav>
 </header>
     <main class="page-shell">
+      <div class="audience-bar">
+        <span>Using FeatureGraph on your own data?</span>
+        <a class="button" href="product.html">For Teams →</a>
+      </div>
       <section class="page-hero featured">
         <p class="section-label">Featured · Cohere Labs Community blog · November 2026</p>
         <h1>
